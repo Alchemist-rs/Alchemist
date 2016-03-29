@@ -3,11 +3,15 @@
 
 
 Master:
+
 [![Build Status](https://travis-ci.org/mgattozzi/shaper.svg?branch=master)](https://travis-ci.org/mgattozzi/shaper)
-[![Clippy Linting Result](https://clippy.bashy.io/github/mgattozzi/shaper/dev/badge.svg)](https://clippy.bashy.io/github/mgattozzi/shaper/master/log)
+
+[![Clippy Linting Result](https://clippy.bashy.io/github/mgattozzi/shaper/master/badge.svg)](https://clippy.bashy.io/github/mgattozzi/shaper/master/log)
 
 Dev:
+
 [![Build Status](https://travis-ci.org/mgattozzi/shaper.svg?branch=dev)](https://travis-ci.org/mgattozzi/shaper)
+
 [![Clippy Linting Result](https://clippy.bashy.io/github/mgattozzi/shaper/dev/badge.svg)](https://clippy.bashy.io/github/mgattozzi/shaper/dev/log)
 
 ###Inspiration
