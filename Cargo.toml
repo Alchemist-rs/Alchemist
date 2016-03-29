@@ -8,6 +8,14 @@ documentation = "http://mgattozzi.github.io/shaper"
 readme = "README.md"
 license = "BSD3"
 
+[lib]
+name = "shaper"
+path = "src/shaper/lib.rs"
+
+[[bin]]
+name = "shaper"
+path = "src/bin/main.rs"
+
 [dependencies]
 
 [features]
