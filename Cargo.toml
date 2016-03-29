@@ -17,6 +17,7 @@ name = "shaper"
 path = "src/bin/main.rs"
 
 [dependencies]
+clap = "2.2.2"
 
 [features]
 
