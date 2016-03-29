@@ -1,6 +1,10 @@
 #Shaper
 ##Unix Platform Agnostic Installation Tool
 
+Master: [![Build Status](https://travis-ci.org/mgattozzi/shaper.svg?branch=master)](https://travis-ci.org/mgattozzi/shaper)
+
+Dev: [![Build Status](https://travis-ci.org/mgattozzi/shaper.svg?branch=dev)](https://travis-ci.org/mgattozzi/shaper)
+
 ###Inspiration
 I was tired of having to search for what packages I have to use for what
 distribution. Some I had to download two separate ones others I just had

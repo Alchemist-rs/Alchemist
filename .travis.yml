@@ -1,0 +1,17 @@
+sudo: false
+language: rust
+
+# run builds for all the trains (and more)
+rust:
+  - nightly
+  - beta
+  - stable
+
+matrix:
+  allow_failures:
+    - rust: nightly
+    - rust: beta
+
+script:
+  - cargo build
+  - cargo test
