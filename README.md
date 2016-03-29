@@ -1,9 +1,14 @@
 #Shaper
 ##Unix Platform Agnostic Installation Tool
 
-Master: [![Build Status](https://travis-ci.org/mgattozzi/shaper.svg?branch=master)](https://travis-ci.org/mgattozzi/shaper)
 
-Dev: [![Build Status](https://travis-ci.org/mgattozzi/shaper.svg?branch=dev)](https://travis-ci.org/mgattozzi/shaper)
+Master:
+[![Build Status](https://travis-ci.org/mgattozzi/shaper.svg?branch=master)](https://travis-ci.org/mgattozzi/shaper)
+[![Clippy Linting Result](https://clippy.bashy.io/github/mgattozzi/shaper/dev/badge.svg)](https://clippy.bashy.io/github/mgattozzi/shaper/master/log)
+
+Dev:
+[![Build Status](https://travis-ci.org/mgattozzi/shaper.svg?branch=dev)](https://travis-ci.org/mgattozzi/shaper)
+[![Clippy Linting Result](https://clippy.bashy.io/github/mgattozzi/shaper/dev/badge.svg)](https://clippy.bashy.io/github/mgattozzi/shaper/dev/log)
 
 ###Inspiration
 I was tired of having to search for what packages I have to use for what
