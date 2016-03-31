@@ -3,6 +3,7 @@ extern crate shaper;
 extern crate clap;
 
 //Shaper Imports
+use shaper::su;
 use shaper::distro::common::{Distro,which_distro};
 
 //Clap Imports
@@ -12,6 +13,11 @@ use clap::{App, Arg};
 use std::process::exit;
 
 fn main() {
+
+    if !su::has_sudo() {
+        println!("Sudo is not installed. Please install sudo (preferably) or run this as root");
+        exit(0);
+    }
 
     //Create Argument Flag Parser
     let args = App::new("Shaper")
@@ -47,7 +53,7 @@ fn main() {
         exit(0);
     }
 
-    match opt_dist.expect("None Distro was not handled") {
+    match opt_dist.expect("None found, Distro was not handled") {
         Distro::Arch    => println!("Arch Linux"),
         Distro::Ubuntu  => println!("Ubuntu"),
         Distro::Mint    => println!("Mint"),
