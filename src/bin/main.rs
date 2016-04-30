@@ -1,11 +1,12 @@
 //External Crate Imports
 extern crate shaper;
 extern crate clap;
+extern crate diesel;
 
 //Shaper Imports
 use shaper::su;
 use shaper::distro::common::{Distro,which_distro};
-use shaper::distro::arch;
+use shaper::distro;
 
 //Clap Imports
 use clap::{App, Arg};
@@ -62,16 +63,16 @@ fn main() {
     }
 
     //Prepare parse arguments of what to install
-    let mut packages: Vec<&str> = Vec::new();
+    let mut package_inputs: Vec<&str> = Vec::new();
     if let Some(p) = args.values_of("install") {
         for i in p {
-            packages.push(i);
+            package_inputs.push(i);
         }
     }
 
     match opt_dist.expect("None found, Distro was not handled") {
         Distro::Arch    => {
-            arch::pac_install(packages);
+            distro::arch::pac_install(package_inputs);
         },
         Distro::Ubuntu  => println!("Ubuntu"),
         Distro::Mint    => println!("Mint"),

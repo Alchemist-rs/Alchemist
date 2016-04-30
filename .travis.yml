@@ -1,15 +1,16 @@
 sudo: false
 language: rust
+cache: cargo
 
 # run builds for all the trains (and more)
 rust:
-  - nightly
+  - nightly-2016-04-08
   - beta
   - stable
 
 matrix:
   allow_failures:
-    - rust: nightly
+    - rust: stable
     - rust: beta
 
 script:
