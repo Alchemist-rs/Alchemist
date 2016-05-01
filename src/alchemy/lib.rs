@@ -10,6 +10,7 @@ pub mod su;
 pub mod db;
 pub mod models;
 pub mod schema;
+pub mod arch;
 
 #[macro_use]
 extern crate diesel;

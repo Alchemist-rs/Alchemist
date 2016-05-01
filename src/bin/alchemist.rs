@@ -2,14 +2,14 @@
 #![plugin(clippy)]
 
 //External Crate Imports
-extern crate shaper;
+extern crate alchemy;
 extern crate clap;
 extern crate diesel;
 
 //Shaper Imports
-use shaper::su;
-use shaper::distro::common::{Distro,which_distro};
-use shaper::distro::{arch};
+use alchemy::su;
+use alchemy::distro::{Distro,which_distro};
+use alchemy::arch;
 
 //Clap Imports
 use clap::{App, Arg};

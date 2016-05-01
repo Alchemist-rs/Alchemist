@@ -10,3 +10,8 @@ pub fn has_sudo() -> bool {
 
     false
 }
+
+pub fn is_root() -> bool {
+    //stub
+    false
+}
