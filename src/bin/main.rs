@@ -1,3 +1,6 @@
+#![feature(plugin)]
+#![plugin(clippy)]
+
 //External Crate Imports
 extern crate shaper;
 extern crate clap;

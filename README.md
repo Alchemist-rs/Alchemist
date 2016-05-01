@@ -6,13 +6,9 @@ Master:
 
 [![Build Status](https://travis-ci.org/mgattozzi/shaper.svg?branch=master)](https://travis-ci.org/mgattozzi/shaper)
 
-[![Clippy Linting Result](https://clippy.bashy.io/github/mgattozzi/shaper/master/badge.svg)](https://clippy.bashy.io/github/mgattozzi/shaper/master/log)
-
 Dev:
 
 [![Build Status](https://travis-ci.org/mgattozzi/shaper.svg?branch=dev)](https://travis-ci.org/mgattozzi/shaper)
-
-[![Clippy Linting Result](https://clippy.bashy.io/github/mgattozzi/shaper/dev/badge.svg)](https://clippy.bashy.io/github/mgattozzi/shaper/dev/log)
 
 ###Inspiration
 I was tired of having to search for what packages I have to use for what
@@ -56,9 +52,10 @@ working on stable using Syntex. As of now though since
 this is far from production ready nightly is fine.
 
 ###Roadmap
-- v0.10
-  - [ ] Create a mapping structure
-  - [ ] Create a configuration file
-    - [ ] Parse Configuratin
-    - [ ] Configuration file structure
-  - [ ] Basic Arch Linux Support (No AUR)
+- v0.1.0
+  - [x] Create a mapping structure
+  - [ ] Create Ubuntu to Arch Mappings
+  - [x] Create a db configuration file
+    - [x] Parse Configuratin
+    - [x] Configuration file structure
+  - [x] Arch Linux Support (including AUR)

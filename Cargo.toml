@@ -22,6 +22,7 @@ diesel             = "0.6.1"
 diesel_codegen     = { version = "0.6.1", default-features = false, features=["nightly", "postgres"] }
 dotenv             = "0.8.0"
 dotenv_macros      = "0.8.0"
+clippy             = "0.0.63"
 
 [profile.dev]
 opt-level = 0

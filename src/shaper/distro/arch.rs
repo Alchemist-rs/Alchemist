@@ -85,10 +85,10 @@ fn find_helper() -> AURHelper {
     let aura   = fs::metadata("/usr/bin/aura");
     let yaourt = fs::metadata("/usr/bin/yaourt");
     if yaourt.is_ok() && yaourt.unwrap().is_file() {
-        return AURHelper::Yaourt;
+        AURHelper::Yaourt
     }
     else if aura.is_ok() && aura.unwrap().is_file() {
-        return AURHelper::Aura;
+        AURHelper::Aura
     } else {
         AURHelper::NoHelp
     }
