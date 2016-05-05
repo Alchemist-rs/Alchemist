@@ -1,11 +1,15 @@
+#![feature(plugin)]
+#![plugin(clippy)]
+
 //External Crate Imports
-extern crate shaper;
+extern crate alchemy;
 extern crate clap;
+extern crate diesel;
 
 //Shaper Imports
-use shaper::su;
-use shaper::distro::common::{Distro,which_distro};
-use shaper::distro::arch;
+use alchemy::su;
+use alchemy::distro::{Distro,which_distro};
+use alchemy::arch;
 
 //Clap Imports
 use clap::{App, Arg};
@@ -30,29 +34,20 @@ fn main() {
                          .takes_value(true)
                          .multiple(true)
                          .help("Install the given programs"))
-                    .arg(Arg::with_name("debug")
-                         .short("d")
-                         .long("debug")
-                         .help("Turn debugging information on"))
-                    .arg(Arg::with_name("verbose")
-                         .short("v")
-                         .long("verbose")
-                         .help("Make output more verbose"))
+                    .arg(Arg::with_name("refresh")
+                         .short("r")
+                         .long("refresh")
+                         .help("Refresh package list with newest version")
+                         .takes_value(false)
+                         .conflicts_with("upgrade"))
+                    .arg(Arg::with_name("upgrade")
+                         .short("u")
+                         .long("upgrade")
+                         .help("Refresh & upgrade packages to newest version")
+                         .takes_value(false)
+                         .conflicts_with("refresh"))
                     .get_matches();
 
-    //Create Argument Flag variables
-    let mut debug = false;
-    let mut verbose = false;
-
-    //Toggle debug
-    if args.is_present("debug") {
-        debug = true;
-    }
-
-    //Toggle verbos
-    if args.is_present("verbose") {
-        verbose = true;
-    }
 
     //Determine Distro of User
     let opt_dist = which_distro();
@@ -62,16 +57,21 @@ fn main() {
     }
 
     //Prepare parse arguments of what to install
-    let mut packages: Vec<&str> = Vec::new();
+    let mut package_inputs: Vec<&str> = Vec::new();
     if let Some(p) = args.values_of("install") {
         for i in p {
-            packages.push(i);
+            package_inputs.push(i);
         }
     }
 
     match opt_dist.expect("None found, Distro was not handled") {
         Distro::Arch    => {
-            arch::pac_install(packages);
+            if args.values_of("refresh").is_some() {
+                arch::refresh_list();
+            } else if args.values_of("upgrade").is_some() {
+                arch::upgrade_packages();
+            }
+            arch::arch_install(package_inputs);
         },
         Distro::Ubuntu  => println!("Ubuntu"),
         Distro::Mint    => println!("Mint"),

@@ -1,5 +1,13 @@
-sudo: false
+sudo: required
+dist: trusty
 language: rust
+cache:
+  - apt
+env:
+  global:
+    - PATH=$PATH:~/.cargo/bin
+addons:
+  postgresql: '9.4'
 
 # run builds for all the trains (and more)
 rust:
@@ -9,12 +17,18 @@ rust:
 
 matrix:
   allow_failures:
-    - rust: nightly
+    - rust: stable
     - rust: beta
 
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install sqlite3 libsqlite3-dev
+
 script:
+  - createdb alchemist
+  - cargo install diesel_cli
+  - diesel migration run
   - cargo build
-  - cargo test
 
 notifications:
   email: false

@@ -1,25 +1,28 @@
 [package]
-name = "shaper"
-version = "0.0.1"
+name = "Alchemist"
+version = "0.0.2"
 authors = ["Michael Gattozzi <mgattozzi@gmail.com>"]
-repository = "https://github.com/mgattozzi/shaper"
-homepage = "https://github.com/mgattozzi/shaper"
-documentation = "http://mgattozzi.github.io/shaper"
+repository = "https://github.com/mgattozzi/Alchemist"
+homepage = "https://github.com/mgattozzi/Alchemist"
+documentation = "http://mgattozzi.github.io/Alchemist"
 readme = "README.md"
 license = "BSD3"
 
 [lib]
-name = "shaper"
-path = "src/shaper/lib.rs"
+name = "alchemy"
+path = "src/alchemy/lib.rs"
 
 [[bin]]
-name = "shaper"
-path = "src/bin/main.rs"
+name = "alchemist"
+path = "src/bin/alchemist.rs"
 
 [dependencies]
-clap = "2.2.3"
-
-[features]
+clap               = "*"
+diesel             = { git = "https://github.com/diesel-rs/diesel.git" }
+diesel_codegen     = { git = "https://github.com/diesel-rs/diesel.git", default-features = false, features=["nightly", "postgres"] }
+dotenv             = "*"
+dotenv_macros      = "*"
+clippy             = { git = "https://github.com/Manishearth/rust-clippy.git" }
 
 [profile.dev]
 opt-level = 0
