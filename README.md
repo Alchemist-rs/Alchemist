@@ -75,7 +75,7 @@ sh scripts/arch_setup.sh
 ###Roadmap
 - v0.1.0
   - [x] Create a mapping structure
-  - [ ] Create Ubuntu to Arch Mappings
+  - [x] Create Ubuntu to Arch Mappings
   - [x] Create a db configuration file
     - [x] Parse Configuratin
     - [x] Configuration file structure
