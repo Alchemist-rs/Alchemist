@@ -1,5 +1,5 @@
 use std::process::Command;
-use super::super::db;
+use db;
 use std::fs;
 
 pub fn arch_install(packages: Vec<&str>) {
