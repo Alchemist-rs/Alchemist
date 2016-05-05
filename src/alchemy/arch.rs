@@ -16,6 +16,7 @@ fn convert_to_arch(input_packages: Vec<&str>) -> (Vec<String>,Vec<String>) {
     let results = db::pack_query(input_packages);
     let mut pac_converted: Vec<String> = Vec::new();
     let mut aur_converted: Vec<String> = Vec::new();
+
     for i in results {
         //All querys will either be a string or '' in the db
         if !i.arch.is_empty() {
@@ -26,7 +27,14 @@ fn convert_to_arch(input_packages: Vec<&str>) -> (Vec<String>,Vec<String>) {
             aur_converted.push(i.aur);
         }
     }
-
+    if !pac_converted.is_empty() {
+        pac_converted.sort();
+        pac_converted.dedup();
+    }
+    if !aur_converted.is_empty() {
+        aur_converted.sort();
+        aur_converted.dedup();
+    }
     (pac_converted,aur_converted)
 }
 

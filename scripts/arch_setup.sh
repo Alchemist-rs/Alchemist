@@ -13,8 +13,9 @@ curl -sf https://raw.githubusercontent.com/brson/multirust/master/blastoff.sh | 
 #Install nightly
 multirust update nightly
 
-#Set Directory as nightly
+#Set Directory as nightly for regular and root
 multirust override nightly
+sudo multirust override nightly
 
 #Install diesel_cli and db
 createdb alchemist
