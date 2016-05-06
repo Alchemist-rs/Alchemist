@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["IncompleteInsertStatement","The structure returned by `insert`. The only thing that can be done with it is call `into`."],["Insert",""],["InsertStatement",""]]});

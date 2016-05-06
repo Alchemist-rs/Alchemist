@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `pq_sys` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, pq_sys">
+
+    <title>pq_sys - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'pq_sys', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>pq_sys</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-0' class='srclink' href='../src/pq_sys/lib.rs.html#1-449' title='goto source code'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Struct_Unnamed7.html'
+                                  title='pq_sys::Struct_Unnamed7'>Struct_Unnamed7</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Struct__PQconninfoOption.html'
+                                  title='pq_sys::Struct__PQconninfoOption'>Struct__PQconninfoOption</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Struct__PQprintOpt.html'
+                                  title='pq_sys::Struct__PQprintOpt'>Struct__PQprintOpt</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Struct_pgNotify.html'
+                                  title='pq_sys::Struct_pgNotify'>Struct_pgNotify</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Struct_pgresAttDesc.html'
+                                  title='pq_sys::Struct_pgresAttDesc'>Struct_pgresAttDesc</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Union_Unnamed8.html'
+                                  title='pq_sys::Union_Unnamed8'>Union_Unnamed8</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.Struct_pg_cancel.html'
+                                  title='pq_sys::Struct_pg_cancel'>Struct_pg_cancel</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.Struct_pg_conn.html'
+                                  title='pq_sys::Struct_pg_conn'>Struct_pg_conn</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.Struct_pg_result.html'
+                                  title='pq_sys::Struct_pg_result'>Struct_pg_result</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CONNECTION_AUTH_OK.html'
+                                  title='pq_sys::CONNECTION_AUTH_OK'>CONNECTION_AUTH_OK</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CONNECTION_AWAITING_RESPONSE.html'
+                                  title='pq_sys::CONNECTION_AWAITING_RESPONSE'>CONNECTION_AWAITING_RESPONSE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CONNECTION_BAD.html'
+                                  title='pq_sys::CONNECTION_BAD'>CONNECTION_BAD</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CONNECTION_MADE.html'
+                                  title='pq_sys::CONNECTION_MADE'>CONNECTION_MADE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CONNECTION_NEEDED.html'
+                                  title='pq_sys::CONNECTION_NEEDED'>CONNECTION_NEEDED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CONNECTION_OK.html'
+                                  title='pq_sys::CONNECTION_OK'>CONNECTION_OK</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CONNECTION_SETENV.html'
+                                  title='pq_sys::CONNECTION_SETENV'>CONNECTION_SETENV</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CONNECTION_SSL_STARTUP.html'
+                                  title='pq_sys::CONNECTION_SSL_STARTUP'>CONNECTION_SSL_STARTUP</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.CONNECTION_STARTED.html'
+                                  title='pq_sys::CONNECTION_STARTED'>CONNECTION_STARTED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_BAD_RESPONSE.html'
+                                  title='pq_sys::PGRES_BAD_RESPONSE'>PGRES_BAD_RESPONSE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_COMMAND_OK.html'
+                                  title='pq_sys::PGRES_COMMAND_OK'>PGRES_COMMAND_OK</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_COPY_BOTH.html'
+                                  title='pq_sys::PGRES_COPY_BOTH'>PGRES_COPY_BOTH</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_COPY_IN.html'
+                                  title='pq_sys::PGRES_COPY_IN'>PGRES_COPY_IN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_COPY_OUT.html'
+                                  title='pq_sys::PGRES_COPY_OUT'>PGRES_COPY_OUT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_EMPTY_QUERY.html'
+                                  title='pq_sys::PGRES_EMPTY_QUERY'>PGRES_EMPTY_QUERY</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_FATAL_ERROR.html'
+                                  title='pq_sys::PGRES_FATAL_ERROR'>PGRES_FATAL_ERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_NONFATAL_ERROR.html'
+                                  title='pq_sys::PGRES_NONFATAL_ERROR'>PGRES_NONFATAL_ERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_POLLING_ACTIVE.html'
+                                  title='pq_sys::PGRES_POLLING_ACTIVE'>PGRES_POLLING_ACTIVE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_POLLING_FAILED.html'
+                                  title='pq_sys::PGRES_POLLING_FAILED'>PGRES_POLLING_FAILED</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_POLLING_OK.html'
+                                  title='pq_sys::PGRES_POLLING_OK'>PGRES_POLLING_OK</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_POLLING_READING.html'
+                                  title='pq_sys::PGRES_POLLING_READING'>PGRES_POLLING_READING</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_POLLING_WRITING.html'
+                                  title='pq_sys::PGRES_POLLING_WRITING'>PGRES_POLLING_WRITING</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_SINGLE_TUPLE.html'
+                                  title='pq_sys::PGRES_SINGLE_TUPLE'>PGRES_SINGLE_TUPLE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PGRES_TUPLES_OK.html'
+                                  title='pq_sys::PGRES_TUPLES_OK'>PGRES_TUPLES_OK</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PQERRORS_DEFAULT.html'
+                                  title='pq_sys::PQERRORS_DEFAULT'>PQERRORS_DEFAULT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PQERRORS_TERSE.html'
+                                  title='pq_sys::PQERRORS_TERSE'>PQERRORS_TERSE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PQERRORS_VERBOSE.html'
+                                  title='pq_sys::PQERRORS_VERBOSE'>PQERRORS_VERBOSE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PQPING_NO_ATTEMPT.html'
+                                  title='pq_sys::PQPING_NO_ATTEMPT'>PQPING_NO_ATTEMPT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PQPING_NO_RESPONSE.html'
+                                  title='pq_sys::PQPING_NO_RESPONSE'>PQPING_NO_RESPONSE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PQPING_OK.html'
+                                  title='pq_sys::PQPING_OK'>PQPING_OK</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PQPING_REJECT.html'
+                                  title='pq_sys::PQPING_REJECT'>PQPING_REJECT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PQTRANS_ACTIVE.html'
+                                  title='pq_sys::PQTRANS_ACTIVE'>PQTRANS_ACTIVE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PQTRANS_IDLE.html'
+                                  title='pq_sys::PQTRANS_IDLE'>PQTRANS_IDLE</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PQTRANS_INERROR.html'
+                                  title='pq_sys::PQTRANS_INERROR'>PQTRANS_INERROR</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PQTRANS_INTRANS.html'
+                                  title='pq_sys::PQTRANS_INTRANS'>PQTRANS_INTRANS</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.PQTRANS_UNKNOWN.html'
+                                  title='pq_sys::PQTRANS_UNKNOWN'>PQTRANS_UNKNOWN</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQbackendPID.html'
+                                  title='pq_sys::PQbackendPID'>PQbackendPID</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQbinaryTuples.html'
+                                  title='pq_sys::PQbinaryTuples'>PQbinaryTuples</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQcancel.html'
+                                  title='pq_sys::PQcancel'>PQcancel</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQclear.html'
+                                  title='pq_sys::PQclear'>PQclear</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQclientEncoding.html'
+                                  title='pq_sys::PQclientEncoding'>PQclientEncoding</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQcmdStatus.html'
+                                  title='pq_sys::PQcmdStatus'>PQcmdStatus</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQcmdTuples.html'
+                                  title='pq_sys::PQcmdTuples'>PQcmdTuples</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQconndefaults.html'
+                                  title='pq_sys::PQconndefaults'>PQconndefaults</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQconnectPoll.html'
+                                  title='pq_sys::PQconnectPoll'>PQconnectPoll</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQconnectStart.html'
+                                  title='pq_sys::PQconnectStart'>PQconnectStart</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQconnectStartParams.html'
+                                  title='pq_sys::PQconnectStartParams'>PQconnectStartParams</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQconnectdb.html'
+                                  title='pq_sys::PQconnectdb'>PQconnectdb</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQconnectdbParams.html'
+                                  title='pq_sys::PQconnectdbParams'>PQconnectdbParams</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQconnectionNeedsPassword.html'
+                                  title='pq_sys::PQconnectionNeedsPassword'>PQconnectionNeedsPassword</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQconnectionUsedPassword.html'
+                                  title='pq_sys::PQconnectionUsedPassword'>PQconnectionUsedPassword</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQconninfo.html'
+                                  title='pq_sys::PQconninfo'>PQconninfo</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQconninfoFree.html'
+                                  title='pq_sys::PQconninfoFree'>PQconninfoFree</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQconninfoParse.html'
+                                  title='pq_sys::PQconninfoParse'>PQconninfoParse</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQconsumeInput.html'
+                                  title='pq_sys::PQconsumeInput'>PQconsumeInput</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQcopyResult.html'
+                                  title='pq_sys::PQcopyResult'>PQcopyResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQdb.html'
+                                  title='pq_sys::PQdb'>PQdb</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQdescribePortal.html'
+                                  title='pq_sys::PQdescribePortal'>PQdescribePortal</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQdescribePrepared.html'
+                                  title='pq_sys::PQdescribePrepared'>PQdescribePrepared</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQdisplayTuples.html'
+                                  title='pq_sys::PQdisplayTuples'>PQdisplayTuples</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQdsplen.html'
+                                  title='pq_sys::PQdsplen'>PQdsplen</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQencryptPassword.html'
+                                  title='pq_sys::PQencryptPassword'>PQencryptPassword</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQendcopy.html'
+                                  title='pq_sys::PQendcopy'>PQendcopy</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQenv2encoding.html'
+                                  title='pq_sys::PQenv2encoding'>PQenv2encoding</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQerrorMessage.html'
+                                  title='pq_sys::PQerrorMessage'>PQerrorMessage</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQescapeBytea.html'
+                                  title='pq_sys::PQescapeBytea'>PQescapeBytea</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQescapeByteaConn.html'
+                                  title='pq_sys::PQescapeByteaConn'>PQescapeByteaConn</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQescapeIdentifier.html'
+                                  title='pq_sys::PQescapeIdentifier'>PQescapeIdentifier</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQescapeLiteral.html'
+                                  title='pq_sys::PQescapeLiteral'>PQescapeLiteral</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQescapeString.html'
+                                  title='pq_sys::PQescapeString'>PQescapeString</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQescapeStringConn.html'
+                                  title='pq_sys::PQescapeStringConn'>PQescapeStringConn</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQexec.html'
+                                  title='pq_sys::PQexec'>PQexec</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQexecParams.html'
+                                  title='pq_sys::PQexecParams'>PQexecParams</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQexecPrepared.html'
+                                  title='pq_sys::PQexecPrepared'>PQexecPrepared</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQfformat.html'
+                                  title='pq_sys::PQfformat'>PQfformat</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQfinish.html'
+                                  title='pq_sys::PQfinish'>PQfinish</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQflush.html'
+                                  title='pq_sys::PQflush'>PQflush</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQfmod.html'
+                                  title='pq_sys::PQfmod'>PQfmod</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQfn.html'
+                                  title='pq_sys::PQfn'>PQfn</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQfname.html'
+                                  title='pq_sys::PQfname'>PQfname</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQfnumber.html'
+                                  title='pq_sys::PQfnumber'>PQfnumber</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQfreeCancel.html'
+                                  title='pq_sys::PQfreeCancel'>PQfreeCancel</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQfreemem.html'
+                                  title='pq_sys::PQfreemem'>PQfreemem</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQfsize.html'
+                                  title='pq_sys::PQfsize'>PQfsize</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQftable.html'
+                                  title='pq_sys::PQftable'>PQftable</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQftablecol.html'
+                                  title='pq_sys::PQftablecol'>PQftablecol</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQftype.html'
+                                  title='pq_sys::PQftype'>PQftype</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQgetCancel.html'
+                                  title='pq_sys::PQgetCancel'>PQgetCancel</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQgetCopyData.html'
+                                  title='pq_sys::PQgetCopyData'>PQgetCopyData</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQgetResult.html'
+                                  title='pq_sys::PQgetResult'>PQgetResult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQgetisnull.html'
+                                  title='pq_sys::PQgetisnull'>PQgetisnull</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQgetlength.html'
+                                  title='pq_sys::PQgetlength'>PQgetlength</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQgetline.html'
+                                  title='pq_sys::PQgetline'>PQgetline</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQgetlineAsync.html'
+                                  title='pq_sys::PQgetlineAsync'>PQgetlineAsync</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQgetssl.html'
+                                  title='pq_sys::PQgetssl'>PQgetssl</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQgetvalue.html'
+                                  title='pq_sys::PQgetvalue'>PQgetvalue</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQhost.html'
+                                  title='pq_sys::PQhost'>PQhost</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQinitOpenSSL.html'
+                                  title='pq_sys::PQinitOpenSSL'>PQinitOpenSSL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQinitSSL.html'
+                                  title='pq_sys::PQinitSSL'>PQinitSSL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQisBusy.html'
+                                  title='pq_sys::PQisBusy'>PQisBusy</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQisnonblocking.html'
+                                  title='pq_sys::PQisnonblocking'>PQisnonblocking</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQisthreadsafe.html'
+                                  title='pq_sys::PQisthreadsafe'>PQisthreadsafe</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQlibVersion.html'
+                                  title='pq_sys::PQlibVersion'>PQlibVersion</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQmakeEmptyPGresult.html'
+                                  title='pq_sys::PQmakeEmptyPGresult'>PQmakeEmptyPGresult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQmblen.html'
+                                  title='pq_sys::PQmblen'>PQmblen</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQnfields.html'
+                                  title='pq_sys::PQnfields'>PQnfields</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQnotifies.html'
+                                  title='pq_sys::PQnotifies'>PQnotifies</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQnparams.html'
+                                  title='pq_sys::PQnparams'>PQnparams</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQntuples.html'
+                                  title='pq_sys::PQntuples'>PQntuples</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQoidStatus.html'
+                                  title='pq_sys::PQoidStatus'>PQoidStatus</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQoidValue.html'
+                                  title='pq_sys::PQoidValue'>PQoidValue</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQoptions.html'
+                                  title='pq_sys::PQoptions'>PQoptions</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQparameterStatus.html'
+                                  title='pq_sys::PQparameterStatus'>PQparameterStatus</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQparamtype.html'
+                                  title='pq_sys::PQparamtype'>PQparamtype</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQpass.html'
+                                  title='pq_sys::PQpass'>PQpass</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQping.html'
+                                  title='pq_sys::PQping'>PQping</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQpingParams.html'
+                                  title='pq_sys::PQpingParams'>PQpingParams</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQport.html'
+                                  title='pq_sys::PQport'>PQport</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQprepare.html'
+                                  title='pq_sys::PQprepare'>PQprepare</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQprint.html'
+                                  title='pq_sys::PQprint'>PQprint</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQprintTuples.html'
+                                  title='pq_sys::PQprintTuples'>PQprintTuples</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQprotocolVersion.html'
+                                  title='pq_sys::PQprotocolVersion'>PQprotocolVersion</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQputCopyData.html'
+                                  title='pq_sys::PQputCopyData'>PQputCopyData</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQputCopyEnd.html'
+                                  title='pq_sys::PQputCopyEnd'>PQputCopyEnd</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQputline.html'
+                                  title='pq_sys::PQputline'>PQputline</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQputnbytes.html'
+                                  title='pq_sys::PQputnbytes'>PQputnbytes</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQregisterThreadLock.html'
+                                  title='pq_sys::PQregisterThreadLock'>PQregisterThreadLock</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQrequestCancel.html'
+                                  title='pq_sys::PQrequestCancel'>PQrequestCancel</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQresStatus.html'
+                                  title='pq_sys::PQresStatus'>PQresStatus</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQreset.html'
+                                  title='pq_sys::PQreset'>PQreset</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQresetPoll.html'
+                                  title='pq_sys::PQresetPoll'>PQresetPoll</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQresetStart.html'
+                                  title='pq_sys::PQresetStart'>PQresetStart</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQresultAlloc.html'
+                                  title='pq_sys::PQresultAlloc'>PQresultAlloc</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQresultErrorField.html'
+                                  title='pq_sys::PQresultErrorField'>PQresultErrorField</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQresultErrorMessage.html'
+                                  title='pq_sys::PQresultErrorMessage'>PQresultErrorMessage</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQresultStatus.html'
+                                  title='pq_sys::PQresultStatus'>PQresultStatus</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsendDescribePortal.html'
+                                  title='pq_sys::PQsendDescribePortal'>PQsendDescribePortal</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsendDescribePrepared.html'
+                                  title='pq_sys::PQsendDescribePrepared'>PQsendDescribePrepared</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsendPrepare.html'
+                                  title='pq_sys::PQsendPrepare'>PQsendPrepare</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsendQuery.html'
+                                  title='pq_sys::PQsendQuery'>PQsendQuery</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsendQueryParams.html'
+                                  title='pq_sys::PQsendQueryParams'>PQsendQueryParams</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsendQueryPrepared.html'
+                                  title='pq_sys::PQsendQueryPrepared'>PQsendQueryPrepared</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQserverVersion.html'
+                                  title='pq_sys::PQserverVersion'>PQserverVersion</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsetClientEncoding.html'
+                                  title='pq_sys::PQsetClientEncoding'>PQsetClientEncoding</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsetErrorVerbosity.html'
+                                  title='pq_sys::PQsetErrorVerbosity'>PQsetErrorVerbosity</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsetNoticeProcessor.html'
+                                  title='pq_sys::PQsetNoticeProcessor'>PQsetNoticeProcessor</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsetNoticeReceiver.html'
+                                  title='pq_sys::PQsetNoticeReceiver'>PQsetNoticeReceiver</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsetResultAttrs.html'
+                                  title='pq_sys::PQsetResultAttrs'>PQsetResultAttrs</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsetSingleRowMode.html'
+                                  title='pq_sys::PQsetSingleRowMode'>PQsetSingleRowMode</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsetdbLogin.html'
+                                  title='pq_sys::PQsetdbLogin'>PQsetdbLogin</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsetnonblocking.html'
+                                  title='pq_sys::PQsetnonblocking'>PQsetnonblocking</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsetvalue.html'
+                                  title='pq_sys::PQsetvalue'>PQsetvalue</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQsocket.html'
+                                  title='pq_sys::PQsocket'>PQsocket</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQstatus.html'
+                                  title='pq_sys::PQstatus'>PQstatus</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQtrace.html'
+                                  title='pq_sys::PQtrace'>PQtrace</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQtransactionStatus.html'
+                                  title='pq_sys::PQtransactionStatus'>PQtransactionStatus</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQtty.html'
+                                  title='pq_sys::PQtty'>PQtty</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQunescapeBytea.html'
+                                  title='pq_sys::PQunescapeBytea'>PQunescapeBytea</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQuntrace.html'
+                                  title='pq_sys::PQuntrace'>PQuntrace</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.PQuser.html'
+                                  title='pq_sys::PQuser'>PQuser</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_close.html'
+                                  title='pq_sys::lo_close'>lo_close</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_creat.html'
+                                  title='pq_sys::lo_creat'>lo_creat</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_create.html'
+                                  title='pq_sys::lo_create'>lo_create</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_export.html'
+                                  title='pq_sys::lo_export'>lo_export</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_import.html'
+                                  title='pq_sys::lo_import'>lo_import</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_import_with_oid.html'
+                                  title='pq_sys::lo_import_with_oid'>lo_import_with_oid</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_lseek.html'
+                                  title='pq_sys::lo_lseek'>lo_lseek</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_lseek64.html'
+                                  title='pq_sys::lo_lseek64'>lo_lseek64</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_open.html'
+                                  title='pq_sys::lo_open'>lo_open</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_read.html'
+                                  title='pq_sys::lo_read'>lo_read</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_tell.html'
+                                  title='pq_sys::lo_tell'>lo_tell</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_tell64.html'
+                                  title='pq_sys::lo_tell64'>lo_tell64</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_truncate.html'
+                                  title='pq_sys::lo_truncate'>lo_truncate</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_truncate64.html'
+                                  title='pq_sys::lo_truncate64'>lo_truncate64</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_unlink.html'
+                                  title='pq_sys::lo_unlink'>lo_unlink</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lo_write.html'
+                                  title='pq_sys::lo_write'>lo_write</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pg_char_to_encoding.html'
+                                  title='pq_sys::pg_char_to_encoding'>pg_char_to_encoding</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pg_encoding_to_char.html'
+                                  title='pq_sys::pg_encoding_to_char'>pg_encoding_to_char</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pg_valid_server_encoding_id.html'
+                                  title='pq_sys::pg_valid_server_encoding_id'>pg_valid_server_encoding_id</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.ConnStatusType.html'
+                                  title='pq_sys::ConnStatusType'>ConnStatusType</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.Enum_Unnamed1.html'
+                                  title='pq_sys::Enum_Unnamed1'>Enum_Unnamed1</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.Enum_Unnamed2.html'
+                                  title='pq_sys::Enum_Unnamed2'>Enum_Unnamed2</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.Enum_Unnamed3.html'
+                                  title='pq_sys::Enum_Unnamed3'>Enum_Unnamed3</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.Enum_Unnamed4.html'
+                                  title='pq_sys::Enum_Unnamed4'>Enum_Unnamed4</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.Enum_Unnamed5.html'
+                                  title='pq_sys::Enum_Unnamed5'>Enum_Unnamed5</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.Enum_Unnamed6.html'
+                                  title='pq_sys::Enum_Unnamed6'>Enum_Unnamed6</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.ExecStatusType.html'
+                                  title='pq_sys::ExecStatusType'>ExecStatusType</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.Oid.html'
+                                  title='pq_sys::Oid'>Oid</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PGPing.html'
+                                  title='pq_sys::PGPing'>PGPing</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PGTransactionStatusType.html'
+                                  title='pq_sys::PGTransactionStatusType'>PGTransactionStatusType</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PGVerbosity.html'
+                                  title='pq_sys::PGVerbosity'>PGVerbosity</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PGcancel.html'
+                                  title='pq_sys::PGcancel'>PGcancel</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PGconn.html'
+                                  title='pq_sys::PGconn'>PGconn</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PGnotify.html'
+                                  title='pq_sys::PGnotify'>PGnotify</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PGresAttDesc.html'
+                                  title='pq_sys::PGresAttDesc'>PGresAttDesc</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PGresult.html'
+                                  title='pq_sys::PGresult'>PGresult</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PQArgBlock.html'
+                                  title='pq_sys::PQArgBlock'>PQArgBlock</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PQconninfoOption.html'
+                                  title='pq_sys::PQconninfoOption'>PQconninfoOption</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PQnoticeProcessor.html'
+                                  title='pq_sys::PQnoticeProcessor'>PQnoticeProcessor</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PQnoticeReceiver.html'
+                                  title='pq_sys::PQnoticeReceiver'>PQnoticeReceiver</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PQprintOpt.html'
+                                  title='pq_sys::PQprintOpt'>PQprintOpt</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PostgresPollingStatusType.html'
+                                  title='pq_sys::PostgresPollingStatusType'>PostgresPollingStatusType</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.pg_int64.html'
+                                  title='pq_sys::pg_int64'>pg_int64</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.pgthreadlock_t.html'
+                                  title='pq_sys::pgthreadlock_t'>pgthreadlock_t</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.pqbool.html'
+                                  title='pq_sys::pqbool'>pqbool</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "pq_sys";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

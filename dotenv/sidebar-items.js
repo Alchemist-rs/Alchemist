@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["DotenvError",""]],"fn":[["dotenv","This is usually what you want. It loads the .env file located in the environment's current directory or its parents in sequence."],["from_filename","Loads the specified file from the environment's current directory or its parents in sequence."],["from_path","Loads the file at the specified absolute path."]]});

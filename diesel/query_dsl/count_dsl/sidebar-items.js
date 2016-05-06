@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["CountDsl","Adds a simple `count` function to queries. Automatically implemented for all types which implement `SelectDsl`."]]});

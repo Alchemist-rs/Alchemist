@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["FilterDsl","Adds to the `WHERE` clause of a query. If there is already a `WHERE` clause, the result will be `old AND new`. This is automatically implemented for the various query builder types."],["FindDsl","Attempts to find a single record from the given table by primary key."],["NotFiltered",""]]});

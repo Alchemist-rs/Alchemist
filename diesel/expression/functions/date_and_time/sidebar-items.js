@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["date","Represents the SQL DATE() function. The argument should be a Timestamp expression, and the return value will be an expression of type Date"]],"struct":[["date_t",""],["now","Represents the SQL CURRENT_TIMESTAMP constant. This is equivalent to the `NOW()` function on backends that support it."]],"type":[["date",""]]});

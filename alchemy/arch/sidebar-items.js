@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["arch_install",""],["pacman",""],["refresh_list",""],["upgrade_packages",""]]});

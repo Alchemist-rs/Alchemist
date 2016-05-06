@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["all_columns",""]],"mod":[["columns",""],["dsl",""]],"struct":[["run_on",""],["star",""],["table",""],["version",""]],"type":[["BoxedQuery",""],["SqlType",""]]});

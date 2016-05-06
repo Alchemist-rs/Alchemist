@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["__diesel_schema_migrations",""],["run_on",""],["version",""]]});

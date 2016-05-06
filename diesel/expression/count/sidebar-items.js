@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["count","Creates a SQL `COUNT` expression"],["count_star","Creates a SQL `COUNT(*)` expression"]],"struct":[["Count",""],["CountStar",""]]});

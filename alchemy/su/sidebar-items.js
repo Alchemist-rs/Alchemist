@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["has_sudo",""],["is_root",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["any","Creates a PostgreSQL `ANY` expression."]]});

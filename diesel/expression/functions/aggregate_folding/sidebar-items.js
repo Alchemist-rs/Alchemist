@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["avg","Represents a SQL `AVG` function. This function can only take types which are Foldable."],["sum","Represents a SQL `SUM` function. This function can only take types which are Foldable."]],"struct":[["Avg",""],["Sum",""]]});

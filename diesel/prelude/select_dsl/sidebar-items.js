@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["SelectDsl","Sets the select clause of a query. If there was already a select clause, it will be overridden. The expression passed to `select` must actually be valid for the query (only contains columns from the target table, doesn't mix aggregate + non-aggregate expressions, etc)."],["SelectSqlDsl",""]]});

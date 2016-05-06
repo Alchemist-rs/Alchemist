@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["WithDsl","Adds an additional expression to the FROM clause. This is useful for things like full text search, where you need to access the result of an expensive computation for the where clause that shouldn't be redone for each row, such as `plain_to_tsquery`. See `.aliased` for more"]]});

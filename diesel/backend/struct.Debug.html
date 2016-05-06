@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Debug` struct in crate `diesel`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Debug">
+
+    <title>diesel::backend::Debug - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>diesel</a>::<wbr><a href='index.html'>backend</a></p><script>window.sidebarCurrent = {name: 'Debug', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>diesel</a>::<wbr><a href='index.html'>backend</a>::<wbr><a class='struct' href=''>Debug</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-56' class='srclink' href='../../src/diesel/backend.rs.html#32' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Debug;</pre><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='../../diesel/backend/trait.Backend.html' title='diesel::backend::Backend'>Backend</a> for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='associatedtype.QueryBuilder' class='type'><code>type <a href='../../diesel/backend/trait.Backend.html#associatedtype.QueryBuilder' class='type'>QueryBuilder</a> = DebugQueryBuilder</code></h4>
+<h4 id='associatedtype.BindCollector' class='type'><code>type <a href='../../diesel/backend/trait.Backend.html#associatedtype.BindCollector' class='type'>BindCollector</a> = <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a></code></h4>
+<h4 id='associatedtype.RawValue' class='type'><code>type <a href='../../diesel/backend/trait.Backend.html#associatedtype.RawValue' class='type'>RawValue</a> = <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/backend/trait.TypeMetadata.html' title='diesel::backend::TypeMetadata'>TypeMetadata</a> for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='associatedtype.TypeMetadata' class='type'><code>type <a href='../../diesel/backend/trait.TypeMetadata.html#associatedtype.TypeMetadata' class='type'>TypeMetadata</a> = <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/backend/trait.SupportsReturningClause.html' title='diesel::backend::SupportsReturningClause'>SupportsReturningClause</a> for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/backend/trait.SupportsDefaultKeyword.html' title='diesel::backend::SupportsDefaultKeyword'>SupportsDefaultKeyword</a> for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.Bool.html' title='diesel::types::Bool'>Bool</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.SmallInt.html' title='diesel::types::SmallInt'>SmallInt</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata-1' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.Integer.html' title='diesel::types::Integer'>Integer</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata-2' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.BigInt.html' title='diesel::types::BigInt'>BigInt</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata-3' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.Float.html' title='diesel::types::Float'>Float</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata-4' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.Double.html' title='diesel::types::Double'>Double</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata-5' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.Text.html' title='diesel::types::Text'>Text</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata-6' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.Binary.html' title='diesel::types::Binary'>Binary</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata-7' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.Date.html' title='diesel::types::Date'>Date</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata-8' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.Time.html' title='diesel::types::Time'>Time</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata-9' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.Timestamp.html' title='diesel::types::Timestamp'>Timestamp</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata-10' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl&lt;T&gt; <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.Array.html' title='diesel::types::Array'>Array</a>&lt;T&gt;&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a> <span class='where'>where <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a>: <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;T&gt;</span></code></h3><div class='impl-items'><h4 id='method.metadata-11' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.Interval.html' title='diesel::types::Interval'>Interval</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata-12' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.Oid.html' title='diesel::types::Oid'>Oid</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata-13' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../diesel/types/trait.HasSqlType.html' title='diesel::types::HasSqlType'>HasSqlType</a>&lt;<a class='struct' href='../../diesel/types/struct.Numeric.html' title='diesel::types::Numeric'>Numeric</a>&gt; for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.metadata-14' class='method'><code>fn <a href='../../diesel/types/trait.HasSqlType.html#tymethod.metadata' class='fnname'>metadata</a>()</code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><span class="since">1.0.0</span></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../diesel/backend/struct.Debug.html' title='diesel::backend::Debug'>Debug</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "diesel";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

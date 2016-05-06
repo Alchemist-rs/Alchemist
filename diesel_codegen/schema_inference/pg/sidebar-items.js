@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["pg_attribute",""],["pg_class",""],["pg_index",""],["pg_type",""]]});

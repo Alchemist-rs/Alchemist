@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["OffsetDsl","Sets the offset clause of a query. If there was already a offset clause, it will be overridden. This is automatically implemented for the various query builder types."]]});

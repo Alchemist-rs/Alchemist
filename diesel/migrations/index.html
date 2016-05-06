@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `migrations` mod in crate `diesel`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, migrations">
+
+    <title>diesel::migrations - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>diesel</a></p><script>window.sidebarCurrent = {name: 'migrations', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>diesel</a>::<wbr><a class='mod' href=''>migrations</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-14740' class='srclink' href='../../src/diesel/migrations/mod.rs.html#1-306' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Provides functions for maintaining database schema.</p>
+
+<p>A database migration always provides procedures to update the schema, as well as to revert
+itself. Diesel&#39;s migrations are versioned, and run in order. Diesel also takes care of tracking
+which migrations have already been run automatically. Your migrations don&#39;t need to be
+idempotent, as Diesel will ensure no migration is run twice unless it has been reverted.</p>
+
+<p>Migrations should be placed in a <code>/migrations</code> directory at the root of your project (the same
+directory as <code>Cargo.toml</code>). When any of these functions are run, Diesel will search for the
+migrations directory in the current directory and its parents, stopping when it finds the
+directory containing <code>Cargo.toml</code>.</p>
+
+<p>Individual migrations should be a folder containing exactly two files, <code>up.sql</code> and <code>down.sql</code>.
+<code>up.sql</code> will be used to run the migration, while <code>down.sql</code> will be used for reverting it. The
+folder itself should have the structure <code>{version}_{migration_name}</code>. It is recommended that
+you use the timestamp of creation for the version.</p>
+
+<h2 id='example' class='section-header'><a href='#example'>Example</a></h2>
+<pre><code class="language-text"># Directory Structure
+- 20151219180527_create_users
+    - up.sql
+    - down.sql
+- 20160107082941_create_posts
+    - up.sql
+    - down.sql
+</code></pre>
+
+<pre><code class="language-sql">-- 20151219180527_create_users/up.sql
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  hair_color VARCHAR
+);
+</code></pre>
+
+<pre><code class="language-sql">-- 20151219180527_create_users/down.sql
+DROP TABLE users;
+</code></pre>
+
+<pre><code class="language-sql">-- 20160107082941_create_posts/up.sql
+CREATE TABLE posts (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  title VARCHAR NOT NULL,
+  body TEXT
+);
+</code></pre>
+
+<pre><code class="language-sql">-- 20160107082941_create_posts/down.sql
+DROP TABLE posts;
+</code></pre>
+</div><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.MigrationError.html'
+                                  title='diesel::migrations::MigrationError'>MigrationError</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.RunMigrationsError.html'
+                                  title='diesel::migrations::RunMigrationsError'>RunMigrationsError</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.Migration.html'
+                                  title='diesel::migrations::Migration'>Migration</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.MigrationConnection.html'
+                                  title='diesel::migrations::MigrationConnection'>MigrationConnection</a></td>
+                           <td class='docblock short'>
+                                <p>A connection which can be passed to the migration methods. This exists only
+to wrap up some constraints which are meant to hold for <em>all</em> connections.
+This trait will go away at some point in the future. Any Diesel connection
+should be useable where this trait is required.</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.find_migrations_directory.html'
+                                  title='diesel::migrations::find_migrations_directory'>find_migrations_directory</a></td>
+                           <td class='docblock short'>
+                                <p>Returns the directory containing migrations. Will look at for
+$PWD/migrations. If it is not found, it will search the parents of the
+current directory, until it reaches the root directory.  Returns
+<code>MigrationError::MigrationDirectoryNotFound</code> if no directory is found.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.migration_from.html'
+                                  title='diesel::migrations::migration_from'>migration_from</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.revert_latest_migration.html'
+                                  title='diesel::migrations::revert_latest_migration'>revert_latest_migration</a></td>
+                           <td class='docblock short'>
+                                <p>Reverts the last migration that was run. Returns the version that was reverted. Returns an
+<code>Err</code> if no migrations have ever been run.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.run_migrations.html'
+                                  title='diesel::migrations::run_migrations'>run_migrations</a></td>
+                           <td class='docblock short'>
+                                <p>Run all pending migrations in the given list. Apps should likely be calling
+<code>run_pending_migrations</code> or <code>run_pending_migrations_in_directory</code> instead.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.run_pending_migrations.html'
+                                  title='diesel::migrations::run_pending_migrations'>run_pending_migrations</a></td>
+                           <td class='docblock short'>
+                                <p>Runs all migrations that have not yet been run. This function will print all progress to
+stdout. This function will return an <code>Err</code> if some error occurs reading the migrations, or if
+any migration fails to run. Each migration is run in its own transaction, so some migrations
+may be committed, even if a later migration fails to run.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.search_for_migrations_directory.html'
+                                  title='diesel::migrations::search_for_migrations_directory'>search_for_migrations_directory</a></td>
+                           <td class='docblock short'>
+                                <p>Searches for the migrations directory relative to the given path. See
+<code>find_migrations_directory</code> for more details.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "diesel";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
