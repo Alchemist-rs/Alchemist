@@ -170,11 +170,12 @@ enum AURHelper {
 pub fn aur(packages: Vec<String>) {
     let helper = find_helper();
     match helper {
-        AURHelper::Aura   => aura(packages),
-        AURHelper::Pacaur => pacaur(packages),
-        AURHelper::Packer => packer(packages),
-        AURHelper::Yaourt => yaourt(packages),
-        AURHelper::NoHelp => no_helper(packages)
+        AURHelper::Aura       => aura(packages),
+        AURHelper::Pacaur     => pacaur(packages),
+        AURHelper::Packer     => packer(packages),
+        AURHelper::Yaourt     => yaourt(packages),
+        AURHelper::NoHelp     => no_helper(packages),
+        _ => unreachable!()
     }
 }
 
