@@ -1,12 +1,9 @@
-#![feature(plugin)]
-#![plugin(clippy)]
-
 //External Crate Imports
 extern crate alchemy;
 extern crate clap;
 extern crate diesel;
 
-//Shaper Imports
+//Alchemy Imports
 use alchemy::su;
 use alchemy::distro::{Distro,which_distro};
 use alchemy::arch;
