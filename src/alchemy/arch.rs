@@ -1,20 +1,22 @@
 use std::process::Command;
-use db;
+use std::collections::HashSet;
 use std::fs;
+
+use db;
 
 /// Installs Packages on Arch Linux
 ///
 /// #Examples
 ///
 /// ```
-/// let mut packages: Vec<&str> = Vec::new();
+/// let mut packages: HashSet<&str> = HashSet::new();
 /// packages.push("sudo");
 /// packages.push("postgresql");
 /// arch_install(packages);
 /// ```
 ///
-pub fn arch_install(packages: Vec<&str>) {
-    let (arch_packages,aur_packages) = convert_to_arch(packages);
+pub fn arch_install(packages: HashSet<String>) {
+    let (arch_packages, aur_packages) = convert_to_arch(packages);
     if !arch_packages.is_empty() {
         pacman(arch_packages);
     }
@@ -24,32 +26,22 @@ pub fn arch_install(packages: Vec<&str>) {
 }
 
 ///Convert package names from other distros to Arch
-fn convert_to_arch(input_packages: Vec<&str>) -> (Vec<String>,Vec<String>) {
+fn convert_to_arch(input_packages: HashSet<String>) -> (HashSet<String>,HashSet<String>) {
     let results = db::pack_query(input_packages);
-    let mut pac_converted: Vec<String> = Vec::new();
-    let mut aur_converted: Vec<String> = Vec::new();
-    //Using the querys store into the vectors the actual
+    let mut pac_converted: HashSet<String> = HashSet::new();
+    let mut aur_converted: HashSet<String> = HashSet::new();
+    //Using the querys store into the HashSet the actual
     //Arch package name for use later
     for i in results {
         //All querys will either be a string or '' in the db
         //allowing us to use is_empty()
         if !i.arch.is_empty() {
-            pac_converted.push(i.arch);
+            pac_converted.insert(i.arch);
         }
 
         if !i.aur.is_empty() {
-            aur_converted.push(i.aur);
+            aur_converted.insert(i.aur);
         }
-    }
-
-    //Remove duplicates from both vectors
-    if !pac_converted.is_empty() {
-        pac_converted.sort();
-        pac_converted.dedup();
-    }
-    if !aur_converted.is_empty() {
-        aur_converted.sort();
-        aur_converted.dedup();
     }
 
     (pac_converted,aur_converted)
@@ -62,15 +54,18 @@ fn convert_to_arch(input_packages: Vec<&str>) -> (Vec<String>,Vec<String>) {
 /// #Examples
 ///
 /// ```
-/// let mut packages: Vec<String> = Vec::new();
+/// let mut packages: HashSet<String> = HashSet::new();
 /// packages.push("sudo".to_owned());
 /// pacman(packages);
 /// ```
 ///
-pub fn pacman(packages: Vec<String>) {
+pub fn pacman(mut packages: HashSet<String>) {
     let mut child = match Command::new("pacman")
             .arg("-S")
-            .args(packages.as_slice())
+            .args(packages
+                  .drain()
+                  .collect::<Vec<String>>()
+                  .as_slice())
             .spawn()
     {
         Ok(child) => child,
@@ -119,6 +114,7 @@ pub fn upgrade_packages() {
 
 //AUR related functions and Data types
 
+#[allow(dead_code)]
 ///Enum representing all the AUR installers available
 enum AURHelper {
     ///User manually installs packages from the AUR
@@ -161,12 +157,12 @@ enum AURHelper {
 ///
 /// #Examples
 /// ```
-/// let mut packages: Vec<String> = Vec::new();
+/// let mut packages: HashSet<String> = HashSet::new();
 /// packages.push("google-chrome-unstable".to_owned());
 /// aur(packages);
 /// ```
 ///
-pub fn aur(packages: Vec<String>) {
+pub fn aur(packages: HashSet<String>) {
     let helper = find_helper();
     match helper {
         AURHelper::Aura       => aura(packages),
@@ -204,10 +200,13 @@ fn find_helper() -> AURHelper {
 }
 
 ///Installs packages from the AUR using Aura
-fn aura(packages: Vec<String>){
+fn aura(mut packages: HashSet<String>){
     let mut child = match Command::new("aura")
             .arg("-A")
-            .args(packages.as_slice())
+            .args(packages
+                  .drain()
+                  .collect::<Vec<String>>()
+                  .as_slice())
             .spawn()
     {
         Ok(child) => child,
@@ -217,10 +216,13 @@ fn aura(packages: Vec<String>){
 }
 
 ///Installs packages from the AUR using Pacaur
-fn pacaur(packages: Vec<String>){
+fn pacaur(mut packages: HashSet<String>){
     let mut child = match Command::new("pacaur")
             .arg("-S")
-            .args(packages.as_slice())
+            .args(packages
+                  .drain()
+                  .collect::<Vec<String>>()
+                  .as_slice())
             .spawn()
     {
         Ok(child) => child,
@@ -230,10 +232,13 @@ fn pacaur(packages: Vec<String>){
 }
 
 ///Installs packages from the AUR using Packer
-fn packer(packages: Vec<String>){
+fn packer(mut packages: HashSet<String>){
     let mut child = match Command::new("packer")
             .arg("-S")
-            .args(packages.as_slice())
+            .args(packages
+                  .drain()
+                  .collect::<Vec<String>>()
+                  .as_slice())
             .spawn()
     {
         Ok(child) => child,
@@ -243,9 +248,12 @@ fn packer(packages: Vec<String>){
 }
 
 ///Installs packages from the AUR using Yaourt
-fn yaourt(packages: Vec<String>){
+fn yaourt(mut packages: HashSet<String>){
     let mut child = match Command::new("yaourt")
-            .args(packages.as_slice())
+            .args(packages
+                  .drain()
+                  .collect::<Vec<String>>()
+                  .as_slice())
             .spawn()
     {
         Ok(child) => child,
@@ -255,7 +263,7 @@ fn yaourt(packages: Vec<String>){
 }
 
 ///Prints out package names to install manually from the AUR
-fn no_helper(packages: Vec<String>){
+fn no_helper(packages: HashSet<String>){
     println!("You have no aur helper installed.\nYou'll need to install the following packages manually:");
     for i in packages {
         println!("{}",i);
