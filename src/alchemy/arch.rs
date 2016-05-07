@@ -128,6 +128,8 @@ enum AURHelper {
     Yaourt,
     ///Users uses Aura to install packages from the AUR
     Aura,
+    ///Users uses Pacuar to install packages from the AUR
+    Pacuar,
 }
 
 /// Installs or Lists AUR packages for the User
@@ -144,12 +146,14 @@ pub fn aur(packages: Vec<String>) {
     match helper {
         AURHelper::NoHelp => no_helper(packages),
         AURHelper::Yaourt => yaourt(packages),
-        AURHelper::Aura   => aura(packages)
+        AURHelper::Aura   => aura(packages),
+        AURHelper::Pacuar => pacuar(packages)
     }
 }
 
 /// Figures out which AUR Installer is used by the user
 fn find_helper() -> AURHelper {
+    let pacuar = fs::metadata("/usr/bin/pacuar")
     let aura   = fs::metadata("/usr/bin/aura");
     let yaourt = fs::metadata("/usr/bin/yaourt");
 
@@ -162,6 +166,8 @@ fn find_helper() -> AURHelper {
         //If the file exists they use Aura so use that to
         //install any packages needed from the AUR
         AURHelper::Aura
+    }
+    else if pacuar.is_ok() && pacuar.unwrap().is_file() {
     } else {
         //They don't have one available
         AURHelper::NoHelp
@@ -200,5 +206,15 @@ fn aura(packages: Vec<String>){
     };
     let _unused = child.wait();
 }
-
-
+///Installs packages from the AUR using Pacuar
+fn pacuar(packages: Vac<String>){
+    let mut child = match Command::new("pacuar")
+            .arg("-S")
+            .args(packages.as_slice())
+            .spawn()
+    {
+        Ok(child) => child,
+        Err(e)    => panic!("Failed to execute child: {}",e),
+    };
+    let _unused = child.wait();
+}
