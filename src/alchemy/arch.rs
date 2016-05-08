@@ -124,10 +124,38 @@ pub fn upgrade_packages() {
 enum AURHelper {
     ///User manually installs packages from the AUR
     NoHelp,
-    ///Users uses Yaourt to install packages from the AUR
-    Yaourt,
-    ///Users uses Aura to install packages from the AUR
+    ///Uses Aura to install packages from the AUR
     Aura,
+    ///Uses Aurel to install packages from the AUR
+    Aurel,
+    ///Uses Aurutils to install packages from the AUR
+    Aurutils,
+    ///Uses Bauerbill to install packages from the AUR
+    Bauerbill,
+    ///Uses Burgaur to install packages from the AUR
+    Burgaur,
+    ///Uses Cower to install packages from the AUR
+    Cower,
+    ///Uses Pacaur to install packages from the AUR
+    Pacaur,
+    ///Uses Packer to install packages from the AUR
+    Packer,
+    ///Uses Pbget to install packages from the AUR
+    Pbget,
+    ///Uses PKGBUILDer to install packages from the AUR
+    PKGBUILDer,
+    ///Uses Prm to install packages from the AUR
+    Prm,
+    ///Uses Spinach to install packages from the AUR
+    Spinach,
+    ///Uses Trizen to install packages from the AUR
+    Trizen,
+    ///Uses Wrapaur to install packages from the AUR
+    Wrapaur,
+    ///Uses Yaah to install packages from the AUR
+    Yaah,
+    ///Uses Yaourt to install packages from the AUR
+    Yaourt,
 }
 
 /// Installs or Lists AUR packages for the User
@@ -142,38 +170,77 @@ enum AURHelper {
 pub fn aur(packages: Vec<String>) {
     let helper = find_helper();
     match helper {
-        AURHelper::NoHelp => no_helper(packages),
-        AURHelper::Yaourt => yaourt(packages),
-        AURHelper::Aura   => aura(packages)
+        AURHelper::Aura       => aura(packages),
+        AURHelper::Pacaur     => pacaur(packages),
+        AURHelper::Packer     => packer(packages),
+        AURHelper::Yaourt     => yaourt(packages),
+        AURHelper::NoHelp     => no_helper(packages),
+        _ => unreachable!()
     }
 }
 
 /// Figures out which AUR Installer is used by the user
 fn find_helper() -> AURHelper {
+    //Maybe there's a better way to do this in the future?
     let aura   = fs::metadata("/usr/bin/aura");
+    let pacaur = fs::metadata("/usr/bin/pacaur");
+    let packer = fs::metadata("/usr/bin/packer");
     let yaourt = fs::metadata("/usr/bin/yaourt");
 
-    if yaourt.is_ok() && yaourt.unwrap().is_file() {
-        //If the file exists they use Yaourt so use that to
-        //install any packages needed from the AUR
-        AURHelper::Yaourt
-    }
-    else if aura.is_ok() && aura.unwrap().is_file() {
-        //If the file exists they use Aura so use that to
-        //install any packages needed from the AUR
+    //Depending on what file exists that AURHelper enum is
+    //returned and used to install or upgrade packages.
+    //Otherwise, the NoHelp exists and they have to install
+    //packages manually
+    if aura.is_ok() && aura.unwrap().is_file() {
         AURHelper::Aura
+    } else if pacaur.is_ok() && pacaur.unwrap().is_file() {
+        AURHelper::Pacaur
+    } else if packer.is_ok() && packer.unwrap().is_file() {
+        AURHelper::Packer
+    } else if yaourt.is_ok() && yaourt.unwrap().is_file() {
+        AURHelper::Yaourt
     } else {
-        //They don't have one available
         AURHelper::NoHelp
     }
 }
 
-///Prints out package names to install manually from the AUR
-fn no_helper(packages: Vec<String>){
-    println!("You have no aur helper installed.\nYou'll need to install the following packages manually:");
-    for i in packages {
-        println!("{}",i);
-    }
+///Installs packages from the AUR using Aura
+fn aura(packages: Vec<String>){
+    let mut child = match Command::new("aura")
+            .arg("-A")
+            .args(packages.as_slice())
+            .spawn()
+    {
+        Ok(child) => child,
+        Err(e)    => panic!("Failed to execute child: {}",e),
+    };
+    let _unused = child.wait();
+}
+
+///Installs packages from the AUR using Pacaur
+fn pacaur(packages: Vec<String>){
+    let mut child = match Command::new("pacaur")
+            .arg("-S")
+            .args(packages.as_slice())
+            .spawn()
+    {
+        Ok(child) => child,
+        Err(e)    => panic!("Failed to execute child: {}",e),
+    };
+    let _unused = child.wait();
+}
+
+///Installs packages from the AUR using Packer
+fn packer(packages: Vec<String>){
+    let mut child = match Command::new("packer")
+            .arg("-S")
+            .args(packages.as_slice())
+            .spawn()
+    {
+        Ok(child) => child,
+        Err(e)    => panic!("Failed to execute child: {}",e),
+    };
+    let _unused = child.wait();
 }
 
 ///Installs packages from the AUR using Yaourt
@@ -188,17 +255,10 @@ fn yaourt(packages: Vec<String>){
     let _unused = child.wait();
 }
 
-///Installs packages from the AUR using Auara
-fn aura(packages: Vec<String>){
-    let mut child = match Command::new("aura")
-            .arg("-A")
-            .args(packages.as_slice())
-            .spawn()
-    {
-        Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
-    };
-    let _unused = child.wait();
+///Prints out package names to install manually from the AUR
+fn no_helper(packages: Vec<String>){
+    println!("You have no aur helper installed.\nYou'll need to install the following packages manually:");
+    for i in packages {
+        println!("{}",i);
+    }
 }
-
-
