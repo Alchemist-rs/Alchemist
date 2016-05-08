@@ -2,7 +2,7 @@
 
 #Install depdendencies and set them up
 #sqlite is only included to get diesel_cli working
-sudo pacman -S postgresql postgresql-libs sqlite
+sudo pacman -S postgresql postgresql-libs
 echo "Enabling postgresql"
 sudo systemctl enable postgresql
 echo "Starting postgresql"
