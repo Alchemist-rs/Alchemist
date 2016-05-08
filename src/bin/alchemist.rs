@@ -59,6 +59,12 @@ fn main() {
         for i in p {
             package_inputs.push(i);
         }
+        let l2g = package_inputs.binary_search(&"pb");
+        if l2g.is_ok() {
+            println!("Looks like you're trying to turn lead into gold.");
+            println!("That's not how this program works.");
+            exit(0);
+        }
     }
 
     match opt_dist.expect("None found, Distro was not handled") {
