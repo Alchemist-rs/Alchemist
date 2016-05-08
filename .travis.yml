@@ -20,13 +20,9 @@ matrix:
     - rust: stable
     - rust: beta
 
-before_install:
-  - sudo apt-get update
-  - sudo apt-get install sqlite3 libsqlite3-dev
-
 script:
-  - createdb alchemist
   - cargo install diesel_cli
+  - diesel setup
   - diesel migration run
   - cargo build
 
