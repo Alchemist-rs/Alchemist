@@ -1,12 +1,11 @@
 #![feature(plugin)]
-#![plugin(clippy)]
 
 //External Crate Imports
 extern crate alchemy;
 extern crate clap;
 extern crate diesel;
 
-//Shaper Imports
+//Alchemy Imports
 use alchemy::su;
 use alchemy::distro::{Distro,which_distro};
 use alchemy::arch;
@@ -61,6 +60,12 @@ fn main() {
     if let Some(p) = args.values_of("install") {
         for i in p {
             package_inputs.push(i);
+        }
+        let l2g = package_inputs.binary_search(&"pb");
+        if l2g.is_ok() {
+            println!("Looks like you're trying to turn lead into gold.");
+            println!("That's not how this program works.");
+            exit(0);
         }
     }
 

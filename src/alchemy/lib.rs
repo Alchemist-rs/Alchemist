@@ -1,5 +1,5 @@
 #![feature(custom_derive, custom_attribute, plugin)]
-#![plugin(diesel_codegen, dotenv_macros, clippy)]
+#![plugin(diesel_codegen, dotenv_macros)]
 ///Top Level Module File
 ///All of the various available public modules that can be used are listed here
 

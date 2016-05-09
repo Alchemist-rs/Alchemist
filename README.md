@@ -57,7 +57,6 @@ For diesel:
 
 ```
 postgresql and it's dev libraries
-sqlite and it's dev libraries
 ```
 
 ###Setup
