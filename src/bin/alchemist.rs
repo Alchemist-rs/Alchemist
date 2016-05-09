@@ -1,5 +1,4 @@
 #![feature(plugin)]
-#![plugin(clippy)]
 
 //External Crate Imports
 extern crate alchemy;
