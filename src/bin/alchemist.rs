@@ -13,6 +13,7 @@ use clap::{App, Arg};
 
 //Std Lib Imports
 use std::process::exit;
+use std::collections::HashSet;
 
 fn main() {
 
@@ -54,13 +55,12 @@ fn main() {
     }
 
     //Prepare parse arguments of what to install
-    let mut package_inputs: Vec<&str> = Vec::new();
+    let mut package_inputs: HashSet<String> = HashSet::new();
     if let Some(p) = args.values_of("install") {
         for i in p {
-            package_inputs.push(i);
+            package_inputs.insert(i.to_string());
         }
-        let l2g = package_inputs.binary_search(&"pb");
-        if l2g.is_ok() {
+        if package_inputs.contains("pb") {
             println!("Looks like you're trying to turn lead into gold.");
             println!("That's not how this program works.");
             exit(0);

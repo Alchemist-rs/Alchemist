@@ -1,4 +1,4 @@
-#[derive(Queryable, Debug)]
+#[derive(Queryable,PartialEq,PartialOrd,Eq,Ord,Hash,Debug)]
 /// Struct for a row in the Alchemist package table
 pub struct Package {
     /// Row Number makes it easy for migration
