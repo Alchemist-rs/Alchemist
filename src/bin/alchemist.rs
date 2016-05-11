@@ -7,6 +7,7 @@ extern crate diesel;
 use alchemy::su;
 use alchemy::distro::{Distro,which_distro};
 use alchemy::arch;
+use alchemy::void;
 
 //Clap Imports
 use clap::{App, Arg};
@@ -84,6 +85,13 @@ fn main() {
         Distro::FreeBSD => println!("FreeBSD"),
         Distro::NetBSD  => println!("NetBSD"),
         Distro::OpenBSD => println!("OpenBSD"),
-        Distro::Void    => println!("Void"),
+        Distro::Void    => {
+            if args.values_of("refresh").is_some() {
+                void::refresh_list();
+            } else if args.values_of("upgrade").is_some() {
+                void::upgrade_packages();
+            }
+            void::void_install(package_inputs);
+        },
     }
 }

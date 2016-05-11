@@ -7,6 +7,8 @@ pub struct Package {
     pub arch: String,
     /// Arch Linux AUR Package
     pub aur: String,
+    /// Void Linux Package
+    pub void: String,
     /// Ubuntu Binary Packages
     pub ubuntu: String,
     /// Ubuntu Development Header Packages
@@ -21,6 +23,7 @@ impl Package {
             id: 0,
             arch: String::from(""),
             aur : String::from(""),
+            void: String::from(""),
             ubuntu: String::from(""),
             ubuntu_dev: String::from(""),
         }

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #Install db depdendency
-sudo pacman -S sqlite3
+sudo xbps-install -S sqlite
 
 #Install multirust
 curl https://sh.rustup.rs -sSf | sh

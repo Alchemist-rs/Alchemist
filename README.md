@@ -77,3 +77,10 @@ To get setup for development run:
 ```
 sh scripts/arch_setup.sh
 ```
+
+####Void Linux
+ To get setup for development run:
+
+ ```
+ sh scripts/void_setup.sh
+ ```

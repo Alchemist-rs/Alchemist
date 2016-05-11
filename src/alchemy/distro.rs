@@ -59,7 +59,6 @@ pub fn which_distro() -> Option<Distro> {
     if arch.is_ok() && arch.unwrap().is_file() {
         return Some(Distro::Arch)
     }
-
     //No distro was found to match
     None
 }

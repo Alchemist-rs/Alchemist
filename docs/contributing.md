@@ -14,6 +14,8 @@
 
 ##Adding a distro:
 A few things need to happen in order to add a distro to Alchemist.
+Please note that anything with a varible (eg $distroname) is intended
+for you to replace.
 
 1. Open up an issue or comment on a request issue that you are adding
    support and include the following as checkboxes. Comment on the issue
@@ -25,13 +27,13 @@ A few things need to happen in order to add a distro to Alchemist.
    tool](https://github.com/diesel-rs/diesel/blob/master/diesel_cli) by
    running:
    ```
-   diesel migration generate add_$YOURDISTROHERE_support
+   diesel migration generate add_$distroname_support
    ```
 5. Using the up.sql file just created add the following to the file:
    ```
    ALTER TABLE packages ADD COLUMN $distroname TEXT NOT NULL DEFAULT '';
-   UPDATE packages SET $distroname=$packagename WHERE
-   id=$packageidnumber
+   UPDATE packages SET $distroname = '$packagename' WHERE
+   id = '$packageidnumber'
    --Keep repeating the UPDATE statment until all packages are added
    ```
    This will have to also include all of the names of the packages that

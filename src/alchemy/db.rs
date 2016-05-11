@@ -49,6 +49,7 @@ pub fn pack_query(input_packages: HashSet<String>) -> HashSet<Package> {
             .or(aur.eq(&i))
             .or(ubuntu.eq(&i))
             .or(ubuntu_dev.eq(&i))
+            .or(void.eq(&i))
         )
         .get_results::<Package>(&connection)
         .unwrap_or(vec![Package::empty()]);
