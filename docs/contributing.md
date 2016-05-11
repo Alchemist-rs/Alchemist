@@ -70,9 +70,10 @@ Open up the up.sql from the new migration and add the following:
 ```sql
 -- After packages include each of the distros located in the
 -- Packages struct in src/alchemy/models folder. You can
--- see what distros are in by checking the DB using psql
-INSERT INTO packages(arch, aur, ubuntu, ubuntu_dev) VALUES
-('postgresql',''postgresql','');
+-- see what distros are in by checking the DB using sqlite
+-- You'll also need to provide the correct id number for the db
+INSERT INTO packages(id,arch, aur, ubuntu, ubuntu_dev) VALUES
+(1,'postgresql',''postgresql','');
 
 -- Add more mappings to that list one for each distro in the order that
 -- you put for the first part of the statement. If no mapping exists you
@@ -88,7 +89,7 @@ DELETE FROM packages WHERE id > $ID_OF_PACKAGE_BEFORE_YOU_ADDED_NEW_ONES
 
 You can find out by running:
 ```
-psql -d alchemist
+sqlite3 alchemist.db
 SELECT * FROM packages;
 ```
 

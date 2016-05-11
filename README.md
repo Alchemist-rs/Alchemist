@@ -56,7 +56,7 @@ this is far from production ready nightly is fine.
 For diesel:
 
 ```
-postgresql and it's dev libraries
+Sqlite3
 ```
 
 ###Setup
