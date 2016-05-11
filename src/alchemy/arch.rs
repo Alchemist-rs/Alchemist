@@ -115,6 +115,7 @@ pub fn upgrade_packages() {
 
 //AUR related functions and Data types
 
+#[allow(dead_code)]
 ///Enum representing all the AUR installers available
 enum AURHelper {
     ///User manually installs packages from the AUR

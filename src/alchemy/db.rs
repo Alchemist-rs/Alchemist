@@ -32,7 +32,7 @@ fn establish_connection() -> SqliteConnection {
 /// let queryed = pack_query(packages);
 /// ```
 ///
-pub fn pack_query(mut input_packages: HashSet<String>) -> HashSet<Package> {
+pub fn pack_query(input_packages: HashSet<String>) -> HashSet<Package> {
     use schema::packages::dsl::*;
 
     let connection = establish_connection();
@@ -51,9 +51,9 @@ pub fn pack_query(mut input_packages: HashSet<String>) -> HashSet<Package> {
             .or(ubuntu_dev.eq(&i))
         )
         .get_results::<Package>(&connection)
-        .expect("Error loading packages"));
+        .unwrap_or(vec![Package::empty()]);
         for j in results {
-            output.insert(i)
+            output.insert(j);
         }
     }
 
