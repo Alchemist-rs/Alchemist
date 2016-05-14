@@ -84,5 +84,6 @@ fn main() {
         Distro::FreeBSD => println!("FreeBSD"),
         Distro::NetBSD  => println!("NetBSD"),
         Distro::OpenBSD => println!("OpenBSD"),
+        Distro::Void    => println!("Void"),
     }
 }

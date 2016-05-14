@@ -1,4 +1,7 @@
 use std::fs;
+use std::io::prelude::*;
+use std::fs::File;
+use std::string::String;
 
 #[derive(Debug)]
 ///Enum used to represent Distribution used
@@ -9,6 +12,7 @@ pub enum Distro {
     Mint,
     Debian,
     Gentoo,
+    Void,
 
     //Berklee Unix Distributions
     Mac,
@@ -32,10 +36,28 @@ pub enum Distro {
 ///
 pub fn which_distro() -> Option<Distro> {
 
-    let arch= fs::metadata("/etc/arch-release");
+    //Open Proc and read into string the contents of it to be
+    //be checked below
+    let mut f = File::open("/proc/version")
+        .unwrap_or_else(|e| {
+            panic!("Failed to open /proc/version: {}",e)
+        });
+    let mut buffer = String::new();
+    let _unused = f.read_to_string(&mut buffer);
 
+    //Check for distros in Alphabetical order
+    if buffer.contains("arch") {
+        return Some(Distro::Arch);
+    } else if buffer.contains("void") {
+        return Some(Distro::Void);
+    }
+
+
+    //Checks for Arch differently but only after the
+    //previous method trys by using /proc/version
+    let arch = fs::metadata("/etc/arch-release");
     if arch.is_ok() && arch.unwrap().is_file() {
-           return Some(Distro::Arch);
+        return Some(Distro::Arch)
     }
 
     //No distro was found to match
