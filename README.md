@@ -4,11 +4,11 @@
 
 Master:
 
-[![Build Status](https://travis-ci.org/mgattozzi/Alchemist.svg?branch=master)](https://travis-ci.org/mgattozzi/Alchemist)
+[![Build Status](https://travis-ci.org/Alchemist-rs/Alchemist.svg?branch=master)](https://travis-ci.org/Alchemist-rs/Alchemist)
 
 Dev:
 
-[![Build Status](https://travis-ci.org/mgattozzi/Alchemist.svg?branch=dev)](https://travis-ci.org/mgattozzi/Alchemist)
+[![Build Status](https://travis-ci.org/mgattozzi/Alchemist.svg?branch=dev)](https://travis-ci.org/Alchemist-rs/Alchemist)
 
 ###Inspiration
 I was tired of having to search for what packages I have to use for what
