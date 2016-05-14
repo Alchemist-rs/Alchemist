@@ -1,9 +1,7 @@
 use std::fs;
-use std::io;
 use std::io::prelude::*;
 use std::fs::File;
 use std::string::String;
-use std::convert::AsRef;
 
 #[derive(Debug)]
 ///Enum used to represent Distribution used
@@ -45,7 +43,7 @@ pub fn which_distro() -> Option<Distro> {
             panic!("Failed to open /proc/version: {}",e)
         });
     let mut buffer = String::new();
-    f.read_to_string(&mut buffer);
+    let _unused = f.read_to_string(&mut buffer);
 
     //Check for distros in Alphabetical order
     if buffer.contains("arch") {
