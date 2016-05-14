@@ -53,11 +53,12 @@ etc. If you'd like to join us send an email to mgattozzi@gmail.com
 with the Subject Line [Slack Alchemist] and you'll get an invite.
 
 ###Compiler Version
-Due to the nature of the Diesel library needing nightly
-that's the versionthat will be needed. At some point in
-the future I'll work on creating an installer to get it
-working on stable using Syntex. As of now though since
-this is far from production ready nightly is fine.
+Due to certain needed features we've pegged a specific version of the rust nightly compiler
+Currently using:
+
+```
+nightly-2016-05-08
+```
 
 ###Native Library Dependencies
 
