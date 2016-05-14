@@ -44,6 +44,11 @@ and make it easy to install things regardless of your package manager.
   - Write tests! Unit tests and integration tests that can be run on a
     CI instance is a big plus and adds better code coverage!
 
+###Slack
+We communicate using Slack using it as a central way to track issues
+etc. If you'd like to join us send an email to mgattozzi@gmail.com
+with the Subject Line [Slack Alchemist] and you'll get an invite.
+
 ###Compiler Version
 Due to the nature of the Diesel library needing nightly
 that's the versionthat will be needed. At some point in
