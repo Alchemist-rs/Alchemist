@@ -1,14 +1,17 @@
-#Alchemist
-##Unix Platform Agnostic Installation Tool
+<H1 align="center">Alchemist</H1>
+<p align="center">
+  <img src=https://avatars3.githubusercontent.com/u/19353789?v=3&s=200>
+</p>
+<H2 align="center">Unix Platform Agnostic Installation Tool</H2>
 
 
-Master:
+**Master:**
 
 [![Build Status](https://travis-ci.org/Alchemist-rs/Alchemist.svg?branch=master)](https://travis-ci.org/Alchemist-rs/Alchemist)
 
-Dev:
+**Dev:**
 
-[![Build Status](https://travis-ci.org/mgattozzi/Alchemist.svg?branch=dev)](https://travis-ci.org/Alchemist-rs/Alchemist)
+[![Build Status](https://travis-ci.org/Alchemist-rs/Alchemist.svg?branch=dev)](https://travis-ci.org/Alchemist-rs/Alchemist)
 
 ###Inspiration
 I was tired of having to search for what packages I have to use for what
@@ -56,7 +59,7 @@ the future I'll work on creating an installer to get it
 working on stable using Syntex. As of now though since
 this is far from production ready nightly is fine.
 
-###Dependencies
+###Native Library Dependencies
 
 For diesel:
 
@@ -64,10 +67,8 @@ For diesel:
 Sqlite3
 ```
 
-###Setup
-There is more to do here but this should just be as simple as run and
-done for the end user to get all setup. For now there are distribution
-specific setup scripts.
+###Dev Setup
+This will setup all the tools you need to get hacking away.
 
 ####Arch Linux
 To get setup for development run:
@@ -75,12 +76,3 @@ To get setup for development run:
 ```
 sh scripts/arch_setup.sh
 ```
-
-###Roadmap
-- v0.1.0
-  - [x] Create a mapping structure
-  - [x] Create Ubuntu to Arch Mappings
-  - [x] Create a db configuration file
-    - [x] Parse Configuratin
-    - [x] Configuration file structure
-  - [x] Arch Linux Support (including AUR)
