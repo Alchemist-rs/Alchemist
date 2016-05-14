@@ -1,4 +1,9 @@
 use std::fs;
+use std::io;
+use std::io::prelude::*;
+use std::fs::File;
+use std::string::String;
+use std::convert::AsRef;
 
 #[derive(Debug)]
 ///Enum used to represent Distribution used
@@ -32,10 +37,20 @@ pub enum Distro {
 ///
 pub fn which_distro() -> Option<Distro> {
 
-    let arch= fs::metadata("/etc/arch-release");
+    let distro = fs::metadata("/proc/version");
+    let arch = fs::metadata("/etc/arch-release")
+    let mut f = try!(File::open("version"));
+    let mut buffer = String::new();
 
-    if arch.is_ok() && arch.unwrap().is_file() {
-           return Some(Distro::Arch);
+    try!(f.read_to_string(&mut buffer));
+    match buffer.as_ref() {
+        "void" => return Some(Distro::Void);
+        "arch" => return Some(Distro::Arch);
+    }
+
+
+    if arch.is_ok() && distro.unwrap().is_file() {
+        return Some(Distro::Arch)
     }
 
     //No distro was found to match
