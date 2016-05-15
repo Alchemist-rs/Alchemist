@@ -6,8 +6,6 @@ cache:
 env:
   global:
   - PATH=$PATH:~/.cargo/bin
-addons:
-  postgresql: '9.4'
 rust:
 - nightly-2016-05-08
 - nightly
@@ -18,10 +16,14 @@ matrix:
   - rust: nightly
   - rust: stable
   - rust: beta
-script:
-- cargo install diesel_cli
+before_install:
+- |
+    if [ ! -f /.multirust/toolchains/nightly/cargo/bin/diesel ]; then
+      cargo install diesel_cli
+    fi
 - diesel setup
 - diesel migration run
+install:
 - cargo build
 notifications:
   email: false
