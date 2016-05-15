@@ -14,6 +14,8 @@
 
 ##Adding a distro:
 A few things need to happen in order to add a distro to Alchemist.
+Please note that anything with a varible (eg $distroname) is intended
+for you to replace.
 
 1. Open up an issue or comment on a request issue that you are adding
    support and include the following as checkboxes. Comment on the issue
@@ -25,13 +27,13 @@ A few things need to happen in order to add a distro to Alchemist.
    tool](https://github.com/diesel-rs/diesel/blob/master/diesel_cli) by
    running:
    ```
-   diesel migration generate add_$YOURDISTROHERE_support
+   diesel migration generate add_$distroname_support
    ```
 5. Using the up.sql file just created add the following to the file:
    ```
    ALTER TABLE packages ADD COLUMN $distroname TEXT NOT NULL DEFAULT '';
-   UPDATE packages SET $distroname=$packagename WHERE
-   id=$packageidnumber
+   UPDATE packages SET $distroname = '$packagename' WHERE
+   id = '$packageidnumber'
    --Keep repeating the UPDATE statment until all packages are added
    ```
    This will have to also include all of the names of the packages that
@@ -70,9 +72,10 @@ Open up the up.sql from the new migration and add the following:
 ```sql
 -- After packages include each of the distros located in the
 -- Packages struct in src/alchemy/models folder. You can
--- see what distros are in by checking the DB using psql
-INSERT INTO packages(arch, aur, ubuntu, ubuntu_dev) VALUES
-('postgresql',''postgresql','');
+-- see what distros are in by checking the DB using sqlite
+-- You'll also need to provide the correct id number for the db
+INSERT INTO packages(id,arch, aur, ubuntu, ubuntu_dev) VALUES
+(1,'postgresql',''postgresql','');
 
 -- Add more mappings to that list one for each distro in the order that
 -- you put for the first part of the statement. If no mapping exists you
@@ -88,7 +91,7 @@ DELETE FROM packages WHERE id > $ID_OF_PACKAGE_BEFORE_YOU_ADDED_NEW_ONES
 
 You can find out by running:
 ```
-psql -d alchemist
+sqlite3 alchemist.db
 SELECT * FROM packages;
 ```
 
