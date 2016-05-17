@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["refresh_list","Calls the xbps-install program to refresh the package list"],["upgrade_packages","Calls the xbps-install program to upgrage all packages"],["void_install","Installs Packages on Void Linux"],["xbps","Calls the xbps program to install packages"]]});

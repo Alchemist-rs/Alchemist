@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["establish_connection",""],["pack_query",""]]});
+initSidebarItems({"fn":[["pack_query","Gets all rows that match the input packages"]]});

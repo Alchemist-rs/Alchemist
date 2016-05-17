@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["arch",""],["aur",""],["id",""],["star",""],["ubuntu",""],["ubuntu_dev",""]]});
+initSidebarItems({"struct":[["arch",""],["aur",""],["id",""],["star",""],["ubuntu",""],["ubuntu_dev",""],["void",""]]});

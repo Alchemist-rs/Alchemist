@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["PgNumeric",""]],"struct":[["InvalidNumericSign",""]]});

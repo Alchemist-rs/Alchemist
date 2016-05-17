@@ -1,1 +1,0 @@
-initSidebarItems({"trait":[["OrderDsl","Sets the order clause of a query. If there was already a order clause, it will be overridden. The expression passed to `order` must actually be valid for the query. See also: `.desc()` and `.asc()`"]]});

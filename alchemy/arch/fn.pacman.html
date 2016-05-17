@@ -47,8 +47,15 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-353' class='srclink' href='../../src/alchemy/src/alchemy/arch.rs.html#42-52' title='goto source code'>[src]</a></span></h1>
-<pre class='rust fn'>pub fn pacman(packages: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;)</pre></section>
+               </span><a id='src-581' class='srclink' href='../../src/alchemy/src/alchemy/arch.rs.html#63-76' title='goto source code'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn pacman(packages: <a class='struct' href='https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html' title='std::collections::hash::set::HashSet'>HashSet</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;)</pre><div class='docblock'><p>Calls the pacman program to install packages</p>
+
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>packages</span>: <span class='ident'>HashSet</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>HashSet</span>::<span class='ident'>new</span>();
+<span class='ident'>packages</span>.<span class='ident'>push</span>(<span class='string'>&quot;sudo&quot;</span>.<span class='ident'>to_owned</span>());
+<span class='ident'>pacman</span>(<span class='ident'>packages</span>);</pre>
+</div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

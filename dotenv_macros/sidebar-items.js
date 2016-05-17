@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["plugin_registrar",""]]});

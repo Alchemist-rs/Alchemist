@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["has_sudo",""],["is_root",""]]});
+initSidebarItems({"fn":[["has_sudo","Checks if the user has sudo installed on their system"],["is_root","Checks if the user is running as root"]]});

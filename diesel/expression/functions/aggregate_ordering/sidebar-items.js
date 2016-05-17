@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["max","Represents a SQL `MAX` function. This function can only take types which are ordered."],["min","Represents a SQL `MIN` function. This function can only take types which are ordered."]],"struct":[["Max",""],["Min",""]]});

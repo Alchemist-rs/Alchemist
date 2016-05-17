@@ -59,23 +59,71 @@
 <span id="15">15</span>
 <span id="16">16</span>
 <span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fs</span>;
 
+<span class='doccomment'>/// Checks if the user has sudo installed on their system</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// ```</span>
+<span class='doccomment'>/// if has_sudo() {</span>
+<span class='doccomment'>///     println!(&quot;They have sudo&quot;);</span>
+<span class='doccomment'>/// } else {</span>
+<span class='doccomment'>///     println!(&quot;They do not have sudo&quot;);</span>
+<span class='doccomment'>/// }</span>
+<span class='doccomment'>/// ```</span>
+<span class='doccomment'>///</span>
 <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>has_sudo</span>() <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
 
     <span class='kw'>let</span> <span class='ident'>sudo</span> <span class='op'>=</span> <span class='ident'>fs</span>::<span class='ident'>metadata</span>(<span class='string'>&quot;/usr/bin/sudo&quot;</span>);
 
     <span class='kw'>if</span> <span class='ident'>sudo</span>.<span class='ident'>is_ok</span>() <span class='op'>&amp;&amp;</span> <span class='ident'>sudo</span>.<span class='ident'>unwrap</span>().<span class='ident'>is_file</span>() {
-        <span class='kw'>return</span> <span class='boolval'>true</span>
+        <span class='kw'>return</span> <span class='boolvalue'>true</span>
     }
 
-    <span class='boolval'>false</span>
+    <span class='boolvalue'>false</span>
 }
 
+<span class='doccomment'>/// Checks if the user is running as root</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// #Examples</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// ```</span>
+<span class='doccomment'>/// if is_root() {</span>
+<span class='doccomment'>///     println!(&quot;All your base are belong to us&quot;);</span>
+<span class='doccomment'>/// } else {</span>
+<span class='doccomment'>///     println!(&quot;Do you even root bro?&quot;);</span>
+<span class='doccomment'>/// }</span>
+<span class='doccomment'>/// ```</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// Currently this does not work</span>
+<span class='doccomment'>///</span>
 <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>is_root</span>() <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
     <span class='comment'>//stub</span>
-    <span class='boolval'>false</span>
+    <span class='boolvalue'>false</span>
 }
 </pre>
 </section>

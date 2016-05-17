@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["__diesel_schema_migrations",""]],"struct":[["NewMigration",""]]});

@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["And",""],["Asc",""],["Between",""],["Desc",""],["Eq",""],["Escape",""],["Gt",""],["GtEq",""],["IsNotNull",""],["IsNull",""],["Like",""],["Lt",""],["LtEq",""],["NotBetween",""],["NotEq",""],["NotLike",""],["Or",""]]});

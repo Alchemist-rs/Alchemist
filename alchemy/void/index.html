@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `distro` mod in crate `alchemy`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, distro">
+    <meta name="description" content="API documentation for the Rust `void` mod in crate `alchemy`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, void">
 
-    <title>alchemy::distro - Rust</title>
+    <title>alchemy::void - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
@@ -28,7 +28,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'><a href='../index.html'>alchemy</a></p><script>window.sidebarCurrent = {name: 'distro', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+        <p class='location'><a href='../index.html'>alchemy</a></p><script>window.sidebarCurrent = {name: 'void', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -43,31 +43,39 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>alchemy</a>::<wbr><a class='mod' href=''>distro</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>alchemy</a>::<wbr><a class='mod' href=''>void</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-4' class='srclink' href='../../src/alchemy/src/alchemy/distro.rs.html#1-64' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>Top Level Module File
-All of the various available public modules that can be used are listed here
-All common functions related to distributions as well as distribution specific
-functions are available in the distro module</p>
-</div><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+               </span><a id='src-675' class='srclink' href='../../src/alchemy/src/alchemy/void.rs.html#1-105' title='goto source code'>[src]</a></span></h1>
+<h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class='enum' href='enum.Distro.html'
-                                  title='alchemy::distro::Distro'>Distro</a></td>
+                           <td><a class='fn' href='fn.refresh_list.html'
+                                  title='alchemy::void::refresh_list'>refresh_list</a></td>
                            <td class='docblock short'>
-                                <p>Enum used to represent Distribution used</p>
+                                <p>Calls the xbps-install program to refresh the package list</p>
                            </td>
-                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
-<table>
+                       </tr>
                        <tr class=' module-item'>
-                           <td><a class='fn' href='fn.which_distro.html'
-                                  title='alchemy::distro::which_distro'>which_distro</a></td>
+                           <td><a class='fn' href='fn.upgrade_packages.html'
+                                  title='alchemy::void::upgrade_packages'>upgrade_packages</a></td>
                            <td class='docblock short'>
-                                <p>Returns what Distribution the user is using
-If no possible match is found return a None</p>
+                                <p>Calls the xbps-install program to upgrage all packages</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.void_install.html'
+                                  title='alchemy::void::void_install'>void_install</a></td>
+                           <td class='docblock short'>
+                                <p>Installs Packages on Void Linux</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.xbps.html'
+                                  title='alchemy::void::xbps'>xbps</a></td>
+                           <td class='docblock short'>
+                                <p>Calls the xbps program to install packages</p>
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>

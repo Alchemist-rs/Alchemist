@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Package",""]]});
+initSidebarItems({"struct":[["Package","Struct for a row in the Alchemist package table"]]});
