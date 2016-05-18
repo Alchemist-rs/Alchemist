@@ -7,6 +7,7 @@ homepage = "https://github.com/mgattozzi/Alchemist"
 documentation = "http://mgattozzi.github.io/Alchemist"
 readme = "README.md"
 license = "BSD3"
+build = "build.rs"
 
 [lib]
 name = "alchemy"

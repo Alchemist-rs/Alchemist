@@ -69,7 +69,15 @@ Sqlite3
 ```
 
 ###Dev Setup
-This will setup all the tools you need to get hacking away.
+This will setup all the tools you need to get hacking away. If you
+already have cargo and sqlite setup just run:
+
+```
+cargo build
+```
+
+The build script automatically installs the diesel_cli tool if you don't
+have it and runs any available migrations for the db for you each build.
 
 ####Arch Linux
 To get setup for development run:
