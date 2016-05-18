@@ -12,6 +12,8 @@ pub mod models;
 pub mod schema;
 pub mod arch;
 pub mod void;
+pub mod ubuntu;
+pub mod debian;
 
 #[macro_use]
 extern crate diesel;

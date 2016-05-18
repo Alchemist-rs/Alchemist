@@ -48,8 +48,12 @@ pub fn which_distro() -> Option<Distro> {
     //Check for distros in Alphabetical order
     if buffer.contains("arch") {
         return Some(Distro::Arch);
+    } else if buffer.contains("ubuntu") {
+        return Some(Distro::Ubuntu);
     } else if buffer.contains("void") {
         return Some(Distro::Void);
+    } else if buffer.contains("debian") {
+        return Some(Distro::Debian);
     }
 
 
@@ -58,6 +62,12 @@ pub fn which_distro() -> Option<Distro> {
     let arch = fs::metadata("/etc/arch-release");
     if arch.is_ok() && arch.unwrap().is_file() {
         return Some(Distro::Arch)
+    }
+    //Check for Debian differently but only after the
+    //previous method trys by using /etc/arch-release
+    let debian = fs::metadata("/etc/debian_version");
+    if debian.is_ok() && debian.unwrap().is_file() {
+        return Some(Distro::Debian)
     }
     //No distro was found to match
     None
