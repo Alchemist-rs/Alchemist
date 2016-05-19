@@ -48,6 +48,8 @@ pub fn which_distro() -> Option<Distro> {
     //Check for distros in Alphabetical order
     if buffer.contains("arch") {
         return Some(Distro::Arch);
+    } else if buffer.contains("ubuntu") {
+        return Some(Distro::Ubuntu);
     } else if buffer.contains("void") {
         return Some(Distro::Void);
     }

@@ -6,8 +6,7 @@ extern crate diesel;
 //Alchemy Imports
 use alchemy::su;
 use alchemy::distro::{Distro,which_distro};
-use alchemy::arch;
-use alchemy::void;
+use alchemy::{arch,void,ubuntu};
 
 //Clap Imports
 use clap::{App, Arg};
@@ -77,7 +76,14 @@ fn main() {
             }
             arch::arch_install(package_inputs);
         },
-        Distro::Ubuntu  => println!("Ubuntu"),
+        Distro::Ubuntu  => {
+            if args.values_of("refresh").is_some() {
+                ubuntu::refresh_list();
+            } else if args.values_of("upgrade").is_some() {
+                ubuntu::upgrade_packages();
+            }
+            ubuntu::ubuntu_install(package_inputs);
+        },
         Distro::Mint    => println!("Mint"),
         Distro::Debian  => println!("Debian"),
         Distro::Gentoo  => println!("Gentoo"),
