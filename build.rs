@@ -15,7 +15,7 @@ fn main() {
             .arg("install")
             .arg("diesel_cli")
             .arg("--no-default-features")
-            .arg("--sqlite")
+            .arg("--features=sqlite")
             .spawn()
             .unwrap_or_else(|e| { panic!("Failed to execute: {}", e) });
         install_diesel.wait()
