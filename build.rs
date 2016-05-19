@@ -10,7 +10,7 @@ fn main() {
             .unwrap();
 
     //If diesel_cli isn't installed install it for the user
-    if which.contains("no diesel in") {
+    if which.contains("no diesel in") || which.is_empty() {
         let mut install_diesel = Command::new("cargo")
             .arg("install")
             .arg("diesel_cli")
