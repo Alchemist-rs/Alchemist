@@ -14,6 +14,8 @@ fn main() {
         let mut install_diesel = Command::new("cargo")
             .arg("install")
             .arg("diesel_cli")
+            .arg("--no-default-features")
+            .arg("--sqlite")
             .spawn()
             .unwrap_or_else(|e| { panic!("Failed to execute: {}", e) });
         install_diesel.wait()
