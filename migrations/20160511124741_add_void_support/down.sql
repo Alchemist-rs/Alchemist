@@ -6,7 +6,7 @@ CREATE TABLE new_packages (
   ubuntu_dev TEXT NOT NULL
 );
 
-INSERT INTO new_packages SELECT id, arch, aur, ubuntu, ubuntu_dev, debian FROM packages;
+INSERT INTO new_packages SELECT id, arch, aur, ubuntu, ubuntu_dev FROM packages;
 
 DROP TABLE IF EXISTS packages;
 ALTER TABLE  new_packages RENAME TO packages;

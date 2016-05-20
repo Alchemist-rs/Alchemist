@@ -1,6 +1,5 @@
 use std::process::Command;
 use std::collections::HashSet;
-use std::fs;
 
 use db;
 
