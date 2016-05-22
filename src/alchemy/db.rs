@@ -11,11 +11,10 @@ use std::collections::HashSet;
 
 /// Establishes a connection to the Alchemist DB
 fn establish_connection() -> SqliteConnection {
-    //Read from the .env file where the db is located
-    //at so we can connect to it.
+    // Read from the .env file where the db is located
+    // at so we can connect to it.
     dotenv().ok();
-    let database_url = env::var("DATABASE_URL")
-        .expect("DATABASE_URL must be set");
+    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
 
     SqliteConnection::establish(&database_url)
         .expect(&format!("Error connecting to {}", database_url))
@@ -40,20 +39,19 @@ pub fn pack_query(input_packages: HashSet<String>) -> HashSet<Package> {
     let mut output: HashSet<Package> = HashSet::new();
 
     for i in input_packages {
-        //While this might look like O(n^2) complexity
-        //it's more closer to O(n) since most querys only
-        //return one or 2 results really. Still this seemed
-        //to be the only way to implement it well
-        let results = packages.filter(
-            arch.eq(&i)
-            .or(aur.eq(&i))
-            .or(debian.eq(&i))
-            .or(ubuntu.eq(&i))
-            .or(ubuntu_dev.eq(&i))
-            .or(void.eq(&i))
-        )
-        .get_results::<Package>(&connection)
-        .unwrap_or(vec![Package::empty()]);
+        // While this might look like O(n^2) complexity
+        // it's more closer to O(n) since most querys only
+        // return one or 2 results really. Still this seemed
+        // to be the only way to implement it well
+        let results = packages.filter(arch.eq(&i)
+                .or(aur.eq(&i))
+                .or(debian.eq(&i))
+                .or(mint.eq(&i))
+                .or(ubuntu.eq(&i))
+                .or(ubuntu_dev.eq(&i))
+                .or(void.eq(&i)))
+            .get_results::<Package>(&connection)
+            .unwrap_or(vec![Package::empty()]);
         for j in results {
             output.insert(j);
         }

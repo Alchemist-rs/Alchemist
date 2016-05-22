@@ -4,9 +4,9 @@ use std::fs::File;
 use std::string::String;
 
 #[derive(Debug)]
-///Enum used to represent Distribution used
+/// Enum used to represent Distribution used
 pub enum Distro {
-    //Linux Distributions
+    // Linux Distributions
     Arch,
     Ubuntu,
     Mint,
@@ -14,11 +14,11 @@ pub enum Distro {
     Gentoo,
     Void,
 
-    //Berklee Unix Distributions
+    // Berklee Unix Distributions
     Mac,
     FreeBSD,
     NetBSD,
-    OpenBSD
+    OpenBSD,
 }
 
 /// Returns what Distribution the user is using
@@ -36,16 +36,14 @@ pub enum Distro {
 ///
 pub fn which_distro() -> Option<Distro> {
 
-    //Open Proc and read into string the contents of it to be
-    //be checked below
+    // Open Proc and read into string the contents of it to be
+    // be checked below
     let mut f = File::open("/proc/version")
-        .unwrap_or_else(|e| {
-            panic!("Failed to open /proc/version: {}",e)
-        });
+        .unwrap_or_else(|e| panic!("Failed to open /proc/version: {}", e));
     let mut buffer = String::new();
     let _unused = f.read_to_string(&mut buffer);
 
-    //Check for distros in Alphabetical order
+    // Check for distros in Alphabetical order
     if buffer.contains("arch") {
         return Some(Distro::Arch);
     } else if buffer.contains("ubuntu") {
@@ -54,21 +52,23 @@ pub fn which_distro() -> Option<Distro> {
         return Some(Distro::Void);
     } else if buffer.contains("debian") {
         return Some(Distro::Debian);
+    } else if buffer.contains("mint") {
+        return Some(Distro::Mint);
     }
 
 
-    //Checks for Arch differently but only after the
-    //previous method trys by using /proc/version
+    // Checks for Arch differently but only after the
+    // previous method trys by using /proc/version
     let arch = fs::metadata("/etc/arch-release");
     if arch.is_ok() && arch.unwrap().is_file() {
-        return Some(Distro::Arch)
+        return Some(Distro::Arch);
     }
-    //Check for Debian differently but only after the
-    //previous method trys by using /etc/arch-release
+    // Check for Debian differently but only after the
+    // previous method trys by using /etc/arch-release
     let debian = fs::metadata("/etc/debian_version");
     if debian.is_ok() && debian.unwrap().is_file() {
-        return Some(Distro::Debian)
+        return Some(Distro::Debian);
     }
-    //No distro was found to match
+    // No distro was found to match
     None
 }
