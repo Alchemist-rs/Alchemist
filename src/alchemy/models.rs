@@ -9,26 +9,29 @@ pub struct Package {
     pub aur: String,
     /// Debian Package
     pub debian: String,
-    /// Void Linux Package
-    pub void: String,
+    /// Mint Package
+    pub mint: String,
     /// Ubuntu Binary Packages
     pub ubuntu: String,
     /// Ubuntu Development Header Packages
-    pub ubuntu_dev: String
+    pub ubuntu_dev: String,
+    /// Void Linux Package
+    pub void: String,
 }
 
 impl Package {
-    ///Returns a Package with no data for instances of error handling
-    ///when connecting to the db and finding nothing
+    /// Returns a Package with no data for instances of error handling
+    /// when connecting to the db and finding nothing
     pub fn empty() -> Package {
         Package {
             id: 0,
             arch: String::from(""),
-            aur : String::from(""),
+            aur: String::from(""),
             debian: String::from(""),
-            void: String::from(""),
+            mint: String::from(""),
             ubuntu: String::from(""),
             ubuntu_dev: String::from(""),
+            void: String::from(""),
         }
     }
 }
