@@ -9,6 +9,8 @@ pub struct Package {
     pub aur: String,
     /// Debian Package
     pub debian: String,
+    /// FreeBSD Package
+    pub freebsd: String,
     /// Mint Package
     pub mint: String,
     /// Ubuntu Binary Packages
@@ -28,6 +30,7 @@ impl Package {
             arch: String::from(""),
             aur: String::from(""),
             debian: String::from(""),
+            freebsd: String::from(""),
             mint: String::from(""),
             ubuntu: String::from(""),
             ubuntu_dev: String::from(""),

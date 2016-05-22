@@ -1,9 +1,10 @@
 use std::process::Command;
 use std::collections::HashSet;
+use std::fs;
 
 use db;
 
-/// Installs Packages on Void Linux
+/// Installs Packages on FreeBSD
 ///
 /// #Examples
 ///
@@ -11,49 +12,49 @@ use db;
 /// let mut packages: HashSet<&str> = HashSet::new();
 /// packages.push("sudo");
 /// packages.push("postgresql");
-/// void_install(packages);
+/// freebsd_install(packages);
 /// ```
 ///
-pub fn void_install(packages: HashSet<String>) {
-    let void_packages = convert_to_void(packages);
-    if !void_packages.is_empty() {
-        xbps(void_packages);
+pub fn freebsd_install(packages: HashSet<String>) {
+    let freebsd_packages = convert_to_freebsd(packages);
+    if !freebsd_packages.is_empty() {
+        pkg(freebsd_packages);
     }
 }
 
-/// Convert package names from other distros to void
-fn convert_to_void(input_packages: HashSet<String>) -> HashSet<String> {
+/// Convert package names from other distros to FreeBSD
+fn convert_to_freebsd(input_packages: HashSet<String>) -> HashSet<String> {
     let results = db::pack_query(input_packages);
-    let mut xbps_converted: HashSet<String> = HashSet::new();
+    let mut pkg_converted: HashSet<String> = HashSet::new();
 
     // Using the querys store into the HashSet the actual
-    // void package name for use later
+    // FreeBSD package name for use later
     for i in results {
         // All querys will either be a string or '' in the db
         // allowing us to use is_empty()
-        if !i.void.is_empty() {
-            xbps_converted.insert(i.void);
+        if !i.freebsd.is_empty() {
+            pkg_converted.insert(i.freebsd);
         }
     }
 
-    xbps_converted
+    pkg_converted
 }
 
-// xbps specific functions
+// Pkg specific functions
 
-/// Calls the xbps program to install packages
+/// Calls the pkg program to install packages
 ///
 /// #Examples
 ///
 /// ```
 /// let mut packages: HashSet<String> = HashSet::new();
 /// packages.push("sudo".to_owned());
-/// xbps(packages);
+/// pkg(packages);
 /// ```
 ///
-pub fn xbps(mut packages: HashSet<String>) {
-    let mut child = match Command::new("xbps-install")
-        .arg("-S")
+pub fn pkg(mut packages: HashSet<String>) {
+    let mut child = match Command::new("pkg")
+        .arg("install")
         .args(packages.drain()
             .collect::<Vec<String>>()
             .as_slice())
@@ -64,7 +65,7 @@ pub fn xbps(mut packages: HashSet<String>) {
     let _unused = child.wait();
 }
 
-/// Calls the xbps-install program to refresh the package list
+/// Calls the pkg program to refresh the package list
 ///
 /// #Examples
 ///
@@ -73,8 +74,8 @@ pub fn xbps(mut packages: HashSet<String>) {
 /// ```
 ///
 pub fn refresh_list() {
-    let mut child = match Command::new("xbps-install")
-        .arg("-Sy")
+    let mut child = match Command::new("pkg")
+        .arg("update")
         .spawn() {
         Ok(child) => child,
         Err(e) => panic!("Failed to execute child: {}", e),
@@ -82,7 +83,7 @@ pub fn refresh_list() {
     let _unused = child.wait();
 }
 
-/// Calls the xbps-install program to upgrage all packages
+/// Calls the pacman program to upgrage all packages
 ///
 /// #Examples
 ///
@@ -91,8 +92,8 @@ pub fn refresh_list() {
 /// ```
 ///
 pub fn upgrade_packages() {
-    let mut child = match Command::new("xbps-install")
-        .arg("-Syu")
+    let mut child = match Command::new("pkg")
+        .arg("upgrade")
         .spawn() {
         Ok(child) => child,
         Err(e) => panic!("Failed to execute child: {}", e),

@@ -21,16 +21,16 @@ pub fn mint_install(packages: HashSet<String>) {
     }
 }
 
-///Convert package names from other distros to Mint
+/// Convert package names from other distros to Mint
 fn convert_to_mint(input_packages: HashSet<String>) -> HashSet<String> {
     let results = db::pack_query(input_packages);
     let mut apt_converted: HashSet<String> = HashSet::new();
 
-    //Using the querys store into the HashSet the actual
-    //Mint package name for use later
+    // Using the querys store into the HashSet the actual
+    // Mint package name for use later
     for i in results {
-        //All querys will either be a string or '' in the db
-        //allowing us to use is_empty()
+        // All querys will either be a string or '' in the db
+        // allowing us to use is_empty()
         if !i.mint.is_empty() {
             apt_converted.insert(i.mint);
         }
@@ -39,7 +39,7 @@ fn convert_to_mint(input_packages: HashSet<String>) -> HashSet<String> {
     apt_converted
 }
 
-//apt-get specific functions
+// apt-get specific functions
 
 /// Calls the apt-get program to install packages
 ///
@@ -53,15 +53,13 @@ fn convert_to_mint(input_packages: HashSet<String>) -> HashSet<String> {
 ///
 pub fn apt_get(mut packages: HashSet<String>) {
     let mut child = match Command::new("apt-get")
-            .arg("install")
-            .args(packages
-                  .drain()
-                  .collect::<Vec<String>>()
-                  .as_slice())
-            .spawn()
-    {
+        .arg("install")
+        .args(packages.drain()
+            .collect::<Vec<String>>()
+            .as_slice())
+        .spawn() {
         Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
+        Err(e) => panic!("Failed to execute child: {}", e),
     };
     let _unused = child.wait();
 }
@@ -76,11 +74,10 @@ pub fn apt_get(mut packages: HashSet<String>) {
 ///
 pub fn refresh_list() {
     let mut child = match Command::new("apt-get")
-            .arg("update")
-            .spawn()
-    {
+        .arg("update")
+        .spawn() {
         Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
+        Err(e) => panic!("Failed to execute child: {}", e),
     };
     let _unused = child.wait();
 }
@@ -95,11 +92,10 @@ pub fn refresh_list() {
 ///
 pub fn upgrade_packages() {
     let mut child = match Command::new("apt-get")
-            .arg("upgrade")
-            .spawn()
-    {
+        .arg("upgrade")
+        .spawn() {
         Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
+        Err(e) => panic!("Failed to execute child: {}", e),
     };
     let _unused = child.wait();
 }

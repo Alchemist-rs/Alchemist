@@ -25,17 +25,17 @@ pub fn arch_install(packages: HashSet<String>) {
     }
 }
 
-///Convert package names from other distros to Arch
-fn convert_to_arch(input_packages: HashSet<String>) -> (HashSet<String>,HashSet<String>) {
+/// Convert package names from other distros to Arch
+fn convert_to_arch(input_packages: HashSet<String>) -> (HashSet<String>, HashSet<String>) {
     let results = db::pack_query(input_packages);
     let mut pac_converted: HashSet<String> = HashSet::new();
     let mut aur_converted: HashSet<String> = HashSet::new();
 
-    //Using the querys store into the HashSet the actual
-    //Arch package name for use later
+    // Using the querys store into the HashSet the actual
+    // Arch package name for use later
     for i in results {
-        //All querys will either be a string or '' in the db
-        //allowing us to use is_empty()
+        // All querys will either be a string or '' in the db
+        // allowing us to use is_empty()
         if !i.arch.is_empty() {
             pac_converted.insert(i.arch);
         }
@@ -45,10 +45,10 @@ fn convert_to_arch(input_packages: HashSet<String>) -> (HashSet<String>,HashSet<
         }
     }
 
-    (pac_converted,aur_converted)
+    (pac_converted, aur_converted)
 }
 
-//Pacman specific functions
+// Pacman specific functions
 
 /// Calls the pacman program to install packages
 ///
@@ -62,15 +62,13 @@ fn convert_to_arch(input_packages: HashSet<String>) -> (HashSet<String>,HashSet<
 ///
 pub fn pacman(mut packages: HashSet<String>) {
     let mut child = match Command::new("pacman")
-            .arg("-S")
-            .args(packages
-                  .drain()
-                  .collect::<Vec<String>>()
-                  .as_slice())
-            .spawn()
-    {
+        .arg("-S")
+        .args(packages.drain()
+            .collect::<Vec<String>>()
+            .as_slice())
+        .spawn() {
         Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
+        Err(e) => panic!("Failed to execute child: {}", e),
     };
     let _unused = child.wait();
 }
@@ -85,11 +83,10 @@ pub fn pacman(mut packages: HashSet<String>) {
 ///
 pub fn refresh_list() {
     let mut child = match Command::new("pacman")
-            .arg("-Syy")
-            .spawn()
-    {
+        .arg("-Syy")
+        .spawn() {
         Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
+        Err(e) => panic!("Failed to execute child: {}", e),
     };
     let _unused = child.wait();
 }
@@ -104,53 +101,52 @@ pub fn refresh_list() {
 ///
 pub fn upgrade_packages() {
     let mut child = match Command::new("pacman")
-            .arg("-Syyu")
-            .spawn()
-    {
+        .arg("-Syyu")
+        .spawn() {
         Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
+        Err(e) => panic!("Failed to execute child: {}", e),
     };
     let _unused = child.wait();
 }
 
-//AUR related functions and Data types
+// AUR related functions and Data types
 
 #[allow(dead_code)]
-///Enum representing all the AUR installers available
+/// Enum representing all the AUR installers available
 enum AURHelper {
-    ///User manually installs packages from the AUR
+    /// User manually installs packages from the AUR
     NoHelp,
-    ///Uses Aura to install packages from the AUR
+    /// Uses Aura to install packages from the AUR
     Aura,
-    ///Uses Aurel to install packages from the AUR
+    /// Uses Aurel to install packages from the AUR
     Aurel,
-    ///Uses Aurutils to install packages from the AUR
+    /// Uses Aurutils to install packages from the AUR
     Aurutils,
-    ///Uses Bauerbill to install packages from the AUR
+    /// Uses Bauerbill to install packages from the AUR
     Bauerbill,
-    ///Uses Burgaur to install packages from the AUR
+    /// Uses Burgaur to install packages from the AUR
     Burgaur,
-    ///Uses Cower to install packages from the AUR
+    /// Uses Cower to install packages from the AUR
     Cower,
-    ///Uses Pacaur to install packages from the AUR
+    /// Uses Pacaur to install packages from the AUR
     Pacaur,
-    ///Uses Packer to install packages from the AUR
+    /// Uses Packer to install packages from the AUR
     Packer,
-    ///Uses Pbget to install packages from the AUR
+    /// Uses Pbget to install packages from the AUR
     Pbget,
-    ///Uses PKGBUILDer to install packages from the AUR
+    /// Uses PKGBUILDer to install packages from the AUR
     PKGBUILDer,
-    ///Uses Prm to install packages from the AUR
+    /// Uses Prm to install packages from the AUR
     Prm,
-    ///Uses Spinach to install packages from the AUR
+    /// Uses Spinach to install packages from the AUR
     Spinach,
-    ///Uses Trizen to install packages from the AUR
+    /// Uses Trizen to install packages from the AUR
     Trizen,
-    ///Uses Wrapaur to install packages from the AUR
+    /// Uses Wrapaur to install packages from the AUR
     Wrapaur,
-    ///Uses Yaah to install packages from the AUR
+    /// Uses Yaah to install packages from the AUR
     Yaah,
-    ///Uses Yaourt to install packages from the AUR
+    /// Uses Yaourt to install packages from the AUR
     Yaourt,
 }
 
@@ -166,27 +162,27 @@ enum AURHelper {
 pub fn aur(packages: HashSet<String>) {
     let helper = find_helper();
     match helper {
-        AURHelper::Aura       => aura(packages),
-        AURHelper::Pacaur     => pacaur(packages),
-        AURHelper::Packer     => packer(packages),
-        AURHelper::Yaourt     => yaourt(packages),
-        AURHelper::NoHelp     => no_helper(packages),
-        _ => unreachable!()
+        AURHelper::Aura => aura(packages),
+        AURHelper::Pacaur => pacaur(packages),
+        AURHelper::Packer => packer(packages),
+        AURHelper::Yaourt => yaourt(packages),
+        AURHelper::NoHelp => no_helper(packages),
+        _ => unreachable!(),
     }
 }
 
 /// Figures out which AUR Installer is used by the user
 fn find_helper() -> AURHelper {
-    //Maybe there's a better way to do this in the future?
-    let aura   = fs::metadata("/usr/bin/aura");
+    // Maybe there's a better way to do this in the future?
+    let aura = fs::metadata("/usr/bin/aura");
     let pacaur = fs::metadata("/usr/bin/pacaur");
     let packer = fs::metadata("/usr/bin/packer");
     let yaourt = fs::metadata("/usr/bin/yaourt");
 
-    //Depending on what file exists that AURHelper enum is
-    //returned and used to install or upgrade packages.
-    //Otherwise, the NoHelp exists and they have to install
-    //packages manually
+    // Depending on what file exists that AURHelper enum is
+    // returned and used to install or upgrade packages.
+    // Otherwise, the NoHelp exists and they have to install
+    // packages manually
     if aura.is_ok() && aura.unwrap().is_file() {
         AURHelper::Aura
     } else if pacaur.is_ok() && pacaur.unwrap().is_file() {
@@ -200,73 +196,66 @@ fn find_helper() -> AURHelper {
     }
 }
 
-///Installs packages from the AUR using Aura
-fn aura(mut packages: HashSet<String>){
+/// Installs packages from the AUR using Aura
+fn aura(mut packages: HashSet<String>) {
     let mut child = match Command::new("aura")
-            .arg("-A")
-            .args(packages
-                  .drain()
-                  .collect::<Vec<String>>()
-                  .as_slice())
-            .spawn()
-    {
+        .arg("-A")
+        .args(packages.drain()
+            .collect::<Vec<String>>()
+            .as_slice())
+        .spawn() {
         Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
+        Err(e) => panic!("Failed to execute child: {}", e),
     };
     let _unused = child.wait();
 }
 
-///Installs packages from the AUR using Pacaur
-fn pacaur(mut packages: HashSet<String>){
+/// Installs packages from the AUR using Pacaur
+fn pacaur(mut packages: HashSet<String>) {
     let mut child = match Command::new("pacaur")
-            .arg("-S")
-            .args(packages
-                  .drain()
-                  .collect::<Vec<String>>()
-                  .as_slice())
-            .spawn()
-    {
+        .arg("-S")
+        .args(packages.drain()
+            .collect::<Vec<String>>()
+            .as_slice())
+        .spawn() {
         Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
+        Err(e) => panic!("Failed to execute child: {}", e),
     };
     let _unused = child.wait();
 }
 
-///Installs packages from the AUR using Packer
-fn packer(mut packages: HashSet<String>){
+/// Installs packages from the AUR using Packer
+fn packer(mut packages: HashSet<String>) {
     let mut child = match Command::new("packer")
-            .arg("-S")
-            .args(packages
-                  .drain()
-                  .collect::<Vec<String>>()
-                  .as_slice())
-            .spawn()
-    {
+        .arg("-S")
+        .args(packages.drain()
+            .collect::<Vec<String>>()
+            .as_slice())
+        .spawn() {
         Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
+        Err(e) => panic!("Failed to execute child: {}", e),
     };
     let _unused = child.wait();
 }
 
-///Installs packages from the AUR using Yaourt
-fn yaourt(mut packages: HashSet<String>){
+/// Installs packages from the AUR using Yaourt
+fn yaourt(mut packages: HashSet<String>) {
     let mut child = match Command::new("yaourt")
-            .args(packages
-                  .drain()
-                  .collect::<Vec<String>>()
-                  .as_slice())
-            .spawn()
-    {
+        .args(packages.drain()
+            .collect::<Vec<String>>()
+            .as_slice())
+        .spawn() {
         Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
+        Err(e) => panic!("Failed to execute child: {}", e),
     };
     let _unused = child.wait();
 }
 
-///Prints out package names to install manually from the AUR
-fn no_helper(packages: HashSet<String>){
-    println!("You have no aur helper installed.\nYou'll need to install the following packages manually:");
+/// Prints out package names to install manually from the AUR
+fn no_helper(packages: HashSet<String>) {
+    println!("You have no aur helper installed.\nYou'll need to install the following packages \
+              manually:");
     for i in packages {
-        println!("{}",i);
+        println!("{}", i);
     }
 }

@@ -1,10 +1,10 @@
 #![feature(custom_derive, custom_attribute, plugin)]
 #![plugin(diesel_codegen, dotenv_macros)]
-///Top Level Module File
-///All of the various available public modules that can be used are listed here
+/// Top Level Module File
+/// All of the various available public modules that can be used are listed here
 
-///All common functions related to distributions as well as distribution specific
-///functions are available in the distro module
+/// All common functions related to distributions as well as distribution specific
+/// functions are available in the distro module
 pub mod distro;
 pub mod su;
 pub mod db;
@@ -12,6 +12,7 @@ pub mod models;
 pub mod schema;
 pub mod arch;
 pub mod debian;
+pub mod freebsd;
 pub mod mint;
 pub mod ubuntu;
 pub mod void;
