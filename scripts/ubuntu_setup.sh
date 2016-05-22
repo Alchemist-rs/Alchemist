@@ -1,6 +1,7 @@
 #!/bin/sh
 
 #Install db depdendency
+sudo apt-get update
 sudo apt-get install sqlite3 libsqlite3-dev
 
 #Install multirust
