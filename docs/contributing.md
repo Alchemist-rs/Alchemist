@@ -14,11 +14,11 @@
 
 ##Adding a distro:
 A few things need to happen in order to add a distro to Alchemist.
-Please note that anything with a varible (eg $distroname) is intended
+Please note that anything with a variable (eg $distroname) is intended
 for you to replace.
 
 1. Open up an issue or comment on a request issue that you are adding
-   support and include the following as checkboxes. Comment on the issue
+   support and include the following as check boxes. Comment on the issue
    as the requirements below are completed so they can be checked off to
    know where the issue stands
 2. Add the distro to the Distro enum located in src/alchemy/distro.rs
@@ -43,16 +43,26 @@ for you to replace.
    releases. All we have to say is "Added $DISTRO support" w/ the
    package names being implicit.
 6. You'll also need to fill the down.sql with the following in order to
-   make sure a migration can be reverted:
-   ```
-   ALTER TABLE packages DROP COLUMN $distroname;
+   make sure a migration can be reverted. Also make sure to add the last few migrations to the CREATE TABLE and INSERT INTO.:
+   ```sql
+   CREATE TABLE new_packages (
+     id int PRIMARY KEY NOT NULL,
+     arch TEXT NOT NULL,
+     aur TEXT NOT NULL,
+     ubuntu TEXT NOT NULL,
+     ubuntu_dev TEXT NOT NULL
+   );
+
+   INSERT INTO new_packages SELECT id, arch, aur, ubuntu, ubuntu_dev FROM packages;
+
+   DROP TABLE IF EXISTS packages;
+   ALTER TABLE  new_packages RENAME TO packages;
    ```
 7. You're going to also have to provide a setup script under scripts for
    your distribution that sets up the db and gets all the dependencies
-   for the user as well as installing rust nightly using multirust
-   (until rustup.rs is stabilized). Please include on the issue an
-   output of the script running or a link to a text file of some sort
-   showing it ran as expected.
+   for the user as well as installing rust nightly using rustup.rs.
+   Please include on the issue an output of the script running or
+   a link to a text file of some sort showing it ran as expected.
 8. Add distro to the query in the package query method located in
    src/alchemy/db.rs
 9. Add install, upgrade, and refresh commands for your distribution.
