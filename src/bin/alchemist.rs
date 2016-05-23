@@ -6,7 +6,7 @@ extern crate diesel;
 // Alchemy Imports
 use alchemy::su;
 use alchemy::distro::{Distro, which_distro};
-use alchemy::{arch, debian, mint, ubuntu, void, freebsd};
+use alchemy::{arch, transmute};
 
 // Clap Imports
 use clap::{App, Arg};
@@ -76,49 +76,49 @@ fn main() {
             }
             arch::arch_install(package_inputs);
         }
-        Distro::Ubuntu => {
+        Distro::Debian => {
             if args.values_of("refresh").is_some() {
-                ubuntu::refresh_list();
+                transmute::refresh_list();
             } else if args.values_of("upgrade").is_some() {
-                ubuntu::upgrade_packages();
+                transmute::upgrade_packages();
             }
-            ubuntu::ubuntu_install(package_inputs);
+            transmute::distro_install(package_inputs);
         }
         Distro::Mint => {
             if args.values_of("refresh").is_some() {
-                mint::refresh_list();
+                transmute::refresh_list();
             } else if args.values_of("upgrade").is_some() {
-                mint::upgrade_packages();
+                transmute::upgrade_packages();
             }
-            mint::mint_install(package_inputs);
+            transmute::distro_install(package_inputs);
         }
-        Distro::Debian => {
+        Distro::Ubuntu => {
             if args.values_of("refresh").is_some() {
-                debian::refresh_list();
+                transmute::refresh_list();
             } else if args.values_of("upgrade").is_some() {
-                debian::upgrade_packages();
+                transmute::upgrade_packages();
             }
-            debian::debian_install(package_inputs);
+            transmute::distro_install(package_inputs);
+        }
+        Distro::Void => {
+            if args.values_of("refresh").is_some() {
+                transmute::refresh_list();
+            } else if args.values_of("upgrade").is_some() {
+                transmute::upgrade_packages();
+            }
+            transmute::distro_install(package_inputs);
+        }
+        Distro::FreeBSD => {
+            if args.values_of("refresh").is_some() {
+                transmute::refresh_list();
+            } else if args.values_of("upgrade").is_some() {
+                transmute::upgrade_packages();
+            }
+            transmute::distro_install(package_inputs);
         }
         Distro::Gentoo => println!("Gentoo"),
         Distro::Mac => println!("Mac"),
-        Distro::FreeBSD => {
-            if args.values_of("refresh").is_some() {
-                freebsd::refresh_list();
-            } else if args.values_of("upgrade").is_some() {
-                freebsd::upgrade_packages();
-            }
-            freebsd::freebsd_install(package_inputs);
-        }
         Distro::NetBSD => println!("NetBSD"),
         Distro::OpenBSD => println!("OpenBSD"),
-        Distro::Void => {
-            if args.values_of("refresh").is_some() {
-                void::refresh_list();
-            } else if args.values_of("upgrade").is_some() {
-                void::upgrade_packages();
-            }
-            void::void_install(package_inputs);
-        }
     }
 }
