@@ -46,6 +46,7 @@ pub fn pack_query(input_packages: HashSet<String>) -> HashSet<Package> {
         let results = packages.filter(arch.eq(&i)
                 .or(aur.eq(&i))
                 .or(debian.eq(&i))
+                .or(freebsd.eq(&i))
                 .or(mint.eq(&i))
                 .or(ubuntu.eq(&i))
                 .or(ubuntu_dev.eq(&i))

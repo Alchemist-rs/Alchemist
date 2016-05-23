@@ -6,7 +6,7 @@ extern crate diesel;
 // Alchemy Imports
 use alchemy::su;
 use alchemy::distro::{Distro, which_distro};
-use alchemy::{arch, debian, mint, ubuntu, void};
+use alchemy::{arch, debian, mint, ubuntu, void, freebsd};
 
 // Clap Imports
 use clap::{App, Arg};
@@ -102,7 +102,14 @@ fn main() {
         }
         Distro::Gentoo => println!("Gentoo"),
         Distro::Mac => println!("Mac"),
-        Distro::FreeBSD => println!("FreeBSD"),
+        Distro::FreeBSD => {
+            if args.values_of("refresh").is_some() {
+                freebsd::refresh_list();
+            } else if args.values_of("upgrade").is_some() {
+                freebsd::upgrade_packages();
+            }
+            freebsd::freebsd_install(package_inputs);
+        }
         Distro::NetBSD => println!("NetBSD"),
         Distro::OpenBSD => println!("OpenBSD"),
         Distro::Void => {

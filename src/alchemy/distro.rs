@@ -56,15 +56,20 @@ pub fn which_distro() -> Option<Distro> {
         return Some(Distro::Mint);
     }
 
-
+    // Checks for FreeBSD after the previous method
+    // tries using /proc/version
+    let freebsd = fs::metadata("/bin/freebsd-version");
+    if freebsd.is_ok() && freebsd.unwrap().is_file() {
+        return Some(Distro::FreeBSD);
+    }
     // Checks for Arch differently but only after the
-    // previous method trys by using /proc/version
+    // previous method checks for FreeBSD
     let arch = fs::metadata("/etc/arch-release");
     if arch.is_ok() && arch.unwrap().is_file() {
         return Some(Distro::Arch);
     }
     // Check for Debian differently but only after the
-    // previous method trys by using /etc/arch-release
+    // previous method has tried by using /etc/arch-release
     let debian = fs::metadata("/etc/debian_version");
     if debian.is_ok() && debian.unwrap().is_file() {
         return Some(Distro::Debian);

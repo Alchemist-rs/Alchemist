@@ -15,7 +15,7 @@ pub fn has_sudo() -> bool {
     let sudo = fs::metadata("/usr/bin/sudo");
 
     if sudo.is_ok() && sudo.unwrap().is_file() {
-        return true
+        return true;
     }
 
     false
@@ -36,6 +36,6 @@ pub fn has_sudo() -> bool {
 /// Currently this does not work
 ///
 pub fn is_root() -> bool {
-    //stub
+    // stub
     false
 }

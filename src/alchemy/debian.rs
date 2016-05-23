@@ -21,16 +21,16 @@ pub fn debian_install(packages: HashSet<String>) {
     }
 }
 
-///Convert package names from other distros to Debian
+/// Convert package names from other distros to Debian
 fn convert_to_debian(input_packages: HashSet<String>) -> HashSet<String> {
     let results = db::pack_query(input_packages);
     let mut apt_converted: HashSet<String> = HashSet::new();
 
-    //Using the querys store into the HashSet the actual
-    //Debian package name for use later
+    // Using the querys store into the HashSet the actual
+    // Debian package name for use later
     for i in results {
-        //All querys will either be a string or '' in the db
-        //allowing us to use is_empty()
+        // All querys will either be a string or '' in the db
+        // allowing us to use is_empty()
         if !i.debian.is_empty() {
             apt_converted.insert(i.debian);
         }
@@ -40,7 +40,7 @@ fn convert_to_debian(input_packages: HashSet<String>) -> HashSet<String> {
     apt_converted
 }
 
-//Apitude specific functions
+// Apitude specific functions
 
 /// Calls the aptitude program to install packages
 ///
@@ -54,15 +54,13 @@ fn convert_to_debian(input_packages: HashSet<String>) -> HashSet<String> {
 ///
 pub fn aptitude(mut packages: HashSet<String>) {
     let mut child = match Command::new("aptitude")
-            .arg("install")
-            .args(packages
-                  .drain()
-                  .collect::<Vec<String>>()
-                  .as_slice())
-            .spawn()
-    {
+        .arg("install")
+        .args(packages.drain()
+            .collect::<Vec<String>>()
+            .as_slice())
+        .spawn() {
         Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
+        Err(e) => panic!("Failed to execute child: {}", e),
     };
     let _unused = child.wait();
 }
@@ -77,11 +75,10 @@ pub fn aptitude(mut packages: HashSet<String>) {
 ///
 pub fn refresh_list() {
     let mut child = match Command::new("aptitude")
-            .arg("update")
-            .spawn()
-    {
+        .arg("update")
+        .spawn() {
         Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
+        Err(e) => panic!("Failed to execute child: {}", e),
     };
     let _unused = child.wait();
 }
@@ -96,11 +93,10 @@ pub fn refresh_list() {
 ///
 pub fn upgrade_packages() {
     let mut child = match Command::new("aptitude")
-            .arg("install")
-            .spawn()
-    {
+        .arg("install")
+        .spawn() {
         Ok(child) => child,
-        Err(e)    => panic!("Failed to execute child: {}",e),
+        Err(e) => panic!("Failed to execute child: {}", e),
     };
     let _unused = child.wait();
 }
