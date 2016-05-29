@@ -11,11 +11,7 @@ pub mod db;
 pub mod models;
 pub mod schema;
 pub mod arch;
-pub mod debian;
-pub mod freebsd;
-pub mod mint;
-pub mod ubuntu;
-pub mod void;
+pub mod transmute;
 
 #[macro_use]
 extern crate diesel;
