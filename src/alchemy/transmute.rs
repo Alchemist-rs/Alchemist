@@ -33,43 +33,51 @@ fn convert_to_distro(input_packages: HashSet<String>) -> HashSet<String> {
     let results = db::pack_query(input_packages);
     let mut pac_converted: HashSet<String> = HashSet::new();
 
-    // Using the querys store into the HashSet the actual
-    // Distro package name for use later
-    for i in results {
-        // All querys will either be a string or '' in the db
-        // allowing us to use is_empty()
-        match which_distro().expect("None found, Distro was not handled") {
-            Distro::Ubuntu => {
+    // All querys will either be a string or '' in the db allowing us to
+    // use is_empty()
+    // Finds out what distro is used and inserts the proper conversions
+    // into the HashSet to be returned from the function
+    match which_distro().expect("None found, Distro was not handled") {
+        Distro::Ubuntu => {
+            for i in results {
                 if !i.ubuntu.is_empty() {
                     pac_converted.insert(i.ubuntu);
                 }
             }
-            Distro::Void => {
+        }
+        Distro::Void => {
+            for i in results {
                 if !i.void.is_empty() {
                     pac_converted.insert(i.void);
                 }
             }
-            Distro::Debian => {
+        }
+        Distro::Debian => {
+            for i in results {
                 if !i.debian.is_empty() {
                     pac_converted.insert(i.debian);
                 }
             }
-            Distro::Mint => {
+        }
+        Distro::Mint => {
+            for i in results {
                 if !i.mint.is_empty() {
                     pac_converted.insert(i.mint);
                 }
             }
-            Distro::FreeBSD => {
+        }
+        Distro::FreeBSD => {
+            for i in results {
                 if !i.freebsd.is_empty() {
                     pac_converted.insert(i.freebsd);
                 }
             }
-            Distro::Gentoo => println!("Gentoo"),
-            Distro::Mac => println!("Mac"),
-            Distro::NetBSD => println!("NetBSD"),
-            Distro::OpenBSD => println!("OpenBSD"),
-            Distro::Arch => println!("Arch"),
         }
+        Distro::Gentoo => println!("Gentoo"),
+        Distro::Mac => println!("Mac"),
+        Distro::NetBSD => println!("NetBSD"),
+        Distro::OpenBSD => println!("OpenBSD"),
+        Distro::Arch => println!("Arch"),
     }
 
     pac_converted
