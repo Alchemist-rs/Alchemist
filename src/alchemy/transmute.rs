@@ -18,7 +18,6 @@ use db;
 /// let mut packages: HashSet<&str> = HashSet::new();
 /// packages.push("sudo");
 /// packages.push("postgresql");
-/// void_install(packages);
 /// ```
 ///
 pub fn distro_install(packages: HashSet<String>) {
@@ -99,54 +98,19 @@ pub fn pac(mut packages: HashSet<String>) {
 
     match which_distro().expect("None found, Distro was not handled") {
         Distro::Ubuntu => {
-            let mut child = match Command::new("apt-get")
-                .arg("install")
-                .args(packages.drain().collect::<Vec<String>>().as_slice())
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("apt-get", "install", &packages)
         }
         Distro::Void => {
-            let mut child = match Command::new("xbps-install")
-                .arg("-Sy")
-                .args(packages.drain().collect::<Vec<String>>().as_slice())
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("apt-get", "install", &packages)
         }
         Distro::Debian => {
-            let mut child = match Command::new("apt-get")
-                .arg("install")
-                .args(packages.drain().collect::<Vec<String>>().as_slice())
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("apt-get", "install", &packages)
         }
         Distro::Mint => {
-            let mut child = match Command::new("apt-get")
-                .arg("install")
-                .args(packages.drain().collect::<Vec<String>>().as_slice())
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("apt-get", "install", &packages)
         }
         Distro::FreeBSD => {
-            let mut child = match Command::new("pkg")
-                .arg("install")
-                .args(packages.drain().collect::<Vec<String>>().as_slice())
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("pkg", "install", &packages)
         }
         Distro::Gentoo => println!("Gentoo"),
         Distro::Mac => println!("Mac"),
@@ -156,7 +120,7 @@ pub fn pac(mut packages: HashSet<String>) {
     }
 }
 
-/// Calls the xbps-install program to refresh the package list
+/// Calls the package manager program to refresh the package list
 ///
 /// #Examples
 ///
@@ -167,49 +131,19 @@ pub fn pac(mut packages: HashSet<String>) {
 pub fn refresh_list() {
     match which_distro().expect("None found, Distro was not handled") {
         Distro::Ubuntu => {
-            let mut child = match Command::new("apt-get")
-                .arg("update")
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("apt-get", "update", &packages)
         }
         Distro::Void => {
-            let mut child = match Command::new("xbps-install")
-                .arg("-Sy")
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("xbps-install", "-Sy", &packages)
         }
         Distro::Debian => {
-            let mut child = match Command::new("apt-get")
-                .arg("update")
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("apt-get", "update", &packages)
         }
         Distro::Mint => {
-            let mut child = match Command::new("apt-get")
-                .arg("update")
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("apt-get", "update", &packages)
         }
         Distro::FreeBSD => {
-            let mut child = match Command::new("pkg")
-                .arg("update")
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("pkg", "update", &packages)
         }
         Distro::Gentoo => println!("Gentoo"),
         Distro::Mac => println!("Mac"),
@@ -219,61 +153,31 @@ pub fn refresh_list() {
     }
 }
 
-/// Calls the xbps-install program to upgrage all packages
+/// Calls the package manager program to upgrage all packages
 ///
 /// #Examples
 ///
 /// ```
-/// refresh_list();
+/// upgrade_packages();
 /// ```
 ///
 pub fn upgrade_packages() {
 
     match which_distro().expect("None found, Distro was not handled") {
         Distro::Ubuntu => {
-            let mut child = match Command::new("apt-get")
-                .arg("upgrade")
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("apt-get", "upgrade", &packages)
         }
         Distro::Void => {
-            let mut child = match Command::new("xbps-install")
-                .arg("-Syu")
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("xbps-installt", "-Syu", &packages)
         }
         Distro::Debian => {
-            let mut child = match Command::new("apt-get")
-                .arg("upgrade")
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("apt-get", "upgrade", &packages)
         }
         Distro::Mint => {
-            let mut child = match Command::new("apt-get")
-                .arg("upgrade")
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("apt-get", "upgrade", &packages)
         }
         Distro::FreeBSD => {
-            let mut child = match Command::new("pkg")
-                .arg("upgrade")
-                .spawn() {
-                Ok(child) => child,
-                Err(e) => panic!("Failed to execute child: {}", e),
-            };
-            let _unused = child.wait();
+            package_manager_command("pkg", "upgrade", &packages)
         }
         Distro::Gentoo => println!("Gentoo"),
         Distro::Mac => println!("Mac"),
@@ -281,4 +185,27 @@ pub fn upgrade_packages() {
         Distro::OpenBSD => println!("OpenBSD"),
         Distro::Arch => println!("Arch"),
     }
+}
+
+/// Spawns package manager specific command
+/// NOTE: the last argument requires the package list which
+/// should be set to packages, therefore passing &packages
+/// will be enough.
+///
+/// #Examples
+///
+/// ```
+/// package_manager_command("apt-get", "install", &packages)
+/// ```
+///
+pub fn package_manager_command(command: String, arg: String, packages: &Packages) {
+    let mut child = match Command::new(command)
+               .arg(arg)
+               .args(packages.drain().collect::<Vec<String>>().as_slice())
+               .spawn() {
+               Ok(child) => child,
+               Err(e) => panic!("Failed to execute child: {}", e),
+           };
+           let _unused = child.wait();
+       }
 }
