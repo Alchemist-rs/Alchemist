@@ -203,7 +203,7 @@ pub fn package_manager_command(command: &str, arg: &str, packages: Option<HashSe
         Some(x) => {
             let mut child = match Command::new(command)
                .arg(arg)
-               .args(packages.drain().collect::<Vec<String>>().as_slice())
+               .args(x)
                .spawn() {
                Ok(child) => child,
                Err(e) => panic!("Failed to execute child: {}", e),
