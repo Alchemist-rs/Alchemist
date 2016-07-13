@@ -94,7 +94,7 @@ fn convert_to_distro(input_packages: HashSet<String>) -> HashSet<String> {
 /// pac(packages);
 /// ```
 ///
-pub fn pac(mut packages: HashSet<String>) {
+pub fn pac(packages: HashSet<String>) {
 
     match which_distro().expect("None found, Distro was not handled") {
         Distro::Ubuntu => {
@@ -200,10 +200,10 @@ pub fn upgrade_packages() {
 ///
 pub fn package_manager_command(command: &str, arg: &str, packages: Option<HashSet<String>>) {
     match packages {
-        Some(x) => {
+        Some(mut x) => {
             let mut child = match Command::new(command)
                .arg(arg)
-               .args(x)
+               .args(x.drain().collect::<Vec<String>>().as_slice())
                .spawn() {
                Ok(child) => child,
                Err(e) => panic!("Failed to execute child: {}", e),
