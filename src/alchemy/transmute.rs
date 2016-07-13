@@ -207,5 +207,4 @@ pub fn package_manager_command(command: String, arg: String, packages: &Packages
                Err(e) => panic!("Failed to execute child: {}", e),
            };
            let _unused = child.wait();
-       }
 }
