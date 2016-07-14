@@ -94,23 +94,23 @@ fn convert_to_distro(input_packages: HashSet<String>) -> HashSet<String> {
 /// pac(packages);
 /// ```
 ///
-pub fn pac(mut packages: HashSet<String>) {
+pub fn pac(packages: HashSet<String>) {
 
     match which_distro().expect("None found, Distro was not handled") {
         Distro::Ubuntu => {
-            package_manager_command("apt-get", "install", &packages)
+            package_manager_command("apt-get", "install", Some(packages))
         }
         Distro::Void => {
-            package_manager_command("apt-get", "install", &packages)
+            package_manager_command("apt-get", "install", Some(packages))
         }
         Distro::Debian => {
-            package_manager_command("apt-get", "install", &packages)
+            package_manager_command("apt-get", "install", Some(packages))
         }
         Distro::Mint => {
-            package_manager_command("apt-get", "install", &packages)
+            package_manager_command("apt-get", "install", Some(packages))
         }
         Distro::FreeBSD => {
-            package_manager_command("pkg", "install", &packages)
+            package_manager_command("pkg", "install", Some(packages))
         }
         Distro::Gentoo => println!("Gentoo"),
         Distro::Mac => println!("Mac"),
@@ -131,19 +131,19 @@ pub fn pac(mut packages: HashSet<String>) {
 pub fn refresh_list() {
     match which_distro().expect("None found, Distro was not handled") {
         Distro::Ubuntu => {
-            package_manager_command("apt-get", "update", &packages)
+            package_manager_command("apt-get", "update", None)
         }
         Distro::Void => {
-            package_manager_command("xbps-install", "-Sy", &packages)
+            package_manager_command("xbps-install", "-Sy", None)
         }
         Distro::Debian => {
-            package_manager_command("apt-get", "update", &packages)
+            package_manager_command("apt-get", "update", None)
         }
         Distro::Mint => {
-            package_manager_command("apt-get", "update", &packages)
+            package_manager_command("apt-get", "update", None)
         }
         Distro::FreeBSD => {
-            package_manager_command("pkg", "update", &packages)
+            package_manager_command("pkg", "update", None)
         }
         Distro::Gentoo => println!("Gentoo"),
         Distro::Mac => println!("Mac"),
@@ -165,19 +165,19 @@ pub fn upgrade_packages() {
 
     match which_distro().expect("None found, Distro was not handled") {
         Distro::Ubuntu => {
-            package_manager_command("apt-get", "upgrade", &packages)
+            package_manager_command("apt-get", "upgrade", None)
         }
         Distro::Void => {
-            package_manager_command("xbps-installt", "-Syu", &packages)
+            package_manager_command("xbps-installt", "-Syu", None)
         }
         Distro::Debian => {
-            package_manager_command("apt-get", "upgrade", &packages)
+            package_manager_command("apt-get", "upgrade", None)
         }
         Distro::Mint => {
-            package_manager_command("apt-get", "upgrade", &packages)
+            package_manager_command("apt-get", "upgrade", None)
         }
         Distro::FreeBSD => {
-            package_manager_command("pkg", "upgrade", &packages)
+            package_manager_command("pkg", "upgrade", None)
         }
         Distro::Gentoo => println!("Gentoo"),
         Distro::Mac => println!("Mac"),
@@ -198,14 +198,26 @@ pub fn upgrade_packages() {
 /// package_manager_command("apt-get", "install", &packages)
 /// ```
 ///
-pub fn package_manager_command(command: String, arg: String, packages: &Packages) {
-    let mut child = match Command::new(command)
+pub fn package_manager_command(command: &str, arg: &str, packages: Option<HashSet<String>>) {
+    match packages {
+        Some(mut x) => {
+            let mut child = match Command::new(command)
                .arg(arg)
-               .args(packages.drain().collect::<Vec<String>>().as_slice())
+               .args(x.drain().collect::<Vec<String>>().as_slice())
                .spawn() {
                Ok(child) => child,
                Err(e) => panic!("Failed to execute child: {}", e),
            };
            let _unused = child.wait();
-       }
+       },
+        None => {
+            let mut child = match Command::new(command)
+                       .arg(arg)
+                       .spawn() {
+                       Ok(child) => child,
+                       Err(e) => panic!("Failed to execute child: {}", e),
+                   };
+                   let _unused = child.wait();
+        },
+    }
 }
