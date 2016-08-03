@@ -7,15 +7,7 @@ env:
   global:
   - PATH=$PATH:~/.cargo/bin
 rust:
-- nightly-2016-05-08
-- nightly
-- beta
-- stable
-matrix:
-  allow_failures:
-  - rust: nightly
-  - rust: stable
-  - rust: beta
+- nightly-2016-08-02
 script:
 - cargo install diesel_cli
 - diesel setup

@@ -57,8 +57,10 @@ Due to certain needed features we've pegged a specific version of the rust night
 Currently using:
 
 ```
-nightly-2016-05-08
+nightly-2016-08-02
 ```
+
+This is also the first release that has MIR turned on by default.
 
 ###Native Library Dependencies
 
