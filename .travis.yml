@@ -7,7 +7,7 @@ env:
   global:
   - PATH=$PATH:~/.cargo/bin
 rust:
-- nightly-2016-08-02
+- nightly-2016-08-18
 script:
 - cargo install diesel_cli
 - diesel setup
