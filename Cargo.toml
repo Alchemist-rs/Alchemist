@@ -14,11 +14,11 @@ name = "alchemist"
 path = "src/bin/alchemist.rs"
 
 [dependencies]
-clap = "2.10.0"
-diesel = { version = "0.7.0", features = ["sqlite"] }
-diesel_codegen = { version = "0.7.0", features = ["sqlite"] }
-dotenv = "0.8.0"
-dotenv_macros = "0.9.0"
+clap = "^2.10.0"
+diesel = { version = "^0.7.0", features = ["sqlite"] }
+diesel_codegen = { version = "^0.7.0", features = ["sqlite"] }
+dotenv = "^0.8.0"
+dotenv_macros = "^0.9.0"
 
 [lib]
 name = "alchemy"

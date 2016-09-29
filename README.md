@@ -17,7 +17,8 @@
 Currently the project is not dead. Being busy with my final year of CS
 Classes and with a job as well makes keeping up with projects really hard.
 I would love to continue this project and make it grow further when
-I have the time. Contributions are of course always welcome and are easy
+I have the time. I may be working on it for my engineering class but
+that is uncertain. Contributions are of course always welcome and are easy
 to review as I have enough time to do that itself.
 
 ###Inspiration
@@ -64,7 +65,7 @@ Due to certain needed features we've pegged a specific version of the rust night
 Currently using:
 
 ```
-nightly-2016-08-02
+nightly-2016-08-18
 ```
 
 This is also the first release that has MIR turned on by default.
