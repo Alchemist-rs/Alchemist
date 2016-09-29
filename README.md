@@ -13,6 +13,13 @@
 
 [![Build Status](https://travis-ci.org/Alchemist-rs/Alchemist.svg?branch=dev)](https://travis-ci.org/Alchemist-rs/Alchemist)
 
+### Project Status
+Currently the project is not dead. Being busy with my final year of CS
+Classes and with a job as well makes keeping up with projects really hard.
+I would love to continue this project and make it grow further when
+I have the time. Contributions are of course always welcome and are easy
+to review as I have enough time to do that itself.
+
 ###Inspiration
 I was tired of having to search for what packages I have to use for what
 distribution. Some I had to download two separate ones others I just had
