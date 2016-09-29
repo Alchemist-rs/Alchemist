@@ -1,13 +1,16 @@
 sudo: required
-dist: trusty
+os:
+  - linux
+  - osx
 language: rust
 cache:
 - apt
+- cargo
 env:
   global:
   - PATH=$PATH:~/.cargo/bin
 rust:
-- nightly-2016-08-02
+- stable
 script:
 - cargo install diesel_cli
 - diesel setup
@@ -15,6 +18,3 @@ script:
 - cargo build
 notifications:
   email: false
-  slack:
-    rooms:
-      secure: lxJi2t2f7kPd6q0YKRZHl0qh3ZKYx2jC37QFdJU+n37XZNV+ZA1AquAp25yxhKeZnp4S9LD7/Kd8NdRa2Ld9r4KkGBKYuw+dS9Hc5y09TugovhT6KVypa2i9Fj9pbINjdC4t+3ixSccnEcW/gxfAJsYlXIWGbVFcQebLI9QkSsrnBW95YF6j3uvUgJYVDpPBnNyZFjkINUZQH1nWP4FfoSKJvVpo6GLXE5iAUZnhBa/fqgFyThbVeVdfBfU9t1XxMjsc5k1cvHCqS3p0ks/2yHLbqcrJlUjIa8i15YBxxKb8P6ggRlEDZxl3aykrmcjZAcCWT/51OgDrLsaDZ/wT4OEJ+UR3NorfbYLW2LKjjFLH29LaISM1jQXx5iyst5Agso327CCQ2+B1tHymkVBIeWzjarcmmkibn6UjFhbSi+T0dYgQks0HvCgufKHZ9gzTmRlLMaVb0OWavrUssEz4iP4ZZVB22I0+5hxJ/YDSNV43mHdTGLL+gi4Up6cRntkBD1weA/J1qAQLO0QOvMVf8fJ+q7seJP5Rg5ywbgFgpSWrAtEgL5evSQmXkznu8Ku/RCSXdFqd86XDlE/SzH1UWZDIn2H2IlzTlHnJbi9YprNW7hPLbqI2zMFG1NCa1yNKJ1N5Lcdtp04ljZMvLXkeiWoDhnS1BEozP7hhukDM/i0=

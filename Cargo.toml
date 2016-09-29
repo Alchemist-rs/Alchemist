@@ -1,12 +1,12 @@
 [package]
 authors = ["Michael Gattozzi <mgattozzi@gmail.com>"]
 build = "build.rs"
-documentation = "http://mgattozzi.github.io/Alchemist"
-homepage = "https://github.com/mgattozzi/Alchemist"
-license = "BSD3"
+documentation = "http://mgattozzi.github.io/alchemist"
+homepage = "https://github.com/mgattozzi/alchemist"
+license = "MIT/Apache2"
 name = "Alchemist"
 readme = "README.md"
-repository = "https://github.com/mgattozzi/Alchemist"
+repository = "https://github.com/mgattozzi/alchemist"
 version = "0.4.0"
 
 [[bin]]
@@ -14,54 +14,11 @@ name = "alchemist"
 path = "src/bin/alchemist.rs"
 
 [dependencies]
-clap = "2.10.0"
-diesel = { version = "0.7.0", features = ["sqlite"] }
-diesel_codegen = { version = "0.7.0", features = ["sqlite"] }
-dotenv = "0.8.0"
-dotenv_macros = "0.9.0"
+clap = "^2.20"
+diesel = { version = "^0.10.0", features = ["sqlite"] }
+diesel_codegen = { version = "^0.10.0", features = ["sqlite"] }
+dotenv = "^0.8.0"
 
 [lib]
 name = "alchemy"
 path = "src/alchemy/lib.rs"
-
-[profile]
-
-[profile.bench]
-codegen-units = 1
-debug = false
-debug-assertions = false
-lto = false
-opt-level = 3
-rpath = false
-
-[profile.dev]
-codegen-units = 1
-debug = true
-debug-assertions = true
-lto = false
-opt-level = 0
-rpath = false
-
-[profile.doc]
-codegen-units = 1
-debug = true
-debug-assertions = true
-lto = false
-opt-level = 0
-rpath = false
-
-[profile.release]
-codegen-units = 1
-debug = false
-debug-assertions = false
-lto = false
-opt-level = 3
-rpath = false
-
-[profile.test]
-codegen-units = 1
-debug = true
-debug-assertions = true
-lto = false
-opt-level = 0
-rpath = false

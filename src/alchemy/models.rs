@@ -1,5 +1,5 @@
-#[derive(Queryable,PartialEq,PartialOrd,Eq,Ord,Hash,Debug)]
 /// Struct for a row in the Alchemist package table
+#[derive(PartialEq,PartialOrd,Eq,Ord,Hash,Debug, Queryable)]
 pub struct Package {
     /// Row Number makes it easy for migration
     pub id: i32,
