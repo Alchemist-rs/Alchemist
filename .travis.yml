@@ -8,10 +8,15 @@ env:
   - PATH=$PATH:~/.cargo/bin
 rust:
 - stable
+install: cargo install diesel_cli
 script:
-- cargo install diesel_cli
-- diesel setup
-- diesel migration run
-- cargo build
+    - cd alchemist
+    - diesel setup
+    - diesel migration run
+    - cargo build
+    - cd ../alchemist_server
+    - diesel setup
+    - diesel migration run
+    - cargo build
 notifications:
   email: false

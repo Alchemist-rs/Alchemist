@@ -1,0 +1,12 @@
+[package]
+name = "alchemist_server"
+version = "0.4.0"
+authors = ["Michael Gattozzi <mgattozzi@gmail.com>"]
+build = true
+documentation = "http://mgattozzi.github.io/alchemist"
+homepage = "https://github.com/mgattozzi/alchemist"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/mgattozzi/alchemist"
+
+[dependencies]
