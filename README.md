@@ -9,15 +9,12 @@
 
 [![Build Status](https://travis-ci.org/Alchemist-rs/Alchemist.svg?branch=master)](https://travis-ci.org/Alchemist-rs/Alchemist)
 
-**Dev:**
-
-[![Build Status](https://travis-ci.org/Alchemist-rs/Alchemist.svg?branch=dev)](https://travis-ci.org/Alchemist-rs/Alchemist)
-
 ### Project Status
 Currently the project is not dead. Being busy with my final year of CS
 Classes and with a job as well makes keeping up with projects really hard.
 I would love to continue this project and make it grow further when
-I have the time. Contributions are of course always welcome and are easy
+I have the time. I may be working on it for my engineering class but
+that is uncertain. Contributions are of course always welcome and are easy
 to review as I have enough time to do that itself.
 
 ###Inspiration
@@ -54,20 +51,8 @@ and make it easy to install things regardless of your package manager.
   - Write tests! Unit tests and integration tests that can be run on a
     CI instance is a big plus and adds better code coverage!
 
-###Slack
-We communicate using Slack using it as a central way to track issues
-etc. If you'd like to join us send an email to mgattozzi@gmail.com
-with the Subject Line [Slack Alchemist] and you'll get an invite.
-
-###Compiler Version
-Due to certain needed features we've pegged a specific version of the rust nightly compiler
-Currently using:
-
-```
-nightly-2016-08-02
-```
-
-This is also the first release that has MIR turned on by default.
+###Compiler Support
+Stable 1.15
 
 ###Native Library Dependencies
 
@@ -85,8 +70,8 @@ already have cargo and sqlite setup just run:
 cargo build
 ```
 
-The build script automatically installs the diesel_cli tool if you don't
-have it and runs any available migrations for the db for you each build.
+The build script automatically installs the `diesel_cli` tool if you don't
+have it and runs any available migrations for the database for you each build.
 
 ####Arch Linux
 To get setup for development run:
@@ -101,3 +86,18 @@ sh scripts/arch_setup.sh
  ```
  sh scripts/void_setup.sh
  ```
+
+## License
+
+Licensed under either of
+
+ * Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
+ * MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+
+at your option.
+
+### Contribution
+
+Unless you explicitly state otherwise, any contribution intentionally submitted
+for inclusion in the work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any
+additional terms or conditions.
