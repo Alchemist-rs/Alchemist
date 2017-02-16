@@ -1,0 +1,24 @@
+[package]
+authors = ["Michael Gattozzi <mgattozzi@gmail.com>"]
+build = true
+documentation = "http://mgattozzi.github.io/alchemist"
+homepage = "https://github.com/mgattozzi/alchemist"
+license = "MIT OR Apache-2.0"
+name = "alchemist"
+readme = "README.md"
+repository = "https://github.com/mgattozzi/alchemist"
+version = "0.4.0"
+
+[[bin]]
+name = "alchemist"
+path = "src/bin/alchemist.rs"
+
+[dependencies]
+clap = "^2.20"
+diesel = { version = "^0.10.0", features = ["sqlite"] }
+diesel_codegen = { version = "^0.10.0", features = ["sqlite"] }
+dotenv = "^0.8.0"
+
+[lib]
+name = "alchemy"
+path = "src/alchemy/lib.rs"
