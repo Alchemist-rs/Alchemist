@@ -9,6 +9,9 @@ env:
 rust:
 - stable
 script:
+- cd alchemist
+- cargo build
+- cd ../alchemist_server
 - cargo install diesel_cli
 - diesel setup
 - diesel migration run
