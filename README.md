@@ -9,10 +9,6 @@
 
 [![Build Status](https://travis-ci.org/Alchemist-rs/Alchemist.svg?branch=master)](https://travis-ci.org/Alchemist-rs/Alchemist)
 
-**Dev:**
-
-[![Build Status](https://travis-ci.org/Alchemist-rs/Alchemist.svg?branch=dev)](https://travis-ci.org/Alchemist-rs/Alchemist)
-
 ### Project Status
 Currently the project is not dead. Being busy with my final year of CS
 Classes and with a job as well makes keeping up with projects really hard.
