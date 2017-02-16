@@ -7,7 +7,7 @@
 
 **Master:**
 
-[![Build Status](https://travis-ci.org/Alchemist-rs/Alchemist.svg?branch=master)](https://travis-ci.org/Alchemist-rs/Alchemist)
+[![Build Status](https://travis-ci.org/mgattozzi/alchemist.svg?branch=master)](https://travis-ci.org/mgattozzi/alchemist)
 
 ### Project Status
 Currently the project is not dead. Being busy with my final year of CS
@@ -86,6 +86,9 @@ sh scripts/arch_setup.sh
  ```
  sh scripts/void_setup.sh
  ```
+
+## Get in contact
+Join us on [Discord](https://discord.gg/3w9JhWy) if you need help or want to help contribute!
 
 ## License
 
