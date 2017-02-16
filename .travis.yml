@@ -3,9 +3,6 @@ os:
   - linux
   - osx
 language: rust
-cache:
-- apt
-- cargo
 env:
   global:
   - PATH=$PATH:~/.cargo/bin
