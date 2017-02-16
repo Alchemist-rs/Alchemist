@@ -6,7 +6,6 @@ build = true
 documentation = "http://mgattozzi.github.io/alchemist"
 homepage = "https://github.com/mgattozzi/alchemist"
 license = "MIT OR Apache-2.0"
-name = "alchemist_server"
 readme = "README.md"
 repository = "https://github.com/mgattozzi/alchemist"
 
