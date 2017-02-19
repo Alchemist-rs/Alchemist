@@ -77,3 +77,7 @@ pub fn which_distro() -> Option<Distro> {
     // No distro was found to match
     None
 }
+
+pub trait Distribution {
+
+}
