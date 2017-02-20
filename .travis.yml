@@ -1,22 +1,74 @@
-sudo: required
+sudo: false
 os:
-  - linux
-  - osx
+- linux
+- osx
+cache: cargo
+addons:
+  apt:
+    packages:
+    - libcurl4-openssl-dev
+    - libelf-dev
+    - libdw-dev
+    - binutils-dev
 language: rust
-env:
-  global:
-  - PATH=$PATH:~/.cargo/bin
 rust:
 - stable
-install: cargo install diesel_cli
+- beta
+- nightly
+matrix:
+  fast_finish: true
+  allow_failures:
+  - rust: nightly
+  - rust: beta
+  exclude:
+  - rust: beta
+    env: RUSTFMT=client
+  - rust: beta
+    env: RUSTFMT=server
+  - rust: beta
+    env: DOC=client
+  - rust: beta
+    env: DOC=server
+  - rust: nightly
+    env: RUSTFMT=client
+  - rust: nightly
+    env: RUSTFMT=server
+  - rust: nightly
+    env: DOC=client
+  - rust: nightly
+    env: DOC=server
+  - os: osx
+    env: RUSTFMT=client
+  - os: osx
+    env: RUSTFMT=server
+  - os: osx
+    env: DOC=client
+  - os: osx
+    env: DOC=server
+env:
+  global:
+  - TRAVIS_CARGO_NIGHTLY_FEATURE=dev
+  - PATH=$PATH:~/.cargo/bin
+  - secure: BYaWoREFSKxHdVBCBR7iVzKvK3UMf7lvzzjl2B9V6TUmsK5MiCCXoOS98whB22UCFXSy6j2Z9xaBpoqxtPZDCLjLldS6DZH01lU/qcgRUyUghjlahJO+fk05fFHXtzWYueuN92ctEIC2o2BidOs8U/67TBwmzcTtAX4mWc0bO41oCwnjzbRZm8E1j35Zo0yjyT/E/r40Zo6+iUi5Bphj2xDzJAEzeDrgQOFF+C9N5Zu75IZejaE4BJoIgMZ58tbX1IuSmHgr1Po+Smx0Pt537Fr00ZFUsLHPGYhF8RfbM0j/O0vXonogMfrB5Iidc6vpDKEWW4u721h/2IEbKnDq3+0k+2b9uX7tLOgDjkBhr4d1P1rNbGAIAxO9hqhY6g7brm2BHvrlYfn6YxuiYgr8aRzV1BVZ4t75aAoJptSQMQAQtJDH7KX0GJvmID0ulHiosnGVFC+ocWsALgKaeZCHuL0jbSbRr42hRSO48Y1x5AsSPIj/aMcYbgsNN049xrWTlVLZdebLFcPbeLFM1AUAvR8C+4l9jkAMJRX2wAY1vh9V+hDLUHyzkgR21cNWVyvJh6ucEyrRYmoqNLhg5Q1vpN832jPoJs0TG8WUb1Q9aaxpbYvHUoqCqr9T2SOz9f3IQnB6/29wCAjneBI6hAlaqR2EJ9BD23rozEbLWMGwtWk=
+  matrix:
+      - RUSTFMT=client
+      - RUSTFMT=server
+      - DOC=client
+      - DOC=server
+      - BUILD=client
+      - BUILD=server
+      - TEST=client
+      - TEST=server
+install:
+- "./ci/install_job_specific_deps.sh"
+- |
+  pip install 'travis-cargo<0.2' --user &&
+  export PATH=$HOME/.local/bin:$PATH
 script:
-    - cd alchemist
-    - diesel setup
-    - diesel migration run
-    - cargo build
-    - cd ../alchemist_server
-    - diesel setup
-    - diesel migration run
-    - cargo build
+- "./ci/tests.sh"
+after_success:
+- "./ci/after_build.sh"
+after_failure:
+- "./ci/after_build.sh"
 notifications:
   email: false
