@@ -19,6 +19,11 @@ diesel = { version = "^0.10.0", features = ["sqlite"], default-features = false 
 diesel_cli = { version = "^0.11", features = ["sqlite"], default-features = false }
 diesel_codegen = { version = "^0.10.0", features = ["sqlite", "dotenv"], default-features = false }
 dotenv = "^0.8.0"
+clippy = {version = "*", optional = true}
+
+[features]
+default = []
+dev = ["clippy"]
 
 [lib]
 name = "alchemy"
