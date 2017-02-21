@@ -1,13 +1,14 @@
 // Distro enum import
+
 use super::distro::{Distro, which_distro};
+
+use db;
+// Std Lib Imports
+use std::collections::HashSet;
 
 // Imports needed to run each command
 use std::process::Command;
-// Std Lib Imports
-use std::collections::HashSet;
 use std::string::String;
-
-use db;
 
 /// Installs packages for what ever Distro is returned
 /// from which_distro();
@@ -97,21 +98,11 @@ fn convert_to_distro(input_packages: HashSet<String>) -> HashSet<String> {
 pub fn pac(packages: HashSet<String>) {
 
     match which_distro().expect("None found, Distro was not handled") {
-        Distro::Ubuntu => {
-            package_manager_command("apt-get", "install", Some(packages))
-        }
-        Distro::Void => {
-            package_manager_command("apt-get", "install", Some(packages))
-        }
-        Distro::Debian => {
-            package_manager_command("apt-get", "install", Some(packages))
-        }
-        Distro::Mint => {
-            package_manager_command("apt-get", "install", Some(packages))
-        }
-        Distro::FreeBSD => {
-            package_manager_command("pkg", "install", Some(packages))
-        }
+        Distro::Ubuntu => package_manager_command("apt-get", "install", Some(packages)),
+        Distro::Void => package_manager_command("apt-get", "install", Some(packages)),
+        Distro::Debian => package_manager_command("apt-get", "install", Some(packages)),
+        Distro::Mint => package_manager_command("apt-get", "install", Some(packages)),
+        Distro::FreeBSD => package_manager_command("pkg", "install", Some(packages)),
         Distro::Gentoo => println!("Gentoo"),
         Distro::Mac => println!("Mac"),
         Distro::NetBSD => println!("NetBSD"),
@@ -130,21 +121,11 @@ pub fn pac(packages: HashSet<String>) {
 ///
 pub fn refresh_list() {
     match which_distro().expect("None found, Distro was not handled") {
-        Distro::Ubuntu => {
-            package_manager_command("apt-get", "update", None)
-        }
-        Distro::Void => {
-            package_manager_command("xbps-install", "-Sy", None)
-        }
-        Distro::Debian => {
-            package_manager_command("apt-get", "update", None)
-        }
-        Distro::Mint => {
-            package_manager_command("apt-get", "update", None)
-        }
-        Distro::FreeBSD => {
-            package_manager_command("pkg", "update", None)
-        }
+        Distro::Ubuntu => package_manager_command("apt-get", "update", None),
+        Distro::Void => package_manager_command("xbps-install", "-Sy", None),
+        Distro::Debian => package_manager_command("apt-get", "update", None),
+        Distro::Mint => package_manager_command("apt-get", "update", None),
+        Distro::FreeBSD => package_manager_command("pkg", "update", None),
         Distro::Gentoo => println!("Gentoo"),
         Distro::Mac => println!("Mac"),
         Distro::NetBSD => println!("NetBSD"),
@@ -164,21 +145,11 @@ pub fn refresh_list() {
 pub fn upgrade_packages() {
 
     match which_distro().expect("None found, Distro was not handled") {
-        Distro::Ubuntu => {
-            package_manager_command("apt-get", "upgrade", None)
-        }
-        Distro::Void => {
-            package_manager_command("xbps-installt", "-Syu", None)
-        }
-        Distro::Debian => {
-            package_manager_command("apt-get", "upgrade", None)
-        }
-        Distro::Mint => {
-            package_manager_command("apt-get", "upgrade", None)
-        }
-        Distro::FreeBSD => {
-            package_manager_command("pkg", "upgrade", None)
-        }
+        Distro::Ubuntu => package_manager_command("apt-get", "upgrade", None),
+        Distro::Void => package_manager_command("xbps-installt", "-Syu", None),
+        Distro::Debian => package_manager_command("apt-get", "upgrade", None),
+        Distro::Mint => package_manager_command("apt-get", "upgrade", None),
+        Distro::FreeBSD => package_manager_command("pkg", "upgrade", None),
         Distro::Gentoo => println!("Gentoo"),
         Distro::Mac => println!("Mac"),
         Distro::NetBSD => println!("NetBSD"),
@@ -202,22 +173,22 @@ pub fn package_manager_command(command: &str, arg: &str, packages: Option<HashSe
     match packages {
         Some(mut x) => {
             let mut child = match Command::new(command)
-               .arg(arg)
-               .args(x.drain().collect::<Vec<String>>().as_slice())
-               .spawn() {
-               Ok(child) => child,
-               Err(e) => panic!("Failed to execute child: {}", e),
-           };
-           let _unused = child.wait();
-       },
+                .arg(arg)
+                .args(x.drain().collect::<Vec<String>>().as_slice())
+                .spawn() {
+                Ok(child) => child,
+                Err(e) => panic!("Failed to execute child: {}", e),
+            };
+            let _unused = child.wait();
+        }
         None => {
             let mut child = match Command::new(command)
-                       .arg(arg)
-                       .spawn() {
-                       Ok(child) => child,
-                       Err(e) => panic!("Failed to execute child: {}", e),
-                   };
-                   let _unused = child.wait();
-        },
+                .arg(arg)
+                .spawn() {
+                Ok(child) => child,
+                Err(e) => panic!("Failed to execute child: {}", e),
+            };
+            let _unused = child.wait();
+        }
     }
 }

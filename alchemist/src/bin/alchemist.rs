@@ -4,16 +4,17 @@ extern crate clap;
 extern crate diesel;
 
 // Alchemy Imports
-use alchemy::su;
-use alchemy::distro::{Distro, which_distro};
+
 use alchemy::{arch, transmute};
+use alchemy::distro::{Distro, which_distro};
+use alchemy::su;
 
 // Clap Imports
 use clap::{App, Arg};
+use std::collections::HashSet;
 
 // Std Lib Imports
 use std::process::exit;
-use std::collections::HashSet;
 
 fn main() {
 

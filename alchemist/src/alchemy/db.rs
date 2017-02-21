@@ -5,8 +5,8 @@ use diesel::prelude::*;
 use diesel::sqlite::SqliteConnection;
 use dotenv::dotenv;
 use models::Package;
-use std::env;
 use std::collections::HashSet;
+use std::env;
 
 
 /// Establishes a connection to the Alchemist DB

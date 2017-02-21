@@ -3,7 +3,6 @@
 
 /// All common functions related to distributions as well as distribution specific
 /// functions are available in the distro module
-
 #[macro_use]
 extern crate diesel;
 #[macro_use]

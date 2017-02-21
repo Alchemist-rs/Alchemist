@@ -1,8 +1,9 @@
-use std::process::Command;
-use std::collections::HashSet;
-use std::fs;
+
 
 use db;
+use std::collections::HashSet;
+use std::fs;
+use std::process::Command;
 
 /// Installs Packages on Arch Linux
 ///

@@ -1,6 +1,6 @@
 use std::fs;
-use std::io::prelude::*;
 use std::fs::File;
+use std::io::prelude::*;
 use std::string::String;
 
 #[derive(Debug)]
