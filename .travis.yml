@@ -1,74 +1,300 @@
-sudo: false
-os:
-- linux
-- osx
-cache: cargo
-addons:
-  apt:
-    packages:
-    - libcurl4-openssl-dev
-    - libelf-dev
-    - libdw-dev
-    - binutils-dev
+# Based on the "trust" template v0.1.1
+# https://github.com/japaric/trust/tree/v0.1.1
+
+dist: trusty
 language: rust
-rust:
-- stable
-- beta
-- nightly
-matrix:
-  fast_finish: true
-  allow_failures:
-  - rust: nightly
-  - rust: beta
-  exclude:
-  - rust: beta
-    env: RUSTFMT=client
-  - rust: beta
-    env: RUSTFMT=server
-  - rust: beta
-    env: DOC=client
-  - rust: beta
-    env: DOC=server
-  - rust: nightly
-    env: RUSTFMT=client
-  - rust: nightly
-    env: RUSTFMT=server
-  - rust: nightly
-    env: DOC=client
-  - rust: nightly
-    env: DOC=server
-  - os: osx
-    env: RUSTFMT=client
-  - os: osx
-    env: RUSTFMT=server
-  - os: osx
-    env: DOC=client
-  - os: osx
-    env: DOC=server
+services: docker
+sudo: required
+addons:
+    apt:
+        packages:
+            - libcurl4-openssl-dev
+            - libelf-dev
+            - libdw-dev
+            - binutils-dev
+
 env:
   global:
-  - TRAVIS_CARGO_NIGHTLY_FEATURE=dev
-  - PATH=$PATH:~/.cargo/bin
-  - secure: BYaWoREFSKxHdVBCBR7iVzKvK3UMf7lvzzjl2B9V6TUmsK5MiCCXoOS98whB22UCFXSy6j2Z9xaBpoqxtPZDCLjLldS6DZH01lU/qcgRUyUghjlahJO+fk05fFHXtzWYueuN92ctEIC2o2BidOs8U/67TBwmzcTtAX4mWc0bO41oCwnjzbRZm8E1j35Zo0yjyT/E/r40Zo6+iUi5Bphj2xDzJAEzeDrgQOFF+C9N5Zu75IZejaE4BJoIgMZ58tbX1IuSmHgr1Po+Smx0Pt537Fr00ZFUsLHPGYhF8RfbM0j/O0vXonogMfrB5Iidc6vpDKEWW4u721h/2IEbKnDq3+0k+2b9uX7tLOgDjkBhr4d1P1rNbGAIAxO9hqhY6g7brm2BHvrlYfn6YxuiYgr8aRzV1BVZ4t75aAoJptSQMQAQtJDH7KX0GJvmID0ulHiosnGVFC+ocWsALgKaeZCHuL0jbSbRr42hRSO48Y1x5AsSPIj/aMcYbgsNN049xrWTlVLZdebLFcPbeLFM1AUAvR8C+4l9jkAMJRX2wAY1vh9V+hDLUHyzkgR21cNWVyvJh6ucEyrRYmoqNLhg5Q1vpN832jPoJs0TG8WUb1Q9aaxpbYvHUoqCqr9T2SOz9f3IQnB6/29wCAjneBI6hAlaqR2EJ9BD23rozEbLWMGwtWk=
-  matrix:
-      - RUSTFMT=client
-      - RUSTFMT=server
-      - DOC=client
-      - DOC=server
-      - BUILD=client
-      - BUILD=server
-      - TEST=client
-      - TEST=server
+    # TODO Update this to match the name of your project.
+    - CRATE_NAME=alchemist
+
+    # default job
+    # - TARGET=x86_64-unknown-linux-gnu
+
+matrix:
+  exclude:
+  # TODO These are all the build jobs. Adjust as necessary. Comment out what you
+  # don't need
+  include:
+    # Linux
+
+    ## i686-unknown-linux-gnu jobs
+    - env: TARGET=i686-unknown-linux-gnu BUILD=alchemist
+    - env: TARGET=i686-unknown-linux-gnu BUILD=alchemist_server
+    - env: TARGET=i686-unknown-linux-gnu TEST=alchemist
+    - env: TARGET=i686-unknown-linux-gnu TEST=alchemist_server
+    - env: TARGET=i686-unknown-linux-gnu RUN=alchemist
+    - env: TARGET=i686-unknown-linux-gnu RUN=alchemist_server
+
+    ## i686-unknown-linux-musl jobs
+    - env: TARGET=i686-unknown-linux-musl BUILD=alchemist
+    - env: TARGET=i686-unknown-linux-musl BUILD=alchemist_server
+    - env: TARGET=i686-unknown-linux-musl TEST=alchemist
+    - env: TARGET=i686-unknown-linux-musl TEST=alchemist_server
+    - env: TARGET=i686-unknown-linux-musl RUN=alchemist
+    - env: TARGET=i686-unknown-linux-musl RUN=alchemist_server
+
+    - env: TARGET=x86_64-unknown-linux-gnu BUILD=alchemist # this is the default job
+    - env: TARGET=x86_64-unknown-linux-gnu BUILD=alchemist_server
+    - env: TARGET=x86_64-unknown-linux-gnu TEST=alchemist
+    - env: TARGET=x86_64-unknown-linux-gnu TEST=alchemist_server
+    - env: TARGET=x86_64-unknown-linux-gnu RUN=alchemist
+    - env: TARGET=x86_64-unknown-linux-gnu RUN=alchemist_server
+
+    # TARGET=x86_64-unknown-linux-musl jobs
+    - env: TARGET=x86_64-unknown-linux-musl BUILD=alchemist
+    - env: TARGET=x86_64-unknown-linux-musl BUILD=alchemist_server
+    - env: TARGET=x86_64-unknown-linux-musl TEST=alchemist
+    - env: TARGET=x86_64-unknown-linux-musl TEST=alchemist_server
+    - env: TARGET=x86_64-unknown-linux-musl RUN=alchemist
+    - env: TARGET=x86_64-unknown-linux-musl RUN=alchemist_server
+
+    # OSX
+
+    ## i686-apple-darwin jobs
+    - env: TARGET=i686-apple-darwin BUILD=alchemist
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+    - env: TARGET=i686-apple-darwin BUILD=alchemist_server
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+    - env: TARGET=i686-apple-darwin TEST=alchemist
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+    - env: TARGET=i686-apple-darwin TEST=alchemist_server
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+    - env: TARGET=i686-apple-darwin RUN=alchemist
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+    - env: TARGET=i686-apple-darwin RUN=alchemist_server
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+    ## x86_64_apple-darwin jobs
+    - env: TARGET=x86_64-apple-darwin BUILD=alchemist
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+    - env: TARGET=x86_64-apple-darwin BUILD=alchemist_server
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+    - env: TARGET=x86_64-apple-darwin TEST=alchemist
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+    - env: TARGET=x86_64-apple-darwin TEST=alchemist_server
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+    - env: TARGET=x86_64-apple-darwin RUN=alchemist
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+    - env: TARGET=x86_64-apple-darwin RUN=alchemist_server
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+
+
+
+    # *BSD
+
+    ## i686-unknown-freebsd jobs
+    - env: TARGET=i686-unknown-freebsd BUILD=alchemist
+    - env: TARGET=i686-unknown-freebsd BUILD=alchemist_server
+    - env: TARGET=i686-unknown-freebsd RUN=alchemist
+    - env: TARGET=i686-unknown-freebsd RUN=alchemist_server
+
+    ## x86_64-unknown-freebsd jobs
+    - env: TARGET=x86_64-unknown-freebsd BUILD=alchemist
+    - env: TARGET=x86_64-unknown-freebsd BUILD=alchemist_server
+    - env: TARGET=x86_64-unknown-freebsd RUN=alchemist
+    - env: TARGET=x86_64-unknown-freebsd RUN=alchemist_server
+
+    ## x86_64-unknown-netbsd jobs
+    - env: TARGET=x86_64-unknown-netbsd BUILD=alchemist
+    - env: TARGET=x86_64-unknown-netbsd BUILD=alchemist_server
+    - env: TARGET=x86_64-unknown-netbsd RUN=alchemist
+    - env: TARGET=x86_64-unknown-netbsd RUN=alchemist_server
+
+    # Other architectures
+    #- env: TARGET=aarch64-unknown-linux-gnu
+    #- env: TARGET=armv7-unknown-linux-gnueabihf
+    #- env: TARGET=mips-unknown-linux-gnu
+    #- env: TARGET=mips64-unknown-linux-gnuabi64
+    #- env: TARGET=mips64el-unknown-linux-gnuabi64
+    #- env: TARGET=mipsel-unknown-linux-gnu
+    #- env: TARGET=powerpc-unknown-linux-gnu
+    #- env: TARGET=powerpc64-unknown-linux-gnu
+    #- env: TARGET=powerpc64le-unknown-linux-gnu
+    #- env: TARGET=s390x-unknown-linux-gnu DISABLE_TESTS=1
+
+    # Testing other channels
+
+    ## x86_64-unknown-linux-gnu
+    - env: TARGET=x86_64-unknown-linux-gnu BUILD=alchemist
+      rust: nightly
+    - env: TARGET=x86_64-unknown-linux-gnu BUILD=alchemist_server
+      rust: nightly
+    - env: TARGET=x86_64-unknown-linux-gnu TEST=alchemist
+      rust: nightly
+    - env: TARGET=x86_64-unknown-linux-gnu TEST=alchemist_server
+      rust: nightly
+    - env: TARGET=x86_64-unknown-linux-gnu RUN=alchemist
+      rust: nightly
+    - env: TARGET=x86_64-unknown-linux-gnu RUN=alchemist_server
+      rust: nightly
+
+    ## x86_64-apple-darwin jobs
+    - env: TARGET=x86_64-apple-darwin BUILD=alchemist
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+      rust: nightly
+    - env: TARGET=x86_64-apple-darwin BUILD=alchemist_server
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+      rust: nightly
+    - env: TARGET=x86_64-apple-darwin TEST=alchemist
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+      rust: nightly
+    - env: TARGET=x86_64-apple-darwin TEST=alchemist_server
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+      rust: nightly
+    - env: TARGET=x86_64-apple-darwin RUN=alchemist
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+      rust: nightly
+    - env: TARGET=x86_64-apple-darwin RUN=alchemist_server
+      os: osx
+      addons: false
+      install:
+          - "ci/osx.sh"
+          - "ci/install_job_specific_deps.sh"
+      rust: nightly
+
+    # Specific jobs for formatting checks, and documentation generation.
+    - env: RUSTFMT=client
+      rust: stable
+      addons: false
+      script: "./ci/rustfmt.sh"
+    - env: RUSTFMT=server
+      rust: stable
+      addons: false
+      script: "./ci/rustfmt.sh"
+    - env: DOCUMENTATION=client
+      rust: stable
+      addons: false
+      script: "./ci/documentation.sh"
+    - env: DOCUMENTATION=server
+      rust: stable
+      addons: false
+      script: "./ci/documentation.sh"
+
+before_install: set -e
+
 install:
-- "./ci/install_job_specific_deps.sh"
-- |
-  pip install 'travis-cargo<0.2' --user &&
-  export PATH=$HOME/.local/bin:$PATH
+  - sh ci/install.sh
+  - source ~/.cargo/env || true
+  - "ci/install_job_specific_deps.sh"
+
+
 script:
-- "./ci/tests.sh"
-after_success:
-- "./ci/after_build.sh"
-after_failure:
-- "./ci/after_build.sh"
+    - bash ci/script.sh
+
+after_script: set +e
+
+before_deploy:
+  - sh ci/before_deploy.sh
+
+deploy:
+  # TODO update `api_key.secure`
+  # - Create a `public_repo` GitHub token. Go to: https://github.com/settings/tokens/new
+  # - Encrypt it: `travis encrypt YOUR_TOKEN`
+  # - Paste the output down here
+  api_key:
+      secure: A9v3PIzQQ4U08OHFmDPQzNXbNHEb7YHyLXCvMF+dXFuNSvhUNlmQYykxqUf3dvikhJL2/bsZ14umm7ni7fQh0tGwJ4+lPpNzYAcweGgNXnWvjTpY6ovuRbr3gs4/srkyxp/GBDmSW5L8wFN3hKCB+Lm0YnIPB9IA2afP8a30+8VTXT9nv7pNqGny4ilN41ycr4DZi3sQoXdbruy7ClN7gsWW/GUiudBccHVIjmTapOFKLwZHODaUl/1/RDWQzh+i+17e1ivXuJPktDSrqmHPTZ15OjklnHKd6t179ry6VkGRg4R/R/YukVIqGzeaXGWAwdAQ5gE8cjGZghJLVi2jkDBJ85z8MvT+zLZLyliiuhLc/X8y7mkE1n0FKFtXXzFVt0l7V1LaEKbIbiV6XX3jsir4qgkqWjPHBZqO5mkGNFS16Dmt30/ZtEPAzXiINFXbWuWrpQ/LZ4NSto8IMrRTcoyDbAga/KYxJiNIeVuCe1E9dbytDM7K0GLtxJTul/WnnSeI6r//EFyC4bxYjyHhCXaag4q14KM+ak4rB0QgxsYzyGuh2MqyCoVj8YJLjLdKnL/SV7W7LPD40xlxvI6VCYTVi2ILHwL6vCxpukXYteX0c5IAIWkISDKu6nNBEgmCHXXPSqYSrgE5g7/QoCQHI8++nR8iKe0s7TWxZRydby8=
+  file_glob: true
+  file: $CRATE_NAME-$TRAVIS_TAG-$TARGET.*
+  on:
+    branch: master
+    # TODO Here you can pick which targets will generate binary releases
+    # In this example, there are some targets that are tested using the stable
+    # and nightly channels. This condition makes sure there is only one release
+    # for such targets and that's gen:erated using the stable channel
+    condition: $TRAVIS_RUST_VERSION = stable
+    tags: true
+  provider: releases
+  skip_cleanup: true
+
+cache: cargo
+before_cache:
+  # Travis can't cache files that are not readable by "others"
+  - chmod -R a+r $HOME/.cargo
+
+branches:
+  only:
+    # release tags
+    - /^v\d+\.\d+\.\d+.*$/
+    - master
+
 notifications:
-  email: false
+  email:
+    on_success: never
