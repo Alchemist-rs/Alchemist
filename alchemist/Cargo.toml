@@ -15,8 +15,9 @@ path = "src/bin/alchemist.rs"
 
 [dependencies]
 clap = "^2.20"
-diesel = { version = "^0.10.0", features = ["sqlite"] }
-diesel_codegen = { version = "^0.10.0", features = ["sqlite"] }
+diesel = { version = "^0.10.0", features = ["sqlite"], default-features = false }
+diesel_cli = { version = "^0.11", features = ["sqlite"], default-features = false }
+diesel_codegen = { version = "^0.10.0", features = ["sqlite", "dotenv"], default-features = false }
 dotenv = "^0.8.0"
 
 [lib]
