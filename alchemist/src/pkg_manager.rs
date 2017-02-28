@@ -106,7 +106,7 @@ impl PackageManager for Pacman {
     }
 
     fn upgrade(&self) -> Result<()> {
-        package_command!("pacman", "-Syu")
+        package_command!("pacman", "-Syyu")
     }
 
     fn install(&self, pkg: HashSet<&str>) -> Result<()> {
