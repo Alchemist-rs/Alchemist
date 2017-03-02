@@ -63,16 +63,14 @@ fn run() -> Result<()> {
             .short("r")
             .long("refresh")
             .help("Refresh package list with newest version")
-            .takes_value(false))
+            .takes_value(false)
+            .conflicts_with("upgrade"))
         .arg(Arg::with_name("upgrade")
             .short("u")
             .long("upgrade")
             .help("Upgrade packages to newest version")
             .takes_value(false)
             .conflicts_with("install"));
-
-    // Determine package manager of User
-    let mgr = which_manager()?;
 
     // Figure out what we need to do with these boolean values
     let args    = app.clone().get_matches();
@@ -89,6 +87,9 @@ fn run() -> Result<()> {
         println!();
 
     } else {
+
+        // Determine package manager of User
+        let mgr = which_manager()?;
 
         // It should be noted that since we don't have impl Trait in stable Rust
         // yet we need this enum to determine the correct one to use. Eventually
@@ -108,9 +109,7 @@ fn run() -> Result<()> {
                 Manager::Packer => Packer.refresh()?,
                 Manager::Yaourt => Yaourt.refresh()?,
             }
-        }
-
-        if upgrade {
+        } else if upgrade {
             match mgr {
                 Manager::AptGet => AptGet.upgrade()?,
                 Manager::Pacman => Pacman.upgrade()?,
