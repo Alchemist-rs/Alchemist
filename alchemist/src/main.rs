@@ -72,13 +72,9 @@ fn run() -> Result<()> {
             .takes_value(false)
             .conflicts_with("install"));
 
-    // Figure out what we need to do with these boolean values
-    let args    = app.clone().get_matches();
-    let refresh = args.is_present("refresh");
-    let upgrade = args.is_present("upgrade");
-    let install = args.is_present("install");
+    let matches = app.clone().get_matches();
 
-    if !refresh && !upgrade && !install {
+    if matches.args.is_empty() {
 
         app.print_help().chain_err(|| "Failed to print help message")?;
 
@@ -97,7 +93,7 @@ fn run() -> Result<()> {
         // refresh, upgrade, or install directly. (i.e. mgr.refresh()? or
         // mgr.upgrade()?)
 
-        if refresh {
+        if matches.is_present("refresh") {
             match mgr {
                 Manager::AptGet => AptGet.refresh()?,
                 Manager::Pacman => Pacman.refresh()?,
@@ -109,7 +105,7 @@ fn run() -> Result<()> {
                 Manager::Packer => Packer.refresh()?,
                 Manager::Yaourt => Yaourt.refresh()?,
             }
-        } else if upgrade {
+        } else if matches.is_present("upgrade") {
             match mgr {
                 Manager::AptGet => AptGet.upgrade()?,
                 Manager::Pacman => Pacman.upgrade()?,
@@ -123,7 +119,7 @@ fn run() -> Result<()> {
             }
         }
 
-        if let Some(p) = args.values_of("install") {
+        if let Some(p) = matches.values_of("install") {
             let package_inputs: HashSet<&str> = p.collect();
 
             // Small little easter egg
