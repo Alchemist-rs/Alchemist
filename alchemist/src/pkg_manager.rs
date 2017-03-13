@@ -183,15 +183,15 @@ impl PackageManager for Aura {
 /// Implementation of commands for Pacaur
 impl PackageManager for Pacaur {
     fn refresh(&self) -> Result<()> {
-        package_command!("pacaur","-Syy")
+        package_command!("pacaur", "-Syy")
     }
 
     fn upgrade(&self) -> Result<()> {
-        package_command!("pacaur","-Syyu")
+        package_command!("pacaur", "-Syyu")
     }
 
     fn install(&self, pkg: HashSet<&str>) -> Result<()> {
-        package_command!("pacaur","-S", pkg)
+        package_command!("pacaur", "-S", pkg)
     }
 
 }
@@ -199,15 +199,15 @@ impl PackageManager for Pacaur {
 /// Implementation of commands for Packer
 impl PackageManager for Packer {
     fn refresh(&self) -> Result<()> {
-        package_command!("packer","-Syy")
+        package_command!("packer", "-Syy")
     }
 
     fn upgrade(&self) -> Result<()> {
-        package_command!("packer","-Syyu")
+        package_command!("packer", "-Syyu")
     }
 
     fn install(&self, pkg: HashSet<&str>) -> Result<()> {
-        package_command!("packer","-S", pkg)
+        package_command!("packer", "-S", pkg)
     }
 
 }
@@ -216,15 +216,15 @@ impl PackageManager for Packer {
 /// Implementation of commands for Yaourt
 impl PackageManager for Yaourt {
     fn refresh(&self) -> Result<()> {
-        package_command!("yaourt","-Syy")
+        package_command!("yaourt", "-Syy")
     }
 
     fn upgrade(&self) -> Result<()> {
-        package_command!("yaourt","-Syyu --aur")
+        package_command!("yaourt", "-Syyu --aur")
     }
 
     fn install(&self, pkg: HashSet<&str>) -> Result<()> {
-        package_command!("yaourt","", pkg)
+        package_command!("yaourt", "", pkg)
     }
 
 }
