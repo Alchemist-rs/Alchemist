@@ -1,8 +1,8 @@
 [package]
 name = "alchemist_server"
 version = "0.4.0"
-authors = ["Michael Gattozzi <mgattozzi@gmail.com>"]
-build = true
+authors = ["Michael Gattozzi <mgattozzi@gmail.com>", "Benjamin Hoffmeyer <hoffmeyer25@gmail.com"]
+build = false
 documentation = "http://mgattozzi.github.io/alchemist"
 homepage = "https://github.com/mgattozzi/alchemist"
 license = "MIT OR Apache-2.0"
@@ -10,7 +10,26 @@ readme = "README.md"
 repository = "https://github.com/mgattozzi/alchemist"
 
 [dependencies]
-clippy = {version = "*", optional = true}
+rocket = "0.2.2"
+rocket_codegen = "0.2.2"
+serde = "0.9"
+serde_json = "0.9"
+serde_derive = { version = "0.9", optional = true }
+diesel = { version = "0.11.0", features = ["postgres"] }
+diesel_codegen = { version = "0.11.0", features = ["postgres"] }
+dotenv = "0.8.0"
+
+[dependencies.rocket_contrib]
+version = "0.2.2"
+default-features = false
+features = ["json"]
+
+[dependencies.clippy]
+optional = true
+version = "*"
+
+[dev-dependencies]
+rocket = { version = "0.2.2", features = ["testing"] }
 
 [features]
 default = []
