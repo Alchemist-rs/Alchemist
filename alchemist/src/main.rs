@@ -17,12 +17,12 @@ mod errors {
     error_chain!{}
 }
 
-use std::process::exit;
-use std::collections::HashSet;
 
 use clap::{App, Arg};
 use errors::*;
 use pkg_manager::*;
+use std::collections::HashSet;
+use std::process::exit;
 
 fn main() {
 
@@ -55,22 +55,22 @@ fn run() -> Result<()> {
         .author("Michael Gattozzi <mgattozzi@gmail.com>")
         .about("Unix Platform Agnostic Installer")
         .arg(Arg::with_name("install")
-            .short("i")
-            .takes_value(true)
-            .multiple(true)
-            .help("Install the given programs"))
+                 .short("i")
+                 .takes_value(true)
+                 .multiple(true)
+                 .help("Install the given programs"))
         .arg(Arg::with_name("refresh")
-            .short("r")
-            .long("refresh")
-            .help("Refresh package list with newest version")
-            .takes_value(false)
-            .conflicts_with("upgrade"))
+                 .short("r")
+                 .long("refresh")
+                 .help("Refresh package list with newest version")
+                 .takes_value(false)
+                 .conflicts_with("upgrade"))
         .arg(Arg::with_name("upgrade")
-            .short("u")
-            .long("upgrade")
-            .help("Upgrade packages to newest version")
-            .takes_value(false)
-            .conflicts_with("install"));
+                 .short("u")
+                 .long("upgrade")
+                 .help("Upgrade packages to newest version")
+                 .takes_value(false)
+                 .conflicts_with("install"));
 
     let matches = app.clone().get_matches();
 

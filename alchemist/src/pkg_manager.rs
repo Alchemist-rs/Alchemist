@@ -1,15 +1,15 @@
-use std::process::Command;
-use std::collections::HashSet;
 use errors::*;
+use std::collections::HashSet;
+use std::process::Command;
 
 /// Run the which command to see if the package manager is there
 fn which(mgr: &str) -> Result<bool> {
     Ok(Command::new("which")
-        .arg(mgr)
-        .output()
-        .chain_err(|| "Failed to execute process")?
-        .status
-        .success())
+           .arg(mgr)
+           .output()
+           .chain_err(|| "Failed to execute process")?
+           .status
+           .success())
 }
 
 /// Returns what Distribution the user is using
@@ -30,10 +30,10 @@ pub fn which_manager() -> Result<Manager> {
         Ok(Manager::Packer)
     } else if which("yaourt")? {
         Ok(Manager::Yaourt)
-    // Check last because a helper might be available first
+        // Check last because a helper might be available first
     } else if which("pacman")? {
         Ok(Manager::Pacman)
-    // No distro was found to match
+        // No distro was found to match
     } else {
         bail!("Your distribution is not supported.");
     }
@@ -121,7 +121,7 @@ impl PackageManager for Pkg {
     }
 
     fn upgrade(&self) -> Result<()> {
-       // pkg docs unclear
+        // pkg docs unclear
         package_command!("pkg", "update")
     }
 
@@ -177,7 +177,6 @@ impl PackageManager for Aura {
         package_command_no_return!("aura", "-A", pkg.clone());
         package_command!("aura", "-S", pkg)
     }
-
 }
 
 /// Implementation of commands for Pacaur
@@ -193,7 +192,6 @@ impl PackageManager for Pacaur {
     fn install(&self, pkg: HashSet<&str>) -> Result<()> {
         package_command!("pacaur", "-S", pkg)
     }
-
 }
 
 /// Implementation of commands for Packer
@@ -209,7 +207,6 @@ impl PackageManager for Packer {
     fn install(&self, pkg: HashSet<&str>) -> Result<()> {
         package_command!("packer", "-S", pkg)
     }
-
 }
 
 
@@ -226,5 +223,4 @@ impl PackageManager for Yaourt {
     fn install(&self, pkg: HashSet<&str>) -> Result<()> {
         package_command!("yaourt", "", pkg)
     }
-
 }

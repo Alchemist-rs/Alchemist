@@ -10,3 +10,8 @@ readme = "README.md"
 repository = "https://github.com/mgattozzi/alchemist"
 
 [dependencies]
+clippy = {version = "*", optional = true}
+
+[features]
+default = []
+dev = ["clippy"]
