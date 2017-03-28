@@ -1,35 +1,51 @@
 /// Struct for a row in the Alchemist package table
 #[derive(PartialEq,PartialOrd,Eq,Ord,Hash,Debug,Queryable)]
-pub struct Packages {
+pub struct Package {
     pub id: i32,
-    pub Arch: String,
-    pub Ubuntu: String,
-    pub Mint: String,
-    pub Debian: String,
-    pub Gentoo: String,
-    pub Void: String,
-    pub Mac: String,
-    pub FreeBSD: String,
-    pub NetBSD: String,
-    pub OpenBSD: String,
+    pub name: String,
+    pub arch: String,
+    pub ubuntu: String,
+    pub mint: String,
+    pub debian: String,
+    pub gentoo: String,
+    pub void: String,
+    pub mac: String,
+    pub freebsd: String,
+    pub netbsd: String,
+    pub openbsd: String,
 }
 
-impl Packages {
+impl Package {
     /// Returns a Package with no data for instances of error handling
     /// when connecting to the db and finding nothing
-    pub fn empty() -> Packages {
-        Packages {
+    pub fn empty() -> Package {
+        Package {
             id: 0,
-            Arch: String::from(""),
-            Ubuntu: String::from(""),
-            Mint: String::from(""),
-            Debian: String::from(""),
-            Gentoo: String::from(""),
-            Void: String::from(""),
-            Mac: String::from(""),
-            FreeBSD: String::from(""),
-            NetBSD: String::from(""),
-            OpenBSD: String::from(""),
+            name: String::from(""),
+            arch: String::from(""),
+            ubuntu: String::from(""),
+            mint: String::from(""),
+            debian: String::from(""),
+            gentoo: String::from(""),
+            void: String::from(""),
+            mac: String::from(""),
+            freebsd: String::from(""),
+            netbsd: String::from(""),
+            openbsd: String::from(""),
         }
     }
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub enum Distro {
+    Arch,
+    Ubuntu,
+    Mint,
+    Debian,
+    Gentoo,
+    Void,
+    Mac,
+    Freebsd,
+    Netbsd,
+    Openbsd,
 }

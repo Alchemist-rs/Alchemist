@@ -1,14 +1,12 @@
 extern crate diesel;
 extern crate dotenv;
 
-use diesel::prelude::*;
 use diesel::pg::PgConnection;
+use diesel::prelude::*;
 use dotenv::dotenv;
-use models::Packages;
+use models::{Package, Distro};
 use std::env;
 use std::string::String;
-use std::collections::HashSet;
-
 
 /// Establishes a connection to the Alchemist DB
 fn establish_connection() -> PgConnection {
@@ -24,19 +22,19 @@ fn establish_connection() -> PgConnection {
 ///
 /// # Examples
 ///
-/// ```
-/// let mut packages: HashSet<&str> = HashSet::new()
-/// packages.insert("sudo")
-/// packages.insert("postgresql")
-/// let queryed = pack_query(packages);
+/// ```rust
+/// let mut packages: Vec<String> = Vec::new();
+/// packages.push("sudo".to_string());
+/// packages.push("postgresql".to_string());
+/// let queryed = alchemist_server::db::pkg_query(packages);
 /// ```
 ///
-pub fn pack_query(input_packages: HashSet<String>) -> HashSet<Packages> {
+pub fn pkg_query(input_packages: Vec<String>) -> Vec<Package> {
     use schema::packages::dsl::*;
 
     let connection = establish_connection();
 
-    let mut output: HashSet<Packages> = HashSet::new();
+    let mut output: Vec<Package> = Vec::new();
 
     for i in input_packages {
         // While this might look like O(n^2) complexity
@@ -54,10 +52,10 @@ pub fn pack_query(input_packages: HashSet<String>) -> HashSet<Packages> {
                                           .or(freebsd.eq(&i))
                                           .or(netbsd.eq(&i))
                                           .or(openbsd.eq(&i)))
-            .get_results::<Packages>(&connection)
-            .unwrap_or(vec![Packages::empty()]);
+            .get_results::<Package>(&connection)
+            .unwrap_or(vec![Package::empty()]);
         for j in results {
-            output.insert(j);
+            output.push(j);
         }
     }
 
@@ -65,53 +63,51 @@ pub fn pack_query(input_packages: HashSet<String>) -> HashSet<Packages> {
 }
 
 /// Convert package names from other distros to the one being run by the user currently
-fn convert_to_distro(input_packages: HashSet<String>, distro: String) -> HashSet<String> {
-    let results = pack_query(input_packages);
-    let mut pac_converted: HashSet<String> = HashSet::new();
+pub fn convert_to_distro(input_packages: Vec<String>, distro: &Distro) -> Vec<String> {
+    let results = pkg_query(input_packages);
+    let mut pac_converted: Vec<String> = Vec::new();
 
     // All querys will either be a string or '' in the db allowing us to
     // use is_empty()
     // Finds out what distro is used and inserts the proper conversions
     // into the HashSet to be returned from the function
     match distro {
-        Ubuntu => {
+        ubuntu => {
             for i in results {
-                if !i.Ubuntu.is_empty() {
-                    pac_converted.insert(i.Ubuntu);
+                if !i.ubuntu.is_empty() {
+                    pac_converted.push(i.ubuntu);
                 }
             }
         }
-        Void => {
+        void => {
             for i in results {
-                if !i.Void.is_empty() {
-                    pac_converted.insert(i.Void);
+                if !i.void.is_empty() {
+                    pac_converted.push(i.void);
                 }
             }
         }
-        Debian => {
+        debian => {
             for i in results {
-                if !i.Debian.is_empty() {
-                    pac_converted.insert(i.Debian);
+                if !i.debian.is_empty() {
+                    pac_converted.push(i.debian);
                 }
             }
         }
-        Mint => {
+        mint => {
             for i in results {
-                if !i.Mint.is_empty() {
-                    pac_converted.insert(i.Mint);
+                if !i.mint.is_empty() {
+                    pac_converted.push(i.mint);
                 }
             }
         }
-        FreeBSD => {
+        freebsd => {
             for i in results {
-                if !i.FreeBSD.is_empty() {
-                    pac_converted.insert(i.FreeBSD);
+                if !i.freebsd.is_empty() {
+                    pac_converted.push(i.freebsd);
                 }
             }
         }
-        _ => {
-            pac_converted.insert(String::new());
-        }
+        _ => {}
     }
 
     pac_converted

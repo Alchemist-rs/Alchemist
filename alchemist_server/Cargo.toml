@@ -2,7 +2,6 @@
 name = "alchemist_server"
 version = "0.4.0"
 authors = ["Michael Gattozzi <mgattozzi@gmail.com>", "Benjamin Hoffmeyer <hoffmeyer25@gmail.com"]
-build = false
 documentation = "http://mgattozzi.github.io/alchemist"
 homepage = "https://github.com/mgattozzi/alchemist"
 license = "MIT OR Apache-2.0"
@@ -10,17 +9,17 @@ readme = "README.md"
 repository = "https://github.com/mgattozzi/alchemist"
 
 [dependencies]
-rocket = "0.2.2"
-rocket_codegen = "0.2.2"
+rocket = "0.2"
+rocket_codegen = "0.2"
 serde = "0.9"
 serde_json = "0.9"
-serde_derive = { version = "0.9", optional = true }
-diesel = { version = "0.11.0", features = ["postgres"] }
-diesel_codegen = { version = "0.11.0", features = ["postgres"] }
-dotenv = "0.8.0"
+serde_derive = "0.9"
+diesel = { version = "0.11", features = ["postgres"] }
+diesel_codegen = { version = "0.11", features = ["postgres"] }
+dotenv = "0.8"
 
 [dependencies.rocket_contrib]
-version = "0.2.2"
+version = "0.2"
 default-features = false
 features = ["json"]
 
@@ -29,7 +28,7 @@ optional = true
 version = "*"
 
 [dev-dependencies]
-rocket = { version = "0.2.2", features = ["testing"] }
+rocket = { version = "0.2", features = ["testing"] }
 
 [features]
 default = []
