@@ -13,16 +13,16 @@ language: rust
 rust:
 - stable
 - beta
-- nightly-2017-03-16
+- nightly
 services:
   - postgresql
 matrix:
   fast_finish: true
   allow_failures:
   - rust: beta
-  - rust: nightly-2017-03-16
+  - rust: nightly
     env: BUILD=client
-  - rust: nightly-2017-03-16
+  - rust: nightly
     env: TEST=client
   - rust: stable
     env: BUILD=server
@@ -44,7 +44,7 @@ matrix:
             - "ci/install_job_specific_deps.sh"
       - os: osx
         env: BUILD=server
-        rust: nightly-2017-03-16
+        rust: nightly
         addons: false
         before_install:
             - rm -rf /usr/local/var/postgres
