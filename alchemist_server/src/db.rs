@@ -41,17 +41,18 @@ pub fn pkg_query(input_packages: Vec<String>) -> Vec<Package> {
         // it's more closer to O(n) since most querys only
         // return one or 2 results really. Still this seemed
         // to be the only way to implement it well
-        let results = packages.filter(arch.eq(&i)
-                                          .or(ubuntu.eq(&i))
-                                          .or(mint.eq(&i))
-                                          .or(debain.eq(&i))
-                                          .or(gentoo.eq(&i))
-                                          .or(void.eq(&i))
-                                          .or(mac.eq(&i))
-                                          .or(void.eq(&i))
-                                          .or(freebsd.eq(&i))
-                                          .or(netbsd.eq(&i))
-                                          .or(openbsd.eq(&i)))
+        let results = packages
+            .filter(arch.eq(&i)
+                        .or(ubuntu.eq(&i))
+                        .or(mint.eq(&i))
+                        .or(debain.eq(&i))
+                        .or(gentoo.eq(&i))
+                        .or(void.eq(&i))
+                        .or(mac.eq(&i))
+                        .or(void.eq(&i))
+                        .or(freebsd.eq(&i))
+                        .or(netbsd.eq(&i))
+                        .or(openbsd.eq(&i)))
             .get_results::<Package>(&connection)
             .unwrap_or(vec![Package::empty()]);
         for j in results {
@@ -72,35 +73,35 @@ pub fn convert_to_distro(input_packages: Vec<String>, distro: &Distro) -> Vec<St
     // Finds out what distro is used and inserts the proper conversions
     // into the HashSet to be returned from the function
     match distro {
-        ubuntu => {
+        &Distro::Ubuntu => {
             for i in results {
                 if !i.ubuntu.is_empty() {
                     pac_converted.push(i.ubuntu);
                 }
             }
         }
-        void => {
+        &Distro::Void => {
             for i in results {
                 if !i.void.is_empty() {
                     pac_converted.push(i.void);
                 }
             }
         }
-        debian => {
+        &Distro::Debian => {
             for i in results {
                 if !i.debian.is_empty() {
                     pac_converted.push(i.debian);
                 }
             }
         }
-        mint => {
+        &Distro::Mint => {
             for i in results {
                 if !i.mint.is_empty() {
                     pac_converted.push(i.mint);
                 }
             }
         }
-        freebsd => {
+        &Distro::Freebsd => {
             for i in results {
                 if !i.freebsd.is_empty() {
                     pac_converted.push(i.freebsd);
