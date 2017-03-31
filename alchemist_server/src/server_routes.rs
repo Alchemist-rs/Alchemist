@@ -38,37 +38,39 @@ pub fn index() -> JSON<Greeting> {
          })
 }
 
-#[get("/pkg_test")]
-pub fn pkg_test() -> JSON<PkgIncoming> {
-    let mut pac = Vec::new();
-    pac.push("sudo".to_string());
-
-    JSON(PkgIncoming {
-             package: pac,
-             distro: Distro::Arch,
-             client: Client {
-                 name: "Alchemist".to_string(),
-                 version: "0.0.4".to_string(),
-             },
-         })
-}
-
 // The package post, allows you to POST and get the correct package for your picture
 #[post("/package", format = "application/json", data = "<pkgincoming>")]
-pub fn package(pkgincoming: JSON<PkgIncoming>) -> JSON<Package> {
-    let mut distro_packages = convert_to_distro(pkgincoming.package.clone(), &pkgincoming.distro);
+pub fn package(pkgincoming: Result<JSON<PkgIncoming>, SerdeError>)
+               -> Result<JSON<Package>, String> {
+    match pkgincoming {
+        Err(why) => {
+            Err(json!({
+                          "error": format!("There was an error parsing the JSON: {:?}", why),
+                          "note": "You probably messed up the syntax, check the docs @ https://alchemist.rs to ensure your sending a valid JSON request."
+                      })
+                        .to_string())
+        }
+        Ok(pkg_incoming) => {
+            let mut distro_packages = convert_to_distro(pkg_incoming.package.clone(),
+                                                        &pkg_incoming.distro);
 
-    if !distro_packages.is_empty() {
-        JSON(Package { package: distro_packages })
-    } else {
-        distro_packages.push("none".to_string());
-        JSON(Package { package: distro_packages })
+            if !distro_packages.is_empty() {
+                Ok(JSON(Package { package: distro_packages }))
+            } else {
+                distro_packages.push("none".to_string());
+                Ok(JSON(Package { package: distro_packages }))
+            }
+        }
     }
 }
 
 // 404 page
 #[error(404)]
 pub fn not_found(request: &Request) -> content::HTML<String> {
+    // So this is a bit confusing so I'm going to do my best to explain this.
+    // request.content_type() will return as a option, with Some if there was a header in request,
+    // and None if there wasn't. This means that if a client doesn't specify a header then it will
+    // go to _.
     let html = match request.content_type() {
         Some(ref content) if !content.is_json() => {
             format!("<p>This server only supports JSON requests, not '{}'.</p>",
@@ -76,9 +78,8 @@ pub fn not_found(request: &Request) -> content::HTML<String> {
         }
         _ => {
             json!({
-                      "error": format!("Sorry, '{}' is an invalid path! \
-                          Try the docs @ https://alchemist.rs for valid paths.",
-                          request.uri())
+                      "error": format!("Sorry, '{}' is an invalid path!", request.uri()),
+                      "note": "Try the docs @ https://alchemist.rs for valid paths."
                   })
                     .to_string()
         }

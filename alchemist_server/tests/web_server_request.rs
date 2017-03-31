@@ -18,7 +18,9 @@ macro_rules! run_test {
     }
 
 fn rockets() -> rocket::Rocket {
-    rocket::ignite().mount("/api/v0/", routes![index, package]).catch(errors![not_found])
+    rocket::ignite()
+        .mount("/api/v0/", routes![index, package])
+        .catch(errors![not_found])
 }
 
 #[test]
@@ -30,10 +32,7 @@ fn bad_get() {
     run_test!(&rockets, req, |mut response: Response| {
         assert_eq!(response.status(), Status::NotFound);
 
-        let body = response.body()
-            .unwrap()
-            .into_string()
-            .unwrap();
+        let body = response.body().unwrap().into_string().unwrap();
         assert!(body.contains("error"));
         assert!(body.contains("is an invalid path!"));
     });
@@ -48,10 +47,7 @@ fn good_get_on_index() {
     run_test!(&rockets, req, |mut response: Response| {
         assert_eq!(response.status(), Status::Ok);
 
-        let body = response.body()
-            .unwrap()
-            .into_string()
-            .unwrap();
+        let body = response.body().unwrap().into_string().unwrap();
         assert!(body.contains("Alchemist public API server."));
     });
 }
@@ -62,14 +58,11 @@ fn good_post_on_package() {
     // Checks "/package" exists and returns the correct value
     let req = MockRequest::new(Post, "/api/v0/package")
             .header(ContentType::JSON)
-            .body(r#"{ "package": ["sudo"], "distro": "Arch", "client": { "name": "alchemist", "version": "0.0.4" } }"#);
+            .body(r#"{ "package": [ "sudo" ], "distro": "Arch", "client": { "name": "Alchemist", "version": "0.0.4" }}"#);
     run_test!(&rockets, req, |mut response: Response| {
         assert_eq!(response.status(), Status::Ok);
 
-        let body = response.body()
-            .unwrap()
-            .into_string()
-            .unwrap();
-        assert!(body.contains("package"))
+        let body = response.body().unwrap().into_string().unwrap();
+        assert!(body.contains("package"));
     })
 }

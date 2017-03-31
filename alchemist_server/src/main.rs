@@ -39,12 +39,11 @@
 //! Example POST to ``/package``:
 //! ```json
 //! {
-//! "package": ["lib-gcc"],
+//! "package": ["sudo"],
 //! "distro": "Arch",
 //! "client": {
-//!     "name": "alchemist",
-//!     "version": "0.0.4"
-//!     }
+//!     "name": "Alchemist",
+//!     "version":"0.0.4"}
 //! }
 //! ```
 //!
@@ -64,7 +63,9 @@ use self::alchemist_server::server_routes::*;
 
 // Put rocket in its own thing.
 pub fn rocket() -> rocket::Rocket {
-    rocket::ignite().mount("/api/v0/", routes![index, package, pkg_test]).catch(errors![not_found])
+    rocket::ignite()
+        .mount("/api/v0/", routes![index, package])
+        .catch(errors![not_found])
 }
 
 // Programs main, launches the rocket server.
