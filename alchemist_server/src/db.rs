@@ -66,7 +66,6 @@ pub fn pkg_query(input_packages: Vec<String>) -> Vec<Package> {
 /// Convert package names from other distros to the one being run by the user currently
 pub fn convert_to_distro(input_packages: Vec<String>, distro: &Distro) -> Vec<String> {
     let results = pkg_query(input_packages);
-    let mut pac_converted: Vec<String> = Vec::new();
 
     // All querys will either be a string or '' in the db allowing us to
     // use is_empty()
@@ -74,42 +73,46 @@ pub fn convert_to_distro(input_packages: Vec<String>, distro: &Distro) -> Vec<St
     // into the HashSet to be returned from the function
     match distro {
         &Distro::Ubuntu => {
-            for i in results {
-                if !i.ubuntu.is_empty() {
-                    pac_converted.push(i.ubuntu);
-                }
-            }
+            results.into_iter()
+                   .filter(|package| {
+                        !package.ubuntu.is_empty()
+                   })
+                   .map(|package| package.ubuntu)
+                   .collect::<Vec<String>>()
+
         }
         &Distro::Void => {
-            for i in results {
-                if !i.void.is_empty() {
-                    pac_converted.push(i.void);
-                }
-            }
+            results.into_iter()
+                   .filter(|package| {
+                        !package.void.is_empty()
+                   })
+                   .map(|package| package.void)
+                   .collect::<Vec<String>>()
         }
         &Distro::Debian => {
-            for i in results {
-                if !i.debian.is_empty() {
-                    pac_converted.push(i.debian);
-                }
-            }
+            results.into_iter()
+                   .filter(|package| {
+                        !package.debian.is_empty()
+                   })
+                   .map(|package| package.debian)
+                   .collect::<Vec<String>>()
         }
         &Distro::Mint => {
-            for i in results {
-                if !i.mint.is_empty() {
-                    pac_converted.push(i.mint);
-                }
-            }
+            results.into_iter()
+                   .filter(|package| {
+                        !package.mint.is_empty()
+                   })
+                   .map(|package| package.ubuntu)
+                   .collect::<Vec<String>>()
         }
         &Distro::Freebsd => {
-            for i in results {
-                if !i.freebsd.is_empty() {
-                    pac_converted.push(i.freebsd);
-                }
-            }
+            results.into_iter()
+                   .filter(|package| {
+                        !package.freebsd.is_empty()
+                   })
+                   .map(|package| package.freebsd)
+                   .collect::<Vec<String>>()
         }
-        _ => {}
+        _ => Vec::new()
     }
-
-    pac_converted
 }
