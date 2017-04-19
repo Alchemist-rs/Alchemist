@@ -121,7 +121,7 @@ fn run() -> Result<()> {
         }
 
         if let Some(p) = matches.values_of("install") {
-            let package_inputs : HashSet<&str> = p.collect();
+            let package_inputs: HashSet<&str> = p.collect();
 
             // Small little easter egg
             if package_inputs.contains("pb") {

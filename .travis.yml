@@ -60,13 +60,13 @@ matrix:
         env: RUSTFMT=server
       - rust: stable
         env: DOC=client
-      - rust: nightly-2017-03-16
+      - rust: nightly
         env: DOC=server
   exclude:
   - os: osx
 env:
   global:
-  - TRAVIS_CARGO_NIGHTLY_FEATURE=dev
+  - TRAVIS_CARGO_NIGHTLY_FEATURE=""
   - PATH=$PATH:~/.cargo/bin
   - DATABASE_URL=postgres://postgres@localhost/alchemist
   - secure: BYaWoREFSKxHdVBCBR7iVzKvK3UMf7lvzzjl2B9V6TUmsK5MiCCXoOS98whB22UCFXSy6j2Z9xaBpoqxtPZDCLjLldS6DZH01lU/qcgRUyUghjlahJO+fk05fFHXtzWYueuN92ctEIC2o2BidOs8U/67TBwmzcTtAX4mWc0bO41oCwnjzbRZm8E1j35Zo0yjyT/E/r40Zo6+iUi5Bphj2xDzJAEzeDrgQOFF+C9N5Zu75IZejaE4BJoIgMZ58tbX1IuSmHgr1Po+Smx0Pt537Fr00ZFUsLHPGYhF8RfbM0j/O0vXonogMfrB5Iidc6vpDKEWW4u721h/2IEbKnDq3+0k+2b9uX7tLOgDjkBhr4d1P1rNbGAIAxO9hqhY6g7brm2BHvrlYfn6YxuiYgr8aRzV1BVZ4t75aAoJptSQMQAQtJDH7KX0GJvmID0ulHiosnGVFC+ocWsALgKaeZCHuL0jbSbRr42hRSO48Y1x5AsSPIj/aMcYbgsNN049xrWTlVLZdebLFcPbeLFM1AUAvR8C+4l9jkAMJRX2wAY1vh9V+hDLUHyzkgR21cNWVyvJh6ucEyrRYmoqNLhg5Q1vpN832jPoJs0TG8WUb1Q9aaxpbYvHUoqCqr9T2SOz9f3IQnB6/29wCAjneBI6hAlaqR2EJ9BD23rozEbLWMGwtWk=

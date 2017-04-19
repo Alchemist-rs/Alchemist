@@ -29,7 +29,7 @@ fn bad_get() {
 
     // Try to get a url that doesn't exist
     let req = MockRequest::new(Get, "/randomURL12324").header(ContentType::JSON);
-    run_test!(&rockets, req, |mut response : Response| {
+    run_test!(&rockets, req, |mut response: Response| {
         assert_eq!(response.status(), Status::NotFound);
 
         let body = response.body().unwrap().into_string().unwrap();
@@ -44,7 +44,7 @@ fn good_get_on_index() {
 
     // Checks that the index exists and returns the proper contents
     let req = MockRequest::new(Get, "/api/v0/").header(ContentType::JSON);
-    run_test!(&rockets, req, |mut response : Response| {
+    run_test!(&rockets, req, |mut response: Response| {
         assert_eq!(response.status(), Status::Ok);
 
         let body = response.body().unwrap().into_string().unwrap();
@@ -65,7 +65,7 @@ fn good_post_on_package() {
                     "name": "Alchemist",
                     "version": "0.0.4"
                 }}"#);
-    run_test!(&rockets, req, |mut response : Response| {
+    run_test!(&rockets, req, |mut response: Response| {
         assert_eq!(response.status(), Status::Ok);
 
         let body = response.body().unwrap().into_string().unwrap();

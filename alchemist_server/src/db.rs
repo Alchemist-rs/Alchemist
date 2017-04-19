@@ -29,12 +29,12 @@ fn establish_connection() -> PgConnection {
 /// let queryed = alchemist_server::db::pkg_query(packages);
 /// ```
 ///
-pub fn pkg_query(input_packages : Vec<String>) -> Vec<Package> {
+pub fn pkg_query(input_packages: Vec<String>) -> Vec<Package> {
     use schema::packages::dsl::*;
 
     let connection = establish_connection();
 
-    let mut output : Vec<Package> = Vec::new();
+    let mut output: Vec<Package> = Vec::new();
 
     for i in input_packages {
         // While this might look like O(n^2) complexity
@@ -64,7 +64,7 @@ pub fn pkg_query(input_packages : Vec<String>) -> Vec<Package> {
 }
 
 /// Convert package names from other distros to the one being run by the user currently
-pub fn convert_to_distro(input_packages : Vec<String>, distro : &Distro) -> Vec<String> {
+pub fn convert_to_distro(input_packages: Vec<String>, distro: &Distro) -> Vec<String> {
     let results = pkg_query(input_packages);
 
     // All querys will either be a string or '' in the db allowing us to

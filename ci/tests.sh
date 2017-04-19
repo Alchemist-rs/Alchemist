@@ -19,6 +19,7 @@ tests () {
     echo "Running tests" &&
     travis-cargo test
 }
+# TODO: Add benchmarks to alchemist.
 bench () {
     database
     echo "Running Benches" &&

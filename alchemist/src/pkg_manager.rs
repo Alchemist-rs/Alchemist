@@ -3,7 +3,7 @@ use std::collections::HashSet;
 use std::process::Command;
 
 /// Run the which command to see if the package manager is there
-fn which(mgr : &str) -> Result<bool> {
+fn which(mgr: &str) -> Result<bool> {
     Ok(Command::new("which")
            .arg(mgr)
            .output()
@@ -81,7 +81,7 @@ pub struct Yaourt;
 pub trait PackageManager {
     fn refresh(&self) -> Result<()>;
     fn upgrade(&self) -> Result<()>;
-    fn install(&self, pkg : HashSet<&str>) -> Result<()>;
+    fn install(&self, pkg: HashSet<&str>) -> Result<()>;
 }
 
 /// Implementation of commands for apt-get
@@ -94,7 +94,7 @@ impl PackageManager for AptGet {
         package_command!("apt-get", "upgrade")
     }
 
-    fn install(&self, pkg : HashSet<&str>) -> Result<()> {
+    fn install(&self, pkg: HashSet<&str>) -> Result<()> {
         package_command!("apt-get", "install", pkg)
     }
 }
@@ -109,7 +109,7 @@ impl PackageManager for Pacman {
         package_command!("pacman", "-Syyu")
     }
 
-    fn install(&self, pkg : HashSet<&str>) -> Result<()> {
+    fn install(&self, pkg: HashSet<&str>) -> Result<()> {
         package_command!("pacman", "-S", pkg)
     }
 }
@@ -125,7 +125,7 @@ impl PackageManager for Pkg {
         package_command!("pkg", "update")
     }
 
-    fn install(&self, pkg : HashSet<&str>) -> Result<()> {
+    fn install(&self, pkg: HashSet<&str>) -> Result<()> {
         package_command!("pkg", "install", pkg)
     }
 }
@@ -141,7 +141,7 @@ impl PackageManager for HomeBrew {
         package_command!("brew", "upgrade")
     }
 
-    fn install(&self, pkg : HashSet<&str>) -> Result<()> {
+    fn install(&self, pkg: HashSet<&str>) -> Result<()> {
         package_command!("brew", "install", pkg)
     }
 }
@@ -156,7 +156,7 @@ impl PackageManager for Xbps {
         package_command!("xbps-install", "-Su")
     }
 
-    fn install(&self, pkg : HashSet<&str>) -> Result<()> {
+    fn install(&self, pkg: HashSet<&str>) -> Result<()> {
         package_command!("xbps-install", "", pkg)
     }
 }
@@ -172,7 +172,7 @@ impl PackageManager for Aura {
         package_command!("aura", "-Au")
     }
 
-    fn install(&self, pkg : HashSet<&str>) -> Result<()> {
+    fn install(&self, pkg: HashSet<&str>) -> Result<()> {
         // Find a way to split packages up
         package_command_no_return!("aura", "-A", pkg.clone());
         package_command!("aura", "-S", pkg)
@@ -189,7 +189,7 @@ impl PackageManager for Pacaur {
         package_command!("pacaur", "-Syyu")
     }
 
-    fn install(&self, pkg : HashSet<&str>) -> Result<()> {
+    fn install(&self, pkg: HashSet<&str>) -> Result<()> {
         package_command!("pacaur", "-S", pkg)
     }
 }
@@ -204,7 +204,7 @@ impl PackageManager for Packer {
         package_command!("packer", "-Syyu")
     }
 
-    fn install(&self, pkg : HashSet<&str>) -> Result<()> {
+    fn install(&self, pkg: HashSet<&str>) -> Result<()> {
         package_command!("packer", "-S", pkg)
     }
 }
@@ -220,7 +220,7 @@ impl PackageManager for Yaourt {
         package_command!("yaourt", "-Syyu --aur")
     }
 
-    fn install(&self, pkg : HashSet<&str>) -> Result<()> {
+    fn install(&self, pkg: HashSet<&str>) -> Result<()> {
         package_command!("yaourt", "", pkg)
     }
 }

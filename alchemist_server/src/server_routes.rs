@@ -9,23 +9,23 @@ use std::string::String;
 // The serde structs used for Serializing & Deserializing JSON structures.
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Greeting {
-    msg : String,
+    msg: String,
 }
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Package {
-    package : Vec<String>,
+    package: Vec<String>,
 }
 #[derive(Serialize, Deserialize, Debug)]
 pub struct PkgIncoming {
-    package : Vec<String>,
-    distro : Distro,
-    client : Client,
+    package: Vec<String>,
+    distro: Distro,
+    client: Client,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Client {
-    name : String,
-    version : String,
+    name: String,
+    version: String,
 }
 
 
@@ -34,13 +34,13 @@ pub struct Client {
 pub fn index() -> JSON<Greeting> {
     JSON(Greeting {
              // Server Hello message
-             msg : "Alchemist public API server.".to_string(),
+             msg: "Alchemist public API server.".to_string(),
          })
 }
 
 // The package post, allows you to POST and get the correct package for your distro
 #[post("/packages", format = "application/json", data = "<pkgincoming>")]
-pub fn package(pkgincoming : Result<JSON<PkgIncoming>, SerdeError>) -> Result<JSON<Package>, String> {
+pub fn package(pkgincoming: Result<JSON<PkgIncoming>, SerdeError>) -> Result<JSON<Package>, String> {
     match pkgincoming {
         Err(why) => {
             Err(json!({
@@ -54,10 +54,10 @@ pub fn package(pkgincoming : Result<JSON<PkgIncoming>, SerdeError>) -> Result<JS
             let mut distro_packages = convert_to_distro(pkg_incoming.package.clone(), &pkg_incoming.distro);
 
             if !distro_packages.is_empty() {
-                Ok(JSON(Package { package : distro_packages }))
+                Ok(JSON(Package { package: distro_packages }))
             } else {
                 distro_packages.push("none".to_string());
-                Ok(JSON(Package { package : distro_packages }))
+                Ok(JSON(Package { package: distro_packages }))
             }
         },
     }
@@ -65,17 +65,18 @@ pub fn package(pkgincoming : Result<JSON<PkgIncoming>, SerdeError>) -> Result<JS
 
 // 404 page
 #[error(404)]
-pub fn not_found(request : &Request) -> content::HTML<String> {
-    // So this is a bit confusing so I'm going to do my best to explain this.
-    // request.content_type() will return as a option, with Some if there was a header in request,
-    // and None if there wasn't. This means that if a client doesn't specify a header then it will
-    // go to _.
+pub fn not_found(request: &Request) -> content::HTML<String> {
+    // So this is a bit confusing so I'm going to do my best to explain this. request_type()
+    // will return as a option, This means that if a client doesn't specify a header then
+    // it will go to _. (This may occur in browser request such as from chrome/chromium.
     let html = match request.content_type() {
         Some(ref content) if !content.is_json() => {
             format!("<p>This server only supports JSON requests, not '{}'.</p>",
                     content)
         },
         _ => {
+            #[rustfmt_skip]
+            // Have rustfmt ignore this bit so it doesn't move .to_string() to another line.
             json!({
                       "error": format!("Sorry, '{}' is an invalid path!", request.uri()),
                       "note": "Try the docs @ https://alchemist.rs for valid paths."
