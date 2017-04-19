@@ -29,12 +29,12 @@ fn establish_connection() -> PgConnection {
 /// let queryed = alchemist_server::db::pkg_query(packages);
 /// ```
 ///
-pub fn pkg_query(input_packages: Vec<String>) -> Vec<Package> {
+pub fn pkg_query(input_packages : Vec<String>) -> Vec<Package> {
     use schema::packages::dsl::*;
 
     let connection = establish_connection();
 
-    let mut output: Vec<Package> = Vec::new();
+    let mut output : Vec<Package> = Vec::new();
 
     for i in input_packages {
         // While this might look like O(n^2) complexity
@@ -64,7 +64,7 @@ pub fn pkg_query(input_packages: Vec<String>) -> Vec<Package> {
 }
 
 /// Convert package names from other distros to the one being run by the user currently
-pub fn convert_to_distro(input_packages: Vec<String>, distro: &Distro) -> Vec<String> {
+pub fn convert_to_distro(input_packages : Vec<String>, distro : &Distro) -> Vec<String> {
     let results = pkg_query(input_packages);
 
     // All querys will either be a string or '' in the db allowing us to
@@ -73,46 +73,40 @@ pub fn convert_to_distro(input_packages: Vec<String>, distro: &Distro) -> Vec<St
     // into the HashSet to be returned from the function
     match distro {
         &Distro::Ubuntu => {
-            results.into_iter()
-                   .filter(|package| {
-                        !package.ubuntu.is_empty()
-                   })
-                   .map(|package| package.ubuntu)
-                   .collect::<Vec<String>>()
-
-        }
+            results
+                .into_iter()
+                .filter(|package| !package.ubuntu.is_empty())
+                .map(|package| package.ubuntu)
+                .collect::<Vec<String>>()
+        },
         &Distro::Void => {
-            results.into_iter()
-                   .filter(|package| {
-                        !package.void.is_empty()
-                   })
-                   .map(|package| package.void)
-                   .collect::<Vec<String>>()
-        }
+            results
+                .into_iter()
+                .filter(|package| !package.void.is_empty())
+                .map(|package| package.void)
+                .collect::<Vec<String>>()
+        },
         &Distro::Debian => {
-            results.into_iter()
-                   .filter(|package| {
-                        !package.debian.is_empty()
-                   })
-                   .map(|package| package.debian)
-                   .collect::<Vec<String>>()
-        }
+            results
+                .into_iter()
+                .filter(|package| !package.debian.is_empty())
+                .map(|package| package.debian)
+                .collect::<Vec<String>>()
+        },
         &Distro::Mint => {
-            results.into_iter()
-                   .filter(|package| {
-                        !package.mint.is_empty()
-                   })
-                   .map(|package| package.ubuntu)
-                   .collect::<Vec<String>>()
-        }
+            results
+                .into_iter()
+                .filter(|package| !package.mint.is_empty())
+                .map(|package| package.ubuntu)
+                .collect::<Vec<String>>()
+        },
         &Distro::Freebsd => {
-            results.into_iter()
-                   .filter(|package| {
-                        !package.freebsd.is_empty()
-                   })
-                   .map(|package| package.freebsd)
-                   .collect::<Vec<String>>()
-        }
-        _ => Vec::new()
+            results
+                .into_iter()
+                .filter(|package| !package.freebsd.is_empty())
+                .map(|package| package.freebsd)
+                .collect::<Vec<String>>()
+        },
+        _ => Vec::new(),
     }
 }

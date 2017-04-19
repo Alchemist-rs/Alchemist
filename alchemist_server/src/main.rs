@@ -11,7 +11,7 @@
 
 //! Alchemist_Server
 //! Alchemist_Server is a API server for determing what package should be installed for a distro
-//! based on input. Made for Alchemist, however it should be availibe to use to anyone/script.
+//! based on input. While it is made for Alchemist, the API is available for use in other programs or scripts that require package conversion.
 //!
 //! The API can be reached at ``https://alchemist.rs/api/v0/`` (you can replace this url if you
 //! are developing this locally or running this server elsewhere)
@@ -28,15 +28,15 @@
 //! }
 //!
 //! ### Package
-//! ``POST /package``
-//! Takes a JSON POST with four variables ``package``, ``distro``, ``client``, ``client_version``.
-//! ``Package`` should be what the user specified for the package to search for.
-//! ``distro`` is the distro that the user is currently using.
+//! ``POST /packages``
+//! Takes a JSON POST:
+//! ``package`` should be what the user specified for the package to search for.
+//! ``distro`` is the distro that the user is currently using. (should start uppercase)
 //! ``client``[ ``name`` & ``version`` ] are for current client accessing the API, used for analytics & to
-//! check if alchemist is up to date, they are needed, however you can put whatever you want in
-//! there (doesn't need to be capital) however we'd prefer if you used real client names based on
-//! your application.
-//! Example POST to ``/package``:
+//! check if alchemist is up to date, This field is also required. While you can use whatever you want for
+//! the name and version we'd prefer using something that lets us know what tools are accessing the API.
+//!
+//! Example POST to ``/packages``:
 //! ```json
 //! {
 //! "package": ["sudo"],

@@ -29,7 +29,7 @@ fn bad_get() {
 
     // Try to get a url that doesn't exist
     let req = MockRequest::new(Get, "/randomURL12324").header(ContentType::JSON);
-    run_test!(&rockets, req, |mut response: Response| {
+    run_test!(&rockets, req, |mut response : Response| {
         assert_eq!(response.status(), Status::NotFound);
 
         let body = response.body().unwrap().into_string().unwrap();
@@ -44,7 +44,7 @@ fn good_get_on_index() {
 
     // Checks that the index exists and returns the proper contents
     let req = MockRequest::new(Get, "/api/v0/").header(ContentType::JSON);
-    run_test!(&rockets, req, |mut response: Response| {
+    run_test!(&rockets, req, |mut response : Response| {
         assert_eq!(response.status(), Status::Ok);
 
         let body = response.body().unwrap().into_string().unwrap();
@@ -56,10 +56,16 @@ fn good_get_on_index() {
 fn good_post_on_package() {
     let rockets = rockets();
     // Checks "/package" exists and returns the correct value
-    let req = MockRequest::new(Post, "/api/v0/package")
-            .header(ContentType::JSON)
-            .body(r#"{ "package": [ "sudo" ], "distro": "Arch", "client": { "name": "Alchemist", "version": "0.0.4" }}"#);
-    run_test!(&rockets, req, |mut response: Response| {
+    let req = MockRequest::new(Post, "/api/v0/packages")
+        .header(ContentType::JSON)
+        .body(r#"{
+                "package": [ "sudo" ],
+                "distro": "Arch",
+                "client": {
+                    "name": "Alchemist",
+                    "version": "0.0.4"
+                }}"#);
+    run_test!(&rockets, req, |mut response : Response| {
         assert_eq!(response.status(), Status::Ok);
 
         let body = response.body().unwrap().into_string().unwrap();

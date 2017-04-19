@@ -76,7 +76,8 @@ fn run() -> Result<()> {
 
     if matches.args.is_empty() {
 
-        app.print_help().chain_err(|| "Failed to print help message")?;
+        app.print_help()
+            .chain_err(|| "Failed to print help message")?;
 
         // If you don't do this then the string prints out as if it isn't
         // terminated in the console for some reason.
@@ -120,7 +121,7 @@ fn run() -> Result<()> {
         }
 
         if let Some(p) = matches.values_of("install") {
-            let package_inputs: HashSet<&str> = p.collect();
+            let package_inputs : HashSet<&str> = p.collect();
 
             // Small little easter egg
             if package_inputs.contains("pb") {
